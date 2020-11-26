@@ -125,7 +125,33 @@ Traceback (most recent call last):
     from pynx.cdi.cu_operator import PRTF
 ImportError: cannot import name 'PRTF' from 'pynx.cdi.cu_operator' (/data/id01/inhouse/richard/pynx-gap.p9/lib/python3.8/site-packages/PyNX-2020.2b0-py3.8.egg/pynx/cdi/cu_operator.py)
 
+WORKS ON lid01
+`cd /data/id01/inhouse/david/Pt_p2`
+
+Matching arrays against the first one [S1398_pynx_norm_128_300_294_1_1_1-2020-11-26T15-55-33_Run0017_LLKf000.1524_LLK4391592741.0126_SupportThreshold0.13151.cxi] - this may take a while
+R_match(0, 1) = 77.933% [3 arrays remaining]
+R_match(0, 2) = 79.114% [2 arrays remaining]
+R_match(0, 3) = 76.972% [1 arrays remaining]
+R_match(0, 4) = 83.713% [0 arrays remaining]
+Elapsed time:   47.9s
+Analysing modes
+First mode represents 74.860%
+Saving modes analysis to: modes.h5
+
+(devel.debian9) simonne@lid01gpu1:/data/id01/inhouse/david/Pt_p2/pynxraw$ silx view modes.h5 
+qt.qpa.screen: QXcbConnection: Could not connect to display 
+Could not connect to any X display.
 
 ## Strain analysis
 
-to come ...
+simonne@lid01gpu1:/data/id01/inhouse/david/Pt_p2/pynxraw$ source /data/id01/inhouse/richard/bcdiDevel.debian9/bin/activate
+(bcdiDevel.debian9) simonne@lid01gpu1:/data/id01/inhouse/david/Pt_p2/pynxraw$ python strain.py 
+Traceback (most recent call last):
+  File "strain.py", line 201, in <module>
+    root = tk.Tk()
+  File "/usr/lib/python3.5/tkinter/__init__.py", line 1880, in __init__
+    self.tk = _tkinter.create(screenName, baseName, className, interactive, wantobjects, useTk, sync, use)
+_tkinter.TclError: no display name and no $DISPLAY environment variable
+(bcdiDevel.debian9) simonne@lid01gpu1:/data/id01/inhouse/david/Pt_p2/pynxraw
+
+pareil sur rnice9

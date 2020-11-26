@@ -49,16 +49,31 @@ slurm, gpu, pynxgap
 AttributeError: module bcdi.postprocessing.postprocessing_utils has no atribute 'remove_offset'
 
 
-# PyNX: OK on lid01, not on other clusters
+# PyNX
+
+## Sur lid01
+
 `ssh -X -p 5022 simonne@firewall.esrf.fr`
 
 `ssh -X simonne@lid01gpu1`
 
-`source /sware/exp/pynx/devel.debian9/bin/activate`
-
 `cd /data/id01/inhouse/david/analysis/RESULTS/s553/pynxraw`
 
+`source /sware/exp/pynx/devel.debian9/bin/activate`
+
 `pynx-id01cdi.py pynx-cdi-input_try0.txt`
+
+## Sur slurm
+
+`ssh -X simonne@slurm-access`
+
+Demande GPU
+
+`srun -N 1 --partition=p9gpu --gres=gpu:1 --time=06:00:00 --pty bash`
+
+Activer environnement virtuel
+
+`source /data/id01/inhouse/richard/pynx-gap.p9/bin/activate`
 
 # Additional notes
 use `gedit` in linux
