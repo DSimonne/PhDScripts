@@ -32,6 +32,7 @@ Activer environnement virtuel
 ## Sur id01 / rnice
 
 Cluster : nice
+
 `ssh -X simonne@rnice9`
 
 `source /data/id01/inhouse/richard/bcdiDevel.debian9/bin/activate`
