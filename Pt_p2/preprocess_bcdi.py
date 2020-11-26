@@ -20,7 +20,7 @@ from scipy.io import savemat
 import tkinter as tk
 from tkinter import filedialog
 import gc
-#sys.path.append('D:/myscripts/bcdi/')
+sys.path.append('D:/myscripts/bcdi/')
 import bcdi.graph.graph_utils as gu
 import bcdi.experiment.experiment_utils as exp
 import bcdi.postprocessing.postprocessing_utils as pu
@@ -41,12 +41,12 @@ data in:                                           /rootdir/S1/data/
 output files saved in:   /rootdir/S1/pynxraw/ or /rootdir/S1/pynx/ depending on 'use_rawdata' option
 """
 
-scans = 1398 # np.arange(1401, 1419+1, 3)  # list or array of scan numbers
+scans = 1398  # np.arange(1401, 1419+1, 3)  # list or array of scan numbers
 # scans = np.concatenate((scans, np.arange(1147, 1195+1, 3)))
 # bad_indices = np.argwhere(scans == 738)
 # scans = np.delete(scans, bad_indices)
 
-root_folder = "/data/id01/inhouse/otherlightsources/2019_sixs_nobackup/Pt_p2/"
+root_folder = "D:/Documents/PythonScripts/PhDLocalScripts/Pt_p2/"
 sample_name = [""]  # "SN"  # list of sample names (string in front of the scan number in the folder name).
 # If only one name is indicated, it will be repeated to match the number of scans.
 user_comment = ''  # string, should start with "_"
@@ -80,12 +80,12 @@ normalize_flux = 'monitor'  # 'monitor' to normalize the intensity by the defaul
 # parameters for data filtering #
 #################################
 mask_zero_event = False  # mask pixels where the sum along the rocking curve is zero - may be dead pixels
-flag_medianfilter = 'skip' 
+flag_medianfilter = 'skip'
 # set to 'median' for applying med2filter [3,3]
 # set to 'interp_isolated' to interpolate isolated empty pixels based on 'medfilt_order' parameter
 # set to 'mask_isolated' it will mask isolated empty pixels
 # set to 'skip' will skip filtering
-medfilt_order = 5 # 8    # for custom median filter, number of pixels with intensity surrounding the empty pixel
+medfilt_order = 5 #8    # for custom median filter, number of pixels with intensity surrounding the empty pixel
 #################################################
 # parameters used when reloading processed data #
 #################################################
@@ -99,7 +99,7 @@ save_previous = False  # if True, will save the previous data and mask
 save_rawdata = False  # save also the raw data when use_rawdata is False
 save_to_npz = True  # True to save the processed data in npz format
 save_to_mat = False  # True to save also in .mat format
-save_to_vti = False  # save the orthogonalized diffraction pattern to VTK file
+save_to_vti = True  # save the orthogonalized diffraction pattern to VTK file
 save_asint = False  # if True, the result will be saved as an array of integers (save space)
 ######################################
 # define beamline related parameters #
@@ -129,9 +129,11 @@ specfile_name = root_folder + 'analysis/alias_dict.txt'
 ###############################
 detector = "Maxipix"    # "Eiger2M", "Maxipix", "Eiger4M", "Merlin" or "Timepix"
 # nb_pixel_y = 1614  # use for the data measured with 1 tile broken on the Eiger2M
-x_bragg = 159  # horizontal pixel number of the Bragg peak, can be used for the definition of the ROI
-y_bragg = 143  # vertical pixel number of the Bragg peak, can be used for the definition of the ROI
+x_bragg = 160  # horizontal pixel number of the Bragg peak, can be used for the definition of the ROI
+y_bragg = 325  # vertical pixel number of the Bragg peak, can be used for the definition of the ROI
 roi_detector = [0,303,0,296]  # [0, 516, x_bragg-179, x_bragg+181]
+# roi_detector = [1202, 1610, x_bragg - 256, x_bragg + 256]  # HC3207  x_bragg = 430
+# roi_detector = [y_bragg-160, y_bragg+160, x_bragg-160, x_bragg+160]  # [553, 1063, 1041, 1701]
 # roi_detector = [y_bragg - 168, y_bragg + 168, x_bragg - 140, x_bragg + 140]  # CH5309
 # roi_detector = [552, 1064, x_bragg - 240, x_bragg + 240]  # P10 2018
 # roi_detector = [y_bragg - 290, y_bragg + 350, x_bragg - 350, x_bragg + 350]  # PtRh Ar
@@ -141,7 +143,7 @@ photon_threshold = 0  # data[data < photon_threshold] = 0
 photon_filter = 'loading'  # 'loading' or 'postprocessing', when the photon threshold should be applied
 # if 'loading', it is applied before binning; if 'postprocessing', it is applied at the end of the script before saving
 background_file = ''  # root_folder + 'background.npz'  #
-hotpixels_file = '/data/id01/inhouse/otherlightsources/2019_sixs_nobackup/analysis/mask1000dark.npz'
+hotpixels_file =  root_folder + 'analysis/mask1000dark.npz' # root_folder + 'hotpixels.npz'  #
 flatfield_file = ''  # root_folder + "flatfield_maxipix_8kev.npz"  #
 template_imagefile = 'Pt_ascan_mu_%05d.nxs'
 # template for ID01: 'data_mpx4_%05d.edf.gz' or 'align_eiger2M_%05d.edf.gz'
@@ -151,15 +153,13 @@ template_imagefile = 'Pt_ascan_mu_%05d.nxs'
 # template for P10: '_master.h5'
 # template for NANOMAX: '%06d.h5'
 # template for 34ID: 'Sample%dC_ES_data_51_256_256.npz'
-nb_pixel_x = None  # fix to declare a known detector but with less pixels (e.g. one tile HS), leave None otherwise
-nb_pixel_y = None  # fix to declare a known detector but with less pixels (e.g. one tile HS), leave None otherwise
 ################################################################################
 # define parameters below if you want to orthogonalize the data before phasing #
 ################################################################################
 use_rawdata = True  # False for using data gridded in laboratory frame/ True for using data in detector frame
 correct_curvature = False  # True to correcture q values for the curvature of Ewald sphere
-sdd = 1.4359  # sample to detector distance in m, not important if you use raw data
-energy = 8300  # x-ray energy in eV, not important if you use raw data
+sdd = 1.4359  # in m, sample to detector distance in m
+energy = 8300  # np.linspace(11100, 10900, num=51)  # x-ray energy in eV
 custom_motors = {}  # {"mu": 0, "phi": -15.98, "chi": 90, "theta": 0, "delta": -0.5685, "gamma": 33.3147}
 # use this to declare motor positions if there is not log file
 # example: {"eta": np.linspace(16.989, 18.989, num=100, endpoint=False), "phi": 0, "nu": -0.75, "delta": 36.65}
@@ -204,7 +204,7 @@ def on_click(event):
     Function to interact with a plot, return the position of clicked pixel. If flag_pause==1 or
     if the mouse is out of plot axes, it will not register the click
 
-    :parfam event: mouse click event
+    :param event: mouse click event
     """
     global xy, flag_pause, previous_axis
     if not event.inaxes:
@@ -228,8 +228,8 @@ def press_key(event):
 
     :param event: button press event
     """
-    global original_data, original_mask, updated_mask, data, mask, frame_index, width, flag_aliens, flag_mask
-    global flag_pause, xy, fig_mask, max_colorbar, ax0, ax1, ax2, ax3, previous_axis, info_text, my_cmap
+    global original_data, updated_mask, data, mask, frame_index, width, flag_aliens, flag_mask, flag_pause
+    global xy, fig_mask, max_colorbar, ax0, ax1, ax2, ax3, previous_axis, info_text
 
     try:
         if event.inaxes == ax0:
@@ -252,7 +252,7 @@ def press_key(event):
                                               piy=int(np.rint(event.ydata)), original_data=original_data,
                                               original_mask=original_mask, updated_data=data, updated_mask=mask,
                                               axes=(ax0, ax1, ax2, ax3), width=width, dim=dim, frame_index=frame_index,
-                                              vmin=0, vmax=max_colorbar, cmap=my_cmap, invert_yaxis=not use_rawdata)
+                                              vmin=0, vmax=max_colorbar, invert_yaxis=not use_rawdata)
             elif flag_mask:
                 if previous_axis == ax0:
                     click_dim = 0
@@ -276,7 +276,7 @@ def press_key(event):
                                             original_mask=mask, updated_data=data, updated_mask=updated_mask,
                                             axes=(ax0, ax1, ax2, ax3), flag_pause=flag_pause, points=points,
                                             xy=xy, width=width, dim=dim, click_dim=click_dim, info_text=info_text,
-                                            vmin=0, vmax=max_colorbar, cmap=my_cmap, invert_yaxis=not use_rawdata)
+                                            vmin=0, vmax=max_colorbar, invert_yaxis=not use_rawdata)
                 if click_dim is None:
                     previous_axis = None
             else:
@@ -331,23 +331,20 @@ else:
     print('sample_name should be either a string or a list of strings')
     sys.exit()
 
-###################
-# define colormap #
-###################
-colormap = gu.Colormap()
-my_cmap = colormap.cmap
-plt.rcParams["keymap.fullscreen"] = [""]
-
 #######################
 # Initialize detector #
 #######################
 kwargs = dict()  # create dictionnary
 kwargs['is_series'] = is_series
 kwargs['previous_binning'] = previous_binning
-if nb_pixel_x:
+try:
     kwargs['nb_pixel_x'] = nb_pixel_x  # fix to declare a known detector but with less pixels (e.g. one tile HS)
-if nb_pixel_y:
+except NameError:  # nb_pixel_x not declared
+    pass
+try:
     kwargs['nb_pixel_y'] = nb_pixel_y  # fix to declare a known detector but with less pixels (e.g. one tile HS)
+except NameError:  # nb_pixel_y not declared
+    pass
 
 detector = exp.Detector(name=detector, datadir='', template_imagefile=template_imagefile, roi=roi_detector,
                         binning=binning, **kwargs)
@@ -409,10 +406,15 @@ for scan_nb in range(len(scans)):
         specfile = specfile_name
     else:
         homedir = root_folder 
-        detector.datadir = homedir 
+        #+ sample_name[scan_nb] + str(scans[scan_nb]) + '/'
+        detector.datadir = homedir # + "data/"
         specfile = specfile_name
 
-    logfile = pru.create_logfile(setup=setup, detector=detector, scan_number=scans[scan_nb],root_folder=root_folder, filename=specfile)
+    print(f"homedir : {homedir}")
+    print(f"root_folder : {root_folder}")
+
+    logfile = pru.create_logfile(setup=setup, detector=detector, scan_number=scans[scan_nb],
+                                 root_folder=root_folder, filename=specfile)
 
     print('\nScan', scans[scan_nb])
     print('Setup: ', setup.beamline)
@@ -433,7 +435,7 @@ for scan_nb in range(len(scans)):
         print('Sample to detector distance: ', setup.distance, 'm')
         plot_title = ['QzQx', 'QyQx', 'QyQz']
     else:
-        savedir = "/data/id01/inhouse/david/analysis/RESULTS/s" + str(scans[0]) + "/pynxraw/"
+        savedir = homedir + "pynxraw/"
         pathlib.Path(savedir).mkdir(parents=True, exist_ok=True)
         print('Output will be non orthogonal, in the detector frame')
         plot_title = ['YZ', 'XZ', 'XY']
@@ -472,8 +474,8 @@ for scan_nb in range(len(scans)):
         mask = mask[npz_key[0]]
 
         if save_previous:
-            np.savez_compressed(savedir + 's' + str(scans[scan_nb]) + '_pynx_previous' + comment, data=data)
-            np.savez_compressed(savedir + 's' + str(scans[scan_nb]) + '_maskpynx_previous', mask=mask)
+            np.savez_compressed(savedir + 'S' + str(scans[scan_nb]) + '_pynx_previous' + comment, data=data)
+            np.savez_compressed(savedir + 'S' + str(scans[scan_nb]) + '_maskpynx_previous', mask=mask)
 
         if reload_orthogonal:  # the data is gridded in the orthonormal laboratory frame
             use_rawdata = False
@@ -545,10 +547,10 @@ for scan_nb in range(len(scans)):
 
     if not reload_orthogonal:
         if save_rawdata:
-            np.savez_compressed(savedir+'s'+str(scans[scan_nb])+'_data_before_masking_stack', data=data)
+            np.savez_compressed(savedir+'S'+str(scans[scan_nb])+'_data_before_masking_stack', data=data)
             if save_to_mat:
                 # save to .mat, the new order is x y z (outboard, vertical up, downstream)
-                savemat(savedir+'s'+str(scans[scan_nb])+'_data_before_masking_stack.mat',
+                savemat(savedir+'S'+str(scans[scan_nb])+'_data_before_masking_stack.mat',
                         {'data': np.moveaxis(data, [0, 1, 2], [-1, -2, -3])})
 
         if use_rawdata:
@@ -590,7 +592,6 @@ for scan_nb in range(len(scans)):
                 fig.savefig(savedir + 'monitor_gridded_S' + str(scans[scan_nb]) + '_' + str(nz) + '_' + str(ny) + '_' +
                             str(nx) + binning_comment + '.png')
                 if flag_interact:
-                    fig.canvas.mpl_disconnect(fig.canvas.manager.key_press_handler_id)
                     cid = plt.connect('close_event', close_event)
                     fig.waitforbuttonpress()
                     plt.disconnect(cid)
@@ -629,10 +630,9 @@ for scan_nb in range(len(scans)):
                                     title='Data before aliens removal\n',
                                     is_orthogonal=not use_rawdata, reciprocal_space=True)
     if debug:
-        plt.savefig(savedir + 'data_before_masking_sum_s' + str(scans[scan_nb]) + '_' + str(nz) + '_' + str(ny) + '_' +
+        plt.savefig(savedir + 'data_before_masking_sum_S' + str(scans[scan_nb]) + '_' + str(nz) + '_' + str(ny) + '_' +
                     str(nx) + '_' + str(binning[0]) + '_' + str(binning[1]) + '_' + str(binning[2]) + '.png')
     if flag_interact:
-        fig.canvas.mpl_disconnect(fig.canvas.manager.key_press_handler_id)
         cid = plt.connect('close_event', close_event)
         fig.waitforbuttonpress()
         plt.disconnect(cid)
@@ -645,10 +645,9 @@ for scan_nb in range(len(scans)):
                             tuple_title=('data at max in xy', 'data at max in xz', 'data at max in yz'),
                             is_orthogonal=not use_rawdata, reciprocal_space=False)
     if debug:
-        plt.savefig(savedir + 'data_before_masking_s' + str(scans[scan_nb]) + '_' + str(nz) + '_' + str(ny) + '_' +
+        plt.savefig(savedir + 'data_before_masking_S' + str(scans[scan_nb]) + '_' + str(nz) + '_' + str(ny) + '_' +
                     str(nx) + '_' + str(binning[0]) + '_' + str(binning[1]) + '_' + str(binning[2]) + '.png')
     if flag_interact:
-        fig.canvas.mpl_disconnect(fig.canvas.manager.key_press_handler_id)
         cid = plt.connect('close_event', close_event)
         fig.waitforbuttonpress()
         plt.disconnect(cid)
@@ -658,11 +657,10 @@ for scan_nb in range(len(scans)):
                                     vmax=(nz, ny, nx), title='Mask before aliens removal\n',
                                     is_orthogonal=not use_rawdata, reciprocal_space=True)
     if debug:
-        plt.savefig(savedir + 'mask_before_masking_s' + str(scans[scan_nb]) + '_' + str(nz) + '_' + str(ny) + '_' +
+        plt.savefig(savedir + 'mask_before_masking_S' + str(scans[scan_nb]) + '_' + str(nz) + '_' + str(ny) + '_' +
                     str(nx) + '_' + str(binning[0]) + '_' + str(binning[1]) + '_' + str(binning[2]) + '.png')
 
     if flag_interact:
-        fig.canvas.mpl_disconnect(fig.canvas.manager.key_press_handler_id)
         cid = plt.connect('close_event', close_event)
         fig.waitforbuttonpress()
         plt.disconnect(cid)
@@ -707,9 +705,9 @@ for scan_nb in range(len(scans)):
         original_data = np.copy(data)
         original_mask = np.copy(mask)
         frame_index = starting_frame
-        ax0.imshow(data[frame_index[0], :, :], vmin=0, vmax=max_colorbar, cmap=my_cmap)
-        ax1.imshow(data[:, frame_index[1], :], vmin=0, vmax=max_colorbar, cmap=my_cmap)
-        ax2.imshow(data[:, :, frame_index[2]], vmin=0, vmax=max_colorbar, cmap=my_cmap)
+        ax0.imshow(data[frame_index[0], :, :], vmin=0, vmax=max_colorbar)
+        ax1.imshow(data[:, frame_index[1], :], vmin=0, vmax=max_colorbar)
+        ax2.imshow(data[:, :, frame_index[2]], vmin=0, vmax=max_colorbar)
         ax3.set_visible(False)
         ax0.axis('scaled')
         ax1.axis('scaled')
@@ -735,20 +733,20 @@ for scan_nb in range(len(scans)):
                                         title='Data after aliens removal\n',
                                         is_orthogonal=not use_rawdata, reciprocal_space=True)
 
-        fig.canvas.mpl_disconnect(fig.canvas.manager.key_press_handler_id)
-        cid = plt.connect('close_event', close_event)
-        fig.waitforbuttonpress()
-        plt.disconnect(cid)
+        if flag_interact:
+            cid = plt.connect('close_event', close_event)
+            fig.waitforbuttonpress()
+            plt.disconnect(cid)
         plt.close(fig)
 
         fig, _, _ = gu.multislices_plot(mask, sum_frames=True, scale='linear', plot_colorbar=True, vmin=0,
                                         vmax=(nz, ny, nx), title='Mask after aliens removal\n',
                                         is_orthogonal=not use_rawdata, reciprocal_space=True)
 
-        fig.canvas.mpl_disconnect(fig.canvas.manager.key_press_handler_id)
-        cid = plt.connect('close_event', close_event)
-        fig.waitforbuttonpress()
-        plt.disconnect(cid)
+        if flag_interact:
+            cid = plt.connect('close_event', close_event)
+            fig.waitforbuttonpress()
+            plt.disconnect(cid)
         plt.close(fig)
 
         #############################################
@@ -767,9 +765,9 @@ for scan_nb in range(len(scans)):
         original_data = np.copy(data)
         updated_mask = np.zeros((nz, ny, nx))
         data[mask == 1] = 0  # will appear as grey in the log plot (nan)
-        ax0.imshow(np.log10(abs(data).sum(axis=0)), vmin=0, vmax=max_colorbar, cmap=my_cmap)
-        ax1.imshow(np.log10(abs(data).sum(axis=1)), vmin=0, vmax=max_colorbar, cmap=my_cmap)
-        ax2.imshow(np.log10(abs(data).sum(axis=2)), vmin=0, vmax=max_colorbar, cmap=my_cmap)
+        ax0.imshow(np.log10(abs(data).sum(axis=0)), vmin=0, vmax=max_colorbar)
+        ax1.imshow(np.log10(abs(data).sum(axis=1)), vmin=0, vmax=max_colorbar)
+        ax2.imshow(np.log10(abs(data).sum(axis=2)), vmin=0, vmax=max_colorbar)
         ax3.set_visible(False)
         ax0.axis('scaled')
         ax1.axis('scaled')
@@ -917,8 +915,8 @@ for scan_nb in range(len(scans)):
         plt.close(fig)
 
     if save_to_npz:
-        np.savez_compressed(savedir + 's' + str(scans[scan_nb]) + '_pynx' + comment, data=data)
-        np.savez_compressed(savedir + 's' + str(scans[scan_nb]) + '_maskpynx' + comment, mask=mask)
+        np.savez_compressed(savedir + 'S' + str(scans[scan_nb]) + '_pynx' + comment, data=data)
+        np.savez_compressed(savedir + 'S' + str(scans[scan_nb]) + '_maskpynx' + comment, mask=mask)
 
     if save_to_mat:
         # save to .mat, the new order is x y z (outboard, vertical up, downstream)

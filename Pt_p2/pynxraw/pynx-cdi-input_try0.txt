@@ -1,6 +1,6 @@
 # parameters
-data = "s553_pynx_norm_120_270_256_1_1_1.npz"
-mask = "s553_maskpynx_norm_120_270_256_1_1_1.npz" #
+data = "S1398_pynx_norm_129_320_320_1_1_1.npz"
+mask = "S1398_maskpynx_norm_129_320_320_1_1_1.npz" #
 data2cxi = True
 #object = "pynx-cdi-input-S61-2018-06-07T11-33-51_LLK000.488.npz"
 auto_center_resize = False #

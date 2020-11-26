@@ -46,7 +46,7 @@ scans = 1305  # np.arange(1401, 1419+1, 3)  # list or array of scan numbers
 # bad_indices = np.argwhere(scans == 738)
 # scans = np.delete(scans, bad_indices)
 
-root_folder = "D:/Documents/PythonScripts/PhDLocalScripts/data_SOLEIL_SixS_2019/data_SOLEIL_SixS_2019"
+root_folder = "D:/Documents/PythonScripts/PhDLocalScripts/Pt_1305_SOLEIL/"
 sample_name = [""]  # "SN"  # list of sample names (string in front of the scan number in the folder name).
 # If only one name is indicated, it will be repeated to match the number of scans.
 user_comment = ''  # string, should start with "_"
@@ -67,7 +67,7 @@ fix_bragg = []  # fix the Bragg peak position [z_bragg, y_bragg, x_bragg] consid
 # It is useful if hotpixels or intense aliens. Leave it [] otherwise.
 fix_size = []  # crop the array to predefined size considering the full detector,
 # leave it to [] otherwise [zstart, zstop, ystart, ystop, xstart, xstop]. ROI will be defaulted to []
-center_fft = 'skip'
+center_fft = 'crop_asym_ZYX'
 # 'crop_sym_ZYX','crop_asym_ZYX','pad_asym_Z_crop_sym_YX', 'pad_sym_Z_crop_asym_YX',
 # 'pad_sym_Z', 'pad_asym_Z', 'pad_sym_ZYX','pad_asym_ZYX' or 'skip'
 pad_size = []  # size after padding, e.g. [256, 512, 512]. Use this to pad the array.
@@ -99,7 +99,7 @@ save_previous = False  # if True, will save the previous data and mask
 save_rawdata = False  # save also the raw data when use_rawdata is False
 save_to_npz = True  # True to save the processed data in npz format
 save_to_mat = False  # True to save also in .mat format
-save_to_vti = True  # save the orthogonalized diffraction pattern to VTK file
+save_to_vti = False  # save the orthogonalized diffraction pattern to VTK file
 save_asint = False  # if True, the result will be saved as an array of integers (save space)
 ######################################
 # define beamline related parameters #
@@ -115,7 +115,7 @@ custom_monitor = np.ones(51)  # monitor values for normalization for the custom_
 
 rocking_angle = "inplane"  # "outofplane" or "inplane" or "energy"
 follow_bragg = False  # only for energy scans, set to True if the detector was also scanned to follow the Bragg peak
-specfile_name = ''
+specfile_name = root_folder + 'analysis/alias_dict.txt' #sample_nam998e + '_%05d'
 # .spec for ID01, .fio for P10, alias_dict.txt for SIXS_2018, not used for CRISTAL and SIXS_2019
 # template for ID01: name of the spec file without '.spec'
 # template for SIXS_2018: full path of the alias dictionnary, typically root_folder + 'alias_dict_2019.txt'
@@ -142,7 +142,7 @@ photon_threshold = 0  # data[data < photon_threshold] = 0
 photon_filter = 'loading'  # 'loading' or 'postprocessing', when the photon threshold should be applied
 # if 'loading', it is applied before binning; if 'postprocessing', it is applied at the end of the script before saving
 background_file = ''  # root_folder + 'background.npz'  #
-hotpixels_file =  root_folder + '/mask1000dark.npz' # root_folder + 'hotpixels.npz'  #
+hotpixels_file = root_folder + 'analysis/mask1000dark.npz' #root_folder + 'analysis/mpx4_mask.npz' #'analysis/hotpixels.npz' #root_folder + 'hotpixels.npz'  # root_folder + 'hotpixels.npz'  #
 flatfield_file = ''  # root_folder + "flatfield_maxipix_8kev.npz"  #
 template_imagefile = 'Pt_ascan_mu_%05d.nxs'
 # template for ID01: 'data_mpx4_%05d.edf.gz' or 'align_eiger2M_%05d.edf.gz'
