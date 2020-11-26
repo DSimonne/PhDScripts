@@ -20,9 +20,11 @@ NoMachine:
 `ssh -X simonne@slurm-access`
 
 Demande GPU
+
 `srun -N 1 --partition=p9gpu --gres=gpu:1 --time=06:00:00 --pty bash`
 
 Activer environnement virtuel
+
 %`source /sware/exp/pynx/devel.p9/bin/activate`    NO bcdi
 
 `source /data/id01/inhouse/richard/pynx-gap.p9/bin/activate`
