@@ -35,4 +35,28 @@ Cannot find the environment in which I can use silx view to I am copying the fil
 ## Create modes.h5
 `python pynx-cdi-analysis.py S1398_pynx_norm_128_300_294_1_1_1-* modes=1`
 
+DERNIERE ERREUR 
+
+(pynx-gap.p9) p9-05:id01_david/Pt_p2/pynxraw % pynx-cdi-analysis.py S1398_pynx_norm_128_300_294_1_1_1-* modes=1
+/data/id01/inhouse/richard/pynx-gap.p9/lib/python3.8/site-packages/skcuda/cublas.py:284: UserWarning: creating CUBLAS context to get version number
+  warnings.warn('creating CUBLAS context to get version number')
+Traceback (most recent call last):
+  File "/data/id01/inhouse/richard/pynx-gap.p9/bin/pynx-cdi-analysis.py", line 4, in <module>
+    __import__('pkg_resources').run_script('PyNX==2020.2b0', 'pynx-cdi-analysis.py')
+  File "/data/id01/inhouse/richard/pynx-gap.p9/lib/python3.8/site-packages/pkg_resources/__init__.py", line 650, in run_script
+    self.require(requires)[0].run_script(script_name, ns)
+  File "/data/id01/inhouse/richard/pynx-gap.p9/lib/python3.8/site-packages/pkg_resources/__init__.py", line 1446, in run_script
+    exec(code, namespace, namespace)
+  File "/data/id01/inhouse/richard/pynx-gap.p9/lib/python3.8/site-packages/PyNX-2020.2b0-py3.8.egg/EGG-INFO/scripts/pynx-cdi-analysis.py", line 22, in <module>
+    from pynx.cdi.cl_operator import PRTF
+  File "/data/id01/inhouse/richard/pynx-gap.p9/lib/python3.8/site-packages/PyNX-2020.2b0-py3.8.egg/pynx/cdi/cl_operator.py", line 20, in <module>
+    from ..processing_unit.cl_processing_unit import CLProcessingUnit
+  File "/data/id01/inhouse/richard/pynx-gap.p9/lib/python3.8/site-packages/PyNX-2020.2b0-py3.8.egg/pynx/processing_unit/cl_processing_unit.py", line 38, in <module>
+    class CLEvent(object):
+  File "/data/id01/inhouse/richard/pynx-gap.p9/lib/python3.8/site-packages/PyNX-2020.2b0-py3.8.egg/pynx/processing_unit/cl_processing_unit.py", line 44, in CLEvent
+    def __init__(self, event: cl.Event, nflop: int = 0, nbyte: int = 0):
+NameError: name 'cl' is not defined
+(pynx-gap.p9) p9-05:id01_david/Pt_p2/pynxraw % 
+
+
 ## Strain analysis
