@@ -4,7 +4,7 @@
 
 contact : david.simonne@synchrotron-soleil.fr
 
-# Identification
+# Firewall
 cmd:
 `ssh -X -p 5022 simonne@firewall.esrf.fr`
 
@@ -12,68 +12,50 @@ NoMachine:
 `ssh -X -p 5622 simonne@firewall.esrf.fr`
 
 
+# Clusters
 
-# BCDI
+## ID01
+`ssh -X simonne@lid01gpu1`
 
-## Sur slurm
+`cd /data/id01/inhouse/david/`
 
+ BCDI | PyNX
+------------ | -------------
+`source /data/id01/inhouse/richard/bcdiDevel.debian9/bin/activate` | `source /sware/exp/pynx/devel.debian9/bin/activate`
+
+
+## rnice9
+`ssh -X simonne@rnice9`
+
+ BCDI | PyNX
+------------ | -------------
+`source /data/id01/inhouse/richard/bcdiDevel.debian9/bin/activate` | 
+
+
+## slurm
 `ssh -X simonne@slurm-access`
 
-Demande GPU
+**Demande GPU**
 
 `srun -N 1 --partition=p9gpu --gres=gpu:1 --time=06:00:00 --pty bash`
 
-Activer environnement virtuel
+ BCDI | PyNX
+------------ | -------------
+%`source /sware/exp/pynx/devel.p9/bin/activate`    NO bcdi | `source /data/id01/inhouse/richard/pynx-gap.p9/bin/activate`
 
-%`source /sware/exp/pynx/devel.p9/bin/activate`    NO bcdi
 
-`source /data/id01/inhouse/richard/pynx-gap.p9/bin/activate`
-
-## Sur id01 / rnice
-
-Cluster : nice
-
-`ssh -X simonne@rnice9`
-
-`source /data/id01/inhouse/richard/bcdiDevel.debian9/bin/activate`
-
-## pre_processing: OK sur le pc, pas sur le cluster
+# SCRIPTS
+## 	BCDI - pre_processing: OK on laptop
 
 `python preprocess_bcdi_sixs2019.py`
 
 
-## post_processing: not ok
-slurm, gpu, pynxgap
+## BCDI - post_processing: ok on lid01
 
-*python strain.py* does not create the necessary figures
+*python strain.py* does not create the necessary figures on the laptop
 AttributeError: module bcdi.postprocessing.postprocessing_utils has no atribute 'remove_offset'
 
 
-# PyNX
-
-## Sur lid01
-
-`ssh -X -p 5022 simonne@firewall.esrf.fr`
-
-`ssh -X simonne@lid01gpu1`
-
-`cd /data/id01/inhouse/david/analysis/RESULTS/s553/pynxraw`
-
-`source /sware/exp/pynx/devel.debian9/bin/activate`
+## PyNX
 
 `pynx-id01cdi.py pynx-cdi-input_try0.txt`
-
-## Sur slurm
-
-`ssh -X simonne@slurm-access`
-
-Demande GPU
-
-`srun -N 1 --partition=p9gpu --gres=gpu:1 --time=06:00:00 --pty bash`
-
-Activer environnement virtuel
-
-`source /data/id01/inhouse/richard/pynx-gap.p9/bin/activate`
-
-# Additional notes
-use `gedit` in linux

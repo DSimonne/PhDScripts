@@ -1,6 +1,6 @@
 # parameters
-data = "S1398_pynx_norm_128_300_294_1_1_1.npz"
-mask = "S1398_maskpynx_norm_128_300_294_1_1_1.npz" #
+data = "S1398_pynx_norm_129_320_320_1_1_1.npz"
+mask = "S1398_maskpynx_norm_129_320_320_1_1_1.npz" #
 data2cxi = True
 #object = "pynx-cdi-input-S61-2018-06-07T11-33-51_LLK000.488.npz"
 auto_center_resize = False #
@@ -22,7 +22,7 @@ nb_hio = 400
 nb_er = 300
 nb_ml = 0
 
-nb_run = 20
+nb_run = 5
 nb_run_keep = 5
 zero_mask = False # masked pixels will start from imposed 0 and then let free
 # max_size = 256 
