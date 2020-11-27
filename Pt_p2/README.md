@@ -10,7 +10,7 @@
 
 ### `python pynx-id01cdi.py pynx-cdi-input_try0.txt` was run:
 
- p9-03:~/Documents/Pt_p2/pynxraw % source /data/id01/inhouse/richard/pynx-gap.p9/bin/activate
+`p9-03:~/Documents/Pt_p2/pynxraw % source /data/id01/inhouse/richard/pynx-gap.p9/bin/activate
 (pynx-gap.p9) p9-03:~ % python pynx-id01cdi.py pynx-cdi-input_try0.txt 
 /data/id01/inhouse/richard/pynx-gap.p9/lib/python3.8/site-packages/skcuda/cublas.py:284: UserWarning: creating CUBLAS context to get version number
   warnings.warn('creating CUBLAS context to get version number')
@@ -46,33 +46,31 @@ wavelength 1.3775e-10
 verbose 100
 output_format cxi
 live_plot True
-
 Loading data:  S1398_pynx_norm_128_300_294_1_1_1.npz
 Finished loading iobs data, with size: 11289600
 Loading mask from:  S1398_maskpynx_norm_128_300_294_1_1_1.npz
 Initialized mask, with 1124594 pixels masked ( 9.961%)
 Saving data to CXI file:  S1398_pynx_norm_128_300_294_1_1_1.cxi
 CDI runner: preparing processing unit
-Computing FFT speed for available CUDA GPU[ranking by fft, fft_shape=(16, 400, 400)]:
-                                        Tesla V100-SXM2-32GB: 32256Mb ,1499.26 Gflop/s
+Computing FFT speed for available CUDA GPU[ranking by fft, fft_shape=(16, 400, 400)]: Tesla V100-SXM2-32GB: 32256Mb ,1499.26 Gflop/s
 Using CUDA GPU: Tesla V100-SXM2-32GB
 Rebinning Iobs with rebin=(1,1,1)
 Ignoring rebin=1
 No support given. Will use autocorrelation to estimate initial support
-Centering & reshaping data: (128, 300, 294) -> (128, 300, 294)
+Centering & reshaping data: (128, 300, 294) -> (128, 300, 294)`
 
 
 
 Interesting fact : he removed by himself the *.cxi* file that he told me to read, it was the last one (nb 20), probably generic,
 
-Cannot find the environment in which I can use silx view to I am copying the files back on my laptop.
+Cannot find the environment in which I can use silx view, so I am copying the files back on my laptop.
 
 ## Create modes.h5
 `python pynx-cdi-analysis.py S1398_pynx_norm_128_300_294_1_1_1-* modes=1`
 
-ERROR IN BOTH DIRECTORY
+**Errors**, I tried to work in both */home/Documents* and */id01_david*, seems that there is no influence 
 
-(pynx-gap.p9) p9-05:id01_david/Pt_p2/pynxraw % pynx-cdi-analysis.py S1398_pynx_norm_128_300_294_1_1_1-* modes=1
+`(pynx-gap.p9) p9-05:id01_david/Pt_p2/pynxraw % pynx-cdi-analysis.py S1398_pynx_norm_128_300_294_1_1_1-* modes=1
 /data/id01/inhouse/richard/pynx-gap.p9/lib/python3.8/site-packages/skcuda/cublas.py:284: UserWarning: creating CUBLAS context to get version number
   warnings.warn('creating CUBLAS context to get version number')
 Traceback (most recent call last):
@@ -91,10 +89,10 @@ Traceback (most recent call last):
   File "/data/id01/inhouse/richard/pynx-gap.p9/lib/python3.8/site-packages/PyNX-2020.2b0-py3.8.egg/pynx/processing_unit/cl_processing_unit.py", line 44, in CLEvent
     def __init__(self, event: cl.Event, nflop: int = 0, nbyte: int = 0):
 NameError: name 'cl' is not defined
-(pynx-gap.p9) p9-05:id01_david/Pt_p2/pynxraw % 
+(pynx-gap.p9) p9-05:id01_david/Pt_p2/pynxraw %`
 
 
-p9-05:~/Documents/Pt_p2/pynxraw % source /data/id01/inhouse/richard/pynx-gap.p9/bin/activate
+`p9-05:~/Documents/Pt_p2/pynxraw % source /data/id01/inhouse/richard/pynx-gap.p9/bin/activate
 (pynx-gap.p9) p9-05:~/Documents/Pt_p2/pynxraw % ls
 finalmask_S1398_norm_128_300_294_1_1_1.png
 finalsum_S1398_norm_128_300_294_1_1_1.png
@@ -123,12 +121,13 @@ ImportError: cannot import name 'PRTF' from 'pynx.cdi.cu_operator' (/data/id01/i
 Traceback (most recent call last):
   File "pynx-cdi-analysis.py", line 25, in <module>
     from pynx.cdi.cu_operator import PRTF
-ImportError: cannot import name 'PRTF' from 'pynx.cdi.cu_operator' (/data/id01/inhouse/richard/pynx-gap.p9/lib/python3.8/site-packages/PyNX-2020.2b0-py3.8.egg/pynx/cdi/cu_operator.py)
+ImportError: cannot import name 'PRTF' from 'pynx.cdi.cu_operator' (/data/id01/inhouse/richard/pynx-gap.p9/lib/python3.8/site-packages/PyNX-2020.2b0-py3.8.egg/pynx/cdi/cu_operator.py)`
 
-WORKS ON lid01
+**Works** on lid01:
+
 `cd /data/id01/inhouse/david/Pt_p2`
 
-Matching arrays against the first one [S1398_pynx_norm_128_300_294_1_1_1-2020-11-26T15-55-33_Run0017_LLKf000.1524_LLK4391592741.0126_SupportThreshold0.13151.cxi] - this may take a while
+`Matching arrays against the first one [S1398_pynx_norm_128_300_294_1_1_1-2020-11-26T15-55-33_Run0017_LLKf000.1524_LLK4391592741.0126_SupportThreshold0.13151.cxi] - this may take a while
 R_match(0, 1) = 77.933% [3 arrays remaining]
 R_match(0, 2) = 79.114% [2 arrays remaining]
 R_match(0, 3) = 76.972% [1 arrays remaining]
@@ -136,15 +135,17 @@ R_match(0, 4) = 83.713% [0 arrays remaining]
 Elapsed time:   47.9s
 Analysing modes
 First mode represents 74.860%
-Saving modes analysis to: modes.h5
+Saving modes analysis to: modes.h5`
 
-(devel.debian9) simonne@lid01gpu1:/data/id01/inhouse/david/Pt_p2/pynxraw$ silx view modes.h5 
+### Silx view does not work either
+
+`(devel.debian9) simonne@lid01gpu1:/data/id01/inhouse/david/Pt_p2/pynxraw$ silx view modes.h5 
 qt.qpa.screen: QXcbConnection: Could not connect to display 
-Could not connect to any X display.
+Could not connect to any X display.`
 
 ## Strain analysis
 
-simonne@lid01gpu1:/data/id01/inhouse/david/Pt_p2/pynxraw$ source /data/id01/inhouse/richard/bcdiDevel.debian9/bin/activate
+`simonne@lid01gpu1:/data/id01/inhouse/david/Pt_p2/pynxraw$ source /data/id01/inhouse/richard/bcdiDevel.debian9/bin/activate
 (bcdiDevel.debian9) simonne@lid01gpu1:/data/id01/inhouse/david/Pt_p2/pynxraw$ python strain.py 
 Traceback (most recent call last):
   File "strain.py", line 201, in <module>
@@ -152,6 +153,6 @@ Traceback (most recent call last):
   File "/usr/lib/python3.5/tkinter/__init__.py", line 1880, in __init__
     self.tk = _tkinter.create(screenName, baseName, className, interactive, wantobjects, useTk, sync, use)
 _tkinter.TclError: no display name and no $DISPLAY environment variable
-(bcdiDevel.debian9) simonne@lid01gpu1:/data/id01/inhouse/david/Pt_p2/pynxraw
+(bcdiDevel.debian9) simonne@lid01gpu1:/data/id01/inhouse/david/Pt_p2/pynxraw`
 
-pareil sur rnice9
+**Pareil sur rnice9**
