@@ -99,7 +99,7 @@ Saving modes analysis to: modes.h5
 
 ## Strain analysis
 
-**Did not work at all at first:**
+**Did not work at all at first on lid01 or rnice9:**
 
 ````bash
 simonne@lid01gpu1:/data/id01/inhouse/david/Pt_p2/pynxraw$ source /data/id01/inhouse/richard/bcdiDevel.debian9/bin/activate
@@ -113,7 +113,8 @@ Traceback (most recent call last):
     self.tk = _tkinter.create(screenName, baseName, className, interactive, wantobjects, useTk, sync, use)
 _tkinter.TclError: no display name and no $DISPLAY environment variable
 ````
-**Pareil sur rnice9, almost works on laptop environment. Just one error :**
+**Almost works on laptop environment. Just one error :**
+
 Directory: D:\Documents\PythonScripts\PhDLocalScripts\Pt_p2\pynxraw
 
 ````bash
@@ -159,19 +160,19 @@ Traceback (most recent call last):
 AttributeError: module 'bcdi.postprocessing.postprocessing_utils' has no attribute 'remove_offset'
 ````
 
-L'erreur pop après que les 3 premières fenêtres se soient ouvertes
+L'erreur pop après que les 3 premières fenêtres se soient ouvertes, surement un pb de versions ?
 
 **Nouvel essai sur lid01**
 
 * Sur lid01, il n'arrive pas à trouver le fichier, bizarre car il se lance alors que c'est exactement les mêmes commandes que hier
-* Ensuite il trouve le fichier, c'est de la magie
+* (EDIT) Ensuite il trouve le fichier, c'est de la magie, je crois qu'il faut avoir executé strain et analysis dans la meme session.
 
-**Question :** Les fichiers blackman tout ça sont ils les mêmes pour chaque scan ? D'où viennent-ils ?
+**Question :** Les fichiers blackman tout ça sont ils les mêmes pour chaque scan (surement car juste filtre) ? D'où viennent-ils ?
 
 Seems to work now (no idea why) but voxel size becomes zero ? What are all these figures ?
+(erreur humaine a l'origine ><)
 
 ````bash
-simonne@lid01gpu1:/data/id01/inhouse/david/Pt_p2/pynxraw$ source /data/id01/inhouse/richard/bcdiDevel.debian9/bin/activate
 (bcdiDevel.debian9) simonne@lid01gpu1:/data/id01/inhouse/david/Pt_p2/pynxraw$ python strain.py 
 Initial data size: ( 128 , 300 , 294 )
 FFT size before accounting for binning (128, 300, 294)
@@ -198,7 +199,7 @@ Tilt, pixel_y, pixel_x based on cropped array shape: ( 0.0073 deg, 92.70 um, 82.
 Sanity check, recalculated direct space voxel sizes: ( 9.03  nm, 10.97 nm, 12.10 nm )
 using SIXS geometry
 rocking angle is mu, with beta non zero
-VTK spacing : 0.00 nm
+VTK spacing : 5.00 nm
 Angle between q and y = 71.79132269042893 deg
 Angle with y in zy plane -45.36658787319517 deg
 Angle with y in xy plane -70.76682162800394 deg
@@ -206,23 +207,19 @@ Angle with z in xz plane 109.46236623829827 deg
 Normalized wavevector transfer [z, y, x]: [-0.31650317  0.31247879  0.89564655]
 Wavevector transfer: (angstroms) 2.7268
 Atomic plane distance: (angstroms) 2.3042 angstroms
-center of mass at (z, y, x): ( 96.50 , 88.50 , 97.50 )
-center of mass offset: ( 0 , 0 , 0 ) pixels
-Gradient: Phase_ramp_z, Phase_ramp_y, Phase_ramp_x: ( 0.000 0.000 0.000 ) rad
+center of mass at (z, y, x): ( 94.72 , 92.12 , 104.71 )
+center of mass offset: ( 2 , -3 , -7 ) pixels
+Gradient: Phase_ramp_z, Phase_ramp_y, Phase_ramp_x: ( 0.002 -0.005 -0.001 ) rad
 
 Aligning Q along  y : [0 1 0]
 Rotating back the crystal in laboratory frame
-Voxel size:  0.00 nm
+Voxel size:  5.00 nm
 Final data shape: 200 200 200
-````
-````python
-/mntdirect/_data_id01_inhouse/richard/bcdiDevel.debian9/lib/python3.5/site-packages/vtk/util/numpy_support.py:137: 
-FutureWarning: Conversion of the second argument of issubdtype from `complex` to `np.complexfloating` is deprecated. In future, it will be treated as `np.complex128 == np.dtype(complex).type`.
+/mntdirect/_data_id01_inhouse/richard/bcdiDevel.debian9/lib/python3.5/site-packages/vtk/util/numpy_support.py:137: FutureWarning: Conversion of the second argument of issubdtype from `complex` to `np.complexfloating` is deprecated. In future, it will be treated as `np.complex128 == np.dtype(complex).type`.
   assert not numpy.issubdtype(z.dtype, complex), \
-Traceback (most recent call last):
-  File "strain.py", line 689, in <module>
-    pixel_spacing = tick_spacing / voxel_size
-ZeroDivisionError: division by zero
+Phase extent before and after thresholding: 7.587438232427344 2.2128061129682015
+phase.max() =  1.1387100144463769 , at coordinates  127 81 17
+/mntdirect/_data_id01_inhouse/richard/bcdiDevel.debian9/lib/python3.5/site-packages/matplotlib/pyplot.py:514: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`).
+  max_open_warning, RuntimeWarning)
+End of script
 ````
-
-Il faut enchainer le strain.py après le pynx analysis, possible de tout faire sur lid01, juste le voxel size le pb, ce qui entreqine l'échec final.
