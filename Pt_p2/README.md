@@ -67,11 +67,9 @@ Interesting fact : he removed by himself the *.cxi* file that he told me to read
 
 Cannot find the environment in which I can use silx view, so I am copying the files back on my laptop.
 
-**Lagged so I ran it again on lid01**
+**Lagged so I ran it again on lid01, so PyNX works both in slurm and Id01**
 
 ## Create modes.h5
-
-**Errors**, I tried to work in both */home/Documents* and */id01_david*, seems that there is no influence, does not work with slurm, works in id01.
 
 **Works on lid01:**
 
@@ -106,13 +104,14 @@ Saving modes analysis to: modes.h5
 ````bash
 simonne@lid01gpu1:/data/id01/inhouse/david/Pt_p2/pynxraw$ source /data/id01/inhouse/richard/bcdiDevel.debian9/bin/activate
 (bcdiDevel.debian9) simonne@lid01gpu1:/data/id01/inhouse/david/Pt_p2/pynxraw$ python strain.py 
+````
+````python
 Traceback (most recent call last):
   File "strain.py", line 201, in <module>
     root = tk.Tk()
   File "/usr/lib/python3.5/tkinter/__init__.py", line 1880, in __init__
     self.tk = _tkinter.create(screenName, baseName, className, interactive, wantobjects, useTk, sync, use)
 _tkinter.TclError: no display name and no $DISPLAY environment variable
-(bcdiDevel.debian9) simonne@lid01gpu1:/data/id01/inhouse/david/Pt_p2/pynxraw`
 ````
 **Pareil sur rnice9, almost works on laptop environment. Just one error :**
 Directory: D:\Documents\PythonScripts\PhDLocalScripts\Pt_p2\pynxraw
@@ -169,7 +168,7 @@ L'erreur pop après que les 3 premières fenêtres se soient ouvertes
 
 **Question :** Les fichiers blackman tout ça sont ils les mêmes pour chaque scan ? D'où viennent-ils ?
 
-Seems to work but voxel size becomes zero ? What are all these figures ?
+Seems to work now (no idea why)but voxel size becomes zero ? What are all these figures ?
 
 ````bash
 (bcdiDevel.debian9) simonne@lid01gpu1:/data/id01/inhouse/david/Pt_p2/pynxraw$ python strain.py 
