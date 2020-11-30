@@ -46,7 +46,7 @@ scans = 1398  # np.arange(1401, 1419+1, 3)  # list or array of scan numbers
 # bad_indices = np.argwhere(scans == 738)
 # scans = np.delete(scans, bad_indices)
 
-root_folder = "D:/Documents/PythonScripts/PhDLocalScripts/Pt_p2/"
+root_folder = "./"
 sample_name = [""]  # "SN"  # list of sample names (string in front of the scan number in the folder name).
 # If only one name is indicated, it will be repeated to match the number of scans.
 user_comment = ''  # string, should start with "_"
