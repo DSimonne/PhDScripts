@@ -99,7 +99,7 @@ Saving modes analysis to: modes.h5
 
 ## Strain analysis
 
-**Did not work at first:**
+**Did not work at all at first:**
 
 ````bash
 simonne@lid01gpu1:/data/id01/inhouse/david/Pt_p2/pynxraw$ source /data/id01/inhouse/richard/bcdiDevel.debian9/bin/activate
@@ -161,31 +161,37 @@ AttributeError: module 'bcdi.postprocessing.postprocessing_utils' has no attribu
 
 L'erreur pop après que les 3 premières fenêtres se soient ouvertes
 
-**Nouvel essai le lendemain sur lid01**
+**Nouvel essai sur lid01**
 
 * Sur lid01, il n'arrive pas à trouver le fichier, bizarre car il se lance alors que c'est exactement les mêmes commandes que hier
 * Ensuite il trouve le fichier, c'est de la magie
 
 **Question :** Les fichiers blackman tout ça sont ils les mêmes pour chaque scan ? D'où viennent-ils ?
 
-Seems to work now (no idea why)but voxel size becomes zero ? What are all these figures ?
+Seems to work now (no idea why) but voxel size becomes zero ? What are all these figures ?
 
 ````bash
+simonne@lid01gpu1:/data/id01/inhouse/david/Pt_p2/pynxraw$ source /data/id01/inhouse/richard/bcdiDevel.debian9/bin/activate
 (bcdiDevel.debian9) simonne@lid01gpu1:/data/id01/inhouse/david/Pt_p2/pynxraw$ python strain.py 
 Initial data size: ( 128 , 300 , 294 )
 FFT size before accounting for binning (128, 300, 294)
 Binning used during phasing: (1, 1, 1)
 Padding back to original FFT size (128, 300, 294)
 Data shape used for orthogonalization and plotting: ( 194 , 178 , 196 )
+
 Averaging using 1 candidate reconstructions
+
 Opening  /mntdirect/_data_id01_inhouse/david/Pt_p2/pynxraw/modes.h5
 This reconstruction will serve as reference object.
+
 Average performed over  1 reconstructions
+
 Extent of the phase over an extended support (ceil(phase range))~  47 (rad)
 Gradient: Phase_ramp_z, Phase_ramp_y, Phase_ramp_x: ( 0.014 0.577 -0.346 ) rad
 Max FFT= 1446641.0422051493
 Apodization using a 3d Blackman window
 Max apodized FFT after normalization = 1446641.0422051493
+
 Shape before orthogonalization (194, 178, 196)
 Direct space voxel sizes (z, y, x) based on initial FFT shape: ( 9.03 nm, 10.97 nm, 12.10 nm )
 Tilt, pixel_y, pixel_x based on cropped array shape: ( 0.0073 deg, 92.70 um, 82.50 um)
@@ -203,13 +209,15 @@ Atomic plane distance: (angstroms) 2.3042 angstroms
 center of mass at (z, y, x): ( 96.50 , 88.50 , 97.50 )
 center of mass offset: ( 0 , 0 , 0 ) pixels
 Gradient: Phase_ramp_z, Phase_ramp_y, Phase_ramp_x: ( 0.000 0.000 0.000 ) rad
+
 Aligning Q along  y : [0 1 0]
 Rotating back the crystal in laboratory frame
 Voxel size:  0.00 nm
 Final data shape: 200 200 200
 ````
 ````python
-/mntdirect/_data_id01_inhouse/richard/bcdiDevel.debian9/lib/python3.5/site-packages/vtk/util/numpy_support.py:137: FutureWarning: Conversion of the second argument of issubdtype from `complex` to `np.complexfloating` is deprecated. In future, it will be treated as `np.complex128 == np.dtype(complex).type`.
+/mntdirect/_data_id01_inhouse/richard/bcdiDevel.debian9/lib/python3.5/site-packages/vtk/util/numpy_support.py:137: 
+FutureWarning: Conversion of the second argument of issubdtype from `complex` to `np.complexfloating` is deprecated. In future, it will be treated as `np.complex128 == np.dtype(complex).type`.
   assert not numpy.issubdtype(z.dtype, complex), \
 Traceback (most recent call last):
   File "strain.py", line 689, in <module>
@@ -217,4 +225,4 @@ Traceback (most recent call last):
 ZeroDivisionError: division by zero
 ````
 
-Il faut enchainer le strain.py après le pynx analysis, possible de tout faire sur lid01
+Il faut enchainer le strain.py après le pynx analysis, possible de tout faire sur lid01, juste le voxel size le pb, ce qui entreqine l'échec final.

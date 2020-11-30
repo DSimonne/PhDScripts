@@ -5,7 +5,7 @@
 contact : david.simonne@synchrotron-soleil.fr
 
 # Files
-All the *.cxi*, *.npz*, *.vti* files are not included because they are too heavy.
+All the *.cxi*, *.npz*, *.vti*, *.nxs*, *.h5* files are not included because they are too heavy.
 
 # Firewall
 cmd:
