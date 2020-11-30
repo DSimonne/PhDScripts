@@ -4,6 +4,9 @@
 
 contact : david.simonne@synchrotron-soleil.fr
 
+# Files
+All the *.cxi*, *.npz*, *.vti* files are not included because they are too heavy.
+
 # Firewall
 cmd:
 `ssh -X -p 5022 simonne@firewall.esrf.fr`
