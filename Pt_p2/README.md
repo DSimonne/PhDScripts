@@ -1,22 +1,86 @@
 # Logbook for Pt_p2
 
-## Preprocessing the data
+# Preprocessing the data
 
 `preprocess_bcdi.py` was run to define a mask for the data. The environment was LAPTOP-David, I copied the variable values from `preprocess_bcdi_sisx2019_crystalD.py`, file that lead to errors, and created a new preprocess file.
 
-Almost work on id01, I cannot mask (no mask created when I press m, all other letters binded to commands work).
+Almost work on id01, but I cannot mask (no mask created when I press m, all other letters binded to commands work).
+
+````bash
+PS D:\Documents\PythonScripts\PhDLocalScripts\Pt_p2> python .\preprocess_bcdi.py
+homedir : ./
+root_folder : ./
+File has time stamps issues
+File has time stamps issues
+
+Scan 1398
+Setup:  SIXS_2019
+Detector:  Maxipix
+Pixel number (VxH):  516 516
+Detector ROI: [0, 303, 0, 296]
+Horizontal pixel size with binning:  5.5e-05 m
+Vertical pixel size with binning:  5.5e-05 m
+Specfile:  ./analysis/alias_dict.txt
+Scan type:  inplane
+Output will be non orthogonal, in the detector frame
+Detector ROI loaded (VxH): 303 296
+Detector physical size without binning (VxH): 516 516
+Detector size with binning (VxH): 516 516
+Loading frame 129
+check_pixels(): initial number of masked pixels = 3966 on a total of 89688
+check_pixels(): var_mean=57.05, 1/var_threshold=132.65
+check_pixels(): number of zero variance hotpixels = 0
+check_pixels(): number of pixels with too low variance = 0
+
+0  negative data points masked
+Intensity normalization using monitor
+Monitor min, max, mean: 0.0, 0.0, 0.0
+Data normalization by monitor.min()/monitor
 
 
-## Phase retrieval
+Input data shape: 129 303 296
+Max at (qx, qz, qy):  64 178 132
+Data peak value =  40088.21768417889
+Max symmetrical box (qx, qz, qy):  128 250 264
+FFT box (qx, qz, qy):  (128, 300, 294)
 
- Output in \pynxraw
+Pad width: [0 0 0 0 0 0]
 
-```bash
-p9-03:~/Documents/Pt_p2/pynxraw % source /data/id01/inhouse/richard/pynx-gap.p9/bin/activate
-(pynx-gap.p9) p9-03:~ % python pynx-id01cdi.py pynx-cdi-input_try0.txt 
-/data/id01/inhouse/richard/pynx-gap.p9/lib/python3.8/site-packages/skcuda/cublas.py:284:
-UserWarning: creating CUBLAS context to get version number
-  warnings.warn('creating CUBLAS context to get version number')
+Data size after cropping / padding: 128 300 294
+
+Skipping median filtering
+
+Data size after masking: 128 300 294
+
+Data size after binning the stacking dimension: (128, 300, 294)
+
+Saving directory: ./pynxraw/
+
+End of script
+PS D:\Documents\PythonScripts\PhDLocalScripts\Pt_p2>
+````
+
+# Phase retrieval
+
+## Running pynx
+
+* lid01 environment
+* Input energy (from MU preprocess file) = 8300 eV, changing lambda to 1.24 Angström in `pynx-cdi-input_try0.txt`.
+* Garder 10 de 100, creer support avec threshold 25% -> fichier .npz
+
+````bash
+>>> he
+4.141249999999999e-15
+>>> c
+300000000
+>>> l = he*c/10000
+>>> l
+1.2423749999999998e-10
+>>>
+````
+
+````bash
+(devel.debian9) simonne@lid01gpu1:/data/id01/inhouse/david/Pt_p2/pynxraw$ python pynx-id01cdi.py pynx-cdi-input_try0.txt
 Using parameters file:  pynx-cdi-input_try0.txt
 data S1398_pynx_norm_128_300_294_1_1_1.npz
 mask S1398_maskpynx_norm_128_300_294_1_1_1.npz
@@ -35,8 +99,8 @@ nb_raar 1000
 nb_hio 400
 nb_er 300
 nb_ml 0
-nb_run 20
-nb_run_keep 5
+nb_run 100
+nb_run_keep 10
 zero_mask False
 crop_output 0
 positivity False
@@ -45,53 +109,95 @@ detwin False
 rebin 1,1,1
 detector_distance 0.84
 pixel_size_detector 55e-6
-wavelength 1.3775e-10
+wavelength 1.2423e-10
 verbose 100
 output_format cxi
-live_plot True
+live_plot False
+
 Loading data:  S1398_pynx_norm_128_300_294_1_1_1.npz
 Finished loading iobs data, with size: 11289600
-Loading mask from:  S1398_maskpynx_norm_128_300_294_1_1_1.npz
-Initialized mask, with 1124594 pixels masked ( 9.961%)
-Saving data to CXI file:  S1398_pynx_norm_128_300_294_1_1_1.cxi
+Data CXI file already exists, not overwriting:  S1398_pynx_norm_128_300_294_1_1_1.cxi
 CDI runner: preparing processing unit
-Computing FFT speed for available CUDA GPU[ranking by fft, fft_shape=(16, 400, 400)]: Tesla V100-SXM2-32GB: 32256Mb ,1499.26 Gflop/s
-Using CUDA GPU: Tesla V100-SXM2-32GB
+Computing FFT speed for available CUDA GPU[ranking by fft, fft_shape=(16, 400, 400)]:
+^C                                         GeForce GTX TITAN X: 12212Mb ,   0.00 Gflop/s
+Searching available OpenCL GPU[ranking by fft, fft_shape=(16, 400, 400)]:
+                           GeForce GTX TITAN X [NVIDIA CUDA]: 12212Mb [max alloc.: 3053Mb], 237.92 Gflop/s
+Ignoring Portable Computing Language (POCL) platform by default
+Using OpenCL GPU: GeForce GTX TITAN X
+Loading mask from:  S1398_maskpynx_norm_128_300_294_1_1_1.npz
+Initialized mask, with 927808 pixels masked ( 8.218%)
 Rebinning Iobs with rebin=(1,1,1)
 Ignoring rebin=1
 No support given. Will use autocorrelation to estimate initial support
 Centering & reshaping data: (128, 300, 294) -> (128, 300, 294)
-```
-
-Interesting fact : he removed by himself the *.cxi* file that he told me to read, it was the last one (nb 20), probably generic,
-
-Cannot find the environment in which I can use silx view, so I am copying the files back on my laptop.
-
-**Lagged so I ran it again on lid01, so PyNX works both in slurm and Id01**
-
+#################################################################################################### 
+# 
+#  CDI Run: 100/100
+#
+ ####################################################################################################
+Finished initializing object 
+Using auto-correlation to estimate initial support, relative threshold = 0.100
+Set free mask with 543201 pixels ( 4.812%)
+Interpolating masked pixels with InterpIobsMask(8, 2)
+No algorithm chain supplied. Proceeding with the following parameters:
+                         nb_hio =  400
+                        nb_raar =  1000
+                          nb_er =  300
+                          nb_ml =  0
+                     positivity =  False
+            support_only_shrink =  False
+                           beta =  0.9
+                         detwin =  False
+                      live_plot =  0
+          support_update_period =  20
+     support_smooth_width_begin =  2.0
+       support_smooth_width_end =  1.0
+              support_threshold =  0.10201561015908664
+       support_threshold_method =  rms
+            support_post_expand =  (1, -2, 1)
+ confidence_interval_factor_mask_min =  0.5
+ confidence_interval_factor_mask_max =  1.2
+                      zero_mask =  False
+                        verbose =  100
+Algorithm chain:  (Sup*ER**20)**2 * Sup*ER**10 * PSF**100*ER**10 * (Sup*ER**20)**2 * PSF**100*Sup*ER**20 * Sup*ER**20 * Sup*ER**10 * PSF**100*ER**10 * (Sup*ER**20)**2 * PSF**100*Sup*ER**20 * Sup*ER**20 * Sup*ER**10 * PSF**100*ER**10 * (Sup*ER**20)**2 * PSF**100*Sup*RAAR**20 * Sup*RAAR**20 * Sup*RAAR**10 * PSF**100*RAAR**10 * (Sup*RAAR**20)**2 * PSF**100*Sup*RAAR**20 * Sup*RAAR**20 * Sup*RAAR**10 * PSF**100*RAAR**10 * (Sup*RAAR**20)**2 * PSF**100*Sup*RAAR**20 * Sup*RAAR**20 * Sup*RAAR**10 * PSF**100*RAAR**10 * (Sup*RAAR**20)**2 * PSF**100*Sup*RAAR**20 * Sup*RAAR**20 * Sup*RAAR**10 * PSF**100*RAAR**10 * (Sup*RAAR**20)**32 * (Sup*HIO**20)**20
+````
 ## Create modes.h5
 
-**Works on lid01:**
-
 ````bash
-cd /data/id01/inhouse/david/Pt_p2
-
-python pynx-cdi-analysis.py S1398_pynx_norm_128_300_294_1_1_1-* modes=1
-````
-
-````
-Matching arrays against the first one [S1398_pynx_norm_128_300_294_1_1_1-2020-11-26T15-55-33_Run0017_LLKf000.1524_LLK4391592741.0126_SupportThreshold0.13151.cxi] - this may take a while
-R_match(0, 1) = 77.933% [3 arrays remaining]
-R_match(0, 2) = 79.114% [2 arrays remaining]
-R_match(0, 3) = 76.972% [1 arrays remaining]
-R_match(0, 4) = 83.713% [0 arrays remaining]
-Elapsed time:   47.9s
+(devel.debian9) simonne@lid01gpu1:/data/id01/inhouse/david/Pt_p2/pynxraw$ python pynx-cdi-analysis.py S1398_pynx_norm_128_300_294_1_1_1-* modes=1
+Importing data files
+Loading: S1398_pynx_norm_128_300_294_1_1_1-2020-12-03T10-44-11_Run0019_LLKf000.1524_LLK4828897416.5916_SupportThreshold0.14254.cxi
+Loading: S1398_pynx_norm_128_300_294_1_1_1-2020-12-03T10-44-45_Run0020_LLKf000.1371_LLK5106613636.0168_SupportThreshold0.10094.cxi
+Loading: S1398_pynx_norm_128_300_294_1_1_1-2020-12-03T10-45-51_Run0022_LLKf000.1473_LLK4969885945.3201_SupportThreshold0.14390.cxi
+Loading: S1398_pynx_norm_128_300_294_1_1_1-2020-12-03T10-54-34_Run0037_LLKf000.1530_LLK4964432716.3696_SupportThreshold0.10306.cxi
+Loading: S1398_pynx_norm_128_300_294_1_1_1-2020-12-03T10-56-16_Run0040_LLKf000.1437_LLK4936279356.4796_SupportThreshold0.13960.cxi
+Loading: S1398_pynx_norm_128_300_294_1_1_1-2020-12-03T10-59-36_Run0046_LLKf000.1456_LLK4796542525.2914_SupportThreshold0.14391.cxi
+Loading: S1398_pynx_norm_128_300_294_1_1_1-2020-12-03T11-01-14_Run0049_LLKf000.1443_LLK5064797401.4282_SupportThreshold0.14046.cxi
+Loading: S1398_pynx_norm_128_300_294_1_1_1-2020-12-03T11-05-30_Run0057_LLKf000.1454_LLK5000520944.5953_SupportThreshold0.10299.cxi
+Loading: S1398_pynx_norm_128_300_294_1_1_1-2020-12-03T11-08-14_Run0062_LLKf000.1495_LLK5079728960.9909_SupportThreshold0.14758.cxi
+Loading: S1398_pynx_norm_128_300_294_1_1_1-2020-12-03T11-13-50_Run0073_LLKf000.1539_LLK4811616539.9551_SupportThreshold0.10281.cxi
+Calculating modes from the imported objects
+Matching arrays against the first one [S1398_pynx_norm_128_300_294_1_1_1-2020-12-03T10-44-45_Run0020_LLKf000.1371_LLK5106613636.0168_SupportThreshold0.10094.cxi] - this may take a while
+R_match(0, 1) = 73.178% [8 arrays remaining]
+R_match(0, 2) = 80.152% [7 arrays remaining]
+R_match(0, 3) = 75.265% [6 arrays remaining]
+R_match(0, 4) = 66.872% [5 arrays remaining]
+R_match(0, 5) = 76.427% [4 arrays remaining]
+R_match(0, 6) = 79.603% [3 arrays remaining]
+R_match(0, 7) = 82.065% [2 arrays remaining]
+R_match(0, 8) = 79.596% [1 arrays remaining]
+R_match(0, 9) = 76.035% [0 arrays remaining]
+Elapsed time:  107.3s
 Analysing modes
-First mode represents 74.860%
+First mode represents 70.847%
 Saving modes analysis to: modes.h5
 ````
+Not so good
 
-### Silx view sort of works on id01
+## Then I try to create a new support by using an average of the support determined by the program from the last run.
+
+
+### Silx view sort of works on id01, but better on my laptop (rnice ?)
 
 ````bash
 (bcdiDevel.debian9) simonne@lid01gpu1:/data/id01/inhouse/david/Pt_p2/pynxraw$ silx view modes.h5
@@ -100,6 +206,8 @@ Saving modes analysis to: modes.h5
 ## Strain analysis
 
 **Did not work at all at first on lid01 or rnice9:**
+
+strain flip = False
 
 ````bash
 simonne@lid01gpu1:/data/id01/inhouse/david/Pt_p2/pynxraw$ source /data/id01/inhouse/richard/bcdiDevel.debian9/bin/activate

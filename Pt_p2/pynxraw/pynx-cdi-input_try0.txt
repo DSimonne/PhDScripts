@@ -22,8 +22,8 @@ nb_hio = 400
 nb_er = 300
 nb_ml = 0
 
-nb_run = 20
-nb_run_keep = 5
+nb_run = 100
+nb_run_keep = 10
 zero_mask = False # masked pixels will start from imposed 0 and then let free
 # max_size = 256 
 crop_output= 0 # set to 0 to avoid cropping the output in the .cxi
@@ -37,9 +37,9 @@ rebin = 1,1,1
 # Generic parameters
 detector_distance = 0.84 # in m 
 pixel_size_detector = 55e-6   # eiger 75e-6, maxipix 55e-6
-wavelength = 1.3775e-10
+wavelength = 1.2423e-10
 verbose = 100
 output_format= 'cxi'  # 'npz' # 'cxi' #
-live_plot = True # True  #
+live_plot = False
 # gpu = "K20"
 # gpu="M2090"

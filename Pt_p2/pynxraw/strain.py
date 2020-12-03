@@ -83,7 +83,7 @@ rocking_angle = "inplane"  # "outofplane" or "inplane", does not matter for ener
 #  "inplane" e.g. phi @ ID01, mu @ SIXS "outofplane" e.g. eta @ ID01
 sdd = 1.21  # 1.26  # sample to detector distance in m
 pixel_size = 55e-6  # detector pixel size in m, taking into account an eventual binning during preprocessing
-energy = 8500  # x-ray energy in eV, 6eV offset at ID01
+energy = 8300  # x-ray energy in eV, 6eV offset at ID01
 beam_direction = np.array([1, 0, 0])  # incident beam along z
 outofplane_angle = 11.4084  # detector delta ID01, delta SIXS, gamma 34ID
 inplane_angle = 35.3365  # detector nu ID01, gamma SIXS, tth 34ID
@@ -108,7 +108,7 @@ threshold_unwrap_refraction = 0.05  # threshold used to calculate the optical pa
 ###########
 simu_flag = False  # set to True if it is simulation, the parameter invert_phase will be set to 0
 invert_phase = True  # True for the displacement to have the right sign (FFT convention), False only for simulations
-flip_reconstruction = True  # True if you want to get the conjugate object
+flip_reconstruction = False  # True if you want to get the conjugate object
 phase_ramp_removal = 'gradient'  # 'gradient'  # 'gradient' or 'upsampling', 'gradient' is much faster
 threshold_gradient = 20  # upper threshold of the gradient of the phase, use for ramp removal
 xrayutils_ortho = False  # True if the data is already orthogonalized
