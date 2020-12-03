@@ -10,28 +10,34 @@ import ipywidgets as widgets
 from ipywidgets import interact, Button, Layout, interactive, fixed
 from IPython.display import display, Markdown, Latex, clear_output
 
-p = input("Path to file from current folder: ")
+# Annoying warnings bc of .cxi files
+import warnings
+warnings.filterwarnings("ignore")
 
+
+# Path of file to be imported, prints architectture of .cxi file
 try:
-	rawdata = np.load(p)
+	p = input("Path to file from current folder: ")
 
-	print(f"Stored arrays :{rawdata.files}")
+	with tb.open_file(p, "r") as f:
+		print("\n")
+		print(f)
 
 except Exception as E:
 	raise NameError("Wrong path")
 
 
-def Plotting(file, axplot, datapath):
-	"""For .npz files"""
+def Plotting(axplot, datapath):
+	"""Interactive function to plot the cxi files, only open in read mode"""
 
-	rawdata = np.load(datapath)
-
-	# Pick an array
 	try:
-	    data = rawdata[file]
+		with tb.open_file(datapath, "r") as f:
+
+			# Since .cxi files follow a specific architectture, we know where our data is.
+			data = f.root.entry_1.instrument_1.detector_1.data[:]
 
 	except Exception as E:
-	    raise E
+		raise NameError("Wrong path")
 
 	# Take the shape of that array along 2 axis
 	if axplot == "xy":
@@ -147,7 +153,6 @@ def Plotting(file, axplot, datapath):
 			cbar.set_ticks(ticks)
 			cbar.set_ticklabels(tickslabel)
 
-
 		elif PlottingOptions == "2DC" :
 			plt.close()
 			# Show contour plot instead
@@ -187,14 +192,21 @@ def Plotting(file, axplot, datapath):
 			ax = plt.subplot(111, projection='3d')
 
 			# Create meshgrid
+			print(dt.shape)
+			print(type(dt))
+			# CAREFUL ALL SHAPE MUST BE THE SAME
+			X, Y = np.meshgrid(np.arange(0, dt.shape[1], 1), np.arange(0, dt.shape[0], 1))
+			print(X.shape)
+			print(type(X))
+			print(Y.shape)
+			print(type(Y))
 
-			X, Y = np.meshgrid(np.arange(0, dt.shape[0], 1), np.arange(0, dt.shape[1], 1))
 
 			plot = ax.plot_surface(X=X, Y=Y, Z=dt, cmap='YlGnBu_r', vmin=dmin, vmax=dmax)
 
 			# Adjust plot view
 			ax.view_init(elev=50, azim=225)
-			ax.dist=11
+			ax.dist = 11
 
 			# Add colorbar
 			cbar = fig.colorbar(plot, ax=ax, shrink=0.6)
@@ -221,12 +233,6 @@ def Plotting(file, axplot, datapath):
 ######################################################## END OF FUNCTION ##########################
 
 WidgetPlotting = interactive(Plotting,
-					file = widgets.Dropdown(
-					    options = rawdata.files,
-					    value = rawdata.files[0],
-					    description = 'Array used:',
-					    disabled=False,
-					    style = {'description_width': 'initial'}),
 					axplot = widgets.Dropdown(
 					    options = ["xy", "yz", "xz"],
 					    value = "xy",
