@@ -343,11 +343,11 @@ This reconstruction will serve as reference object.
 
 Average performed over  1 reconstructions
 
-Extent of the phase over an extended support (ceil(phase range))~  65 (rad)
+Extent of the phase over an extended support (ceil(phase range))~  70 (rad)
 Gradient: Phase_ramp_z, Phase_ramp_y, Phase_ramp_x: ( 0.001 0.492 -0.312 ) rad
-Max FFT= 2305565.585629071
+Max FFT= 2299778.9317150237
 Apodization using a 3d Blackman window
-Max apodized FFT after normalization = 2305565.5856290716
+Max apodized FFT after normalization = 2299778.9317150237
 
 Shape before orthogonalization (190, 198, 194)
 Direct space voxel sizes (z, y, x) based on initial FFT shape: ( 9.25 nm, 11.24 nm, 12.39 nm )
@@ -363,8 +363,8 @@ Angle with z in xz plane 109.46236623829827 deg
 Normalized wavevector transfer [z, y, x]: [-0.31650317  0.31247879  0.89564655]
 Wavevector transfer: (angstroms) 2.6627
 Atomic plane distance: (angstroms) 2.3597 angstroms
-center of mass at (z, y, x): ( 88.46 , 130.85 , 82.49 )
-center of mass offset: ( 7 , -32 , 15 ) pixels
+center of mass at (z, y, x): ( 101.36 , 67.03 , 111.35 )
+center of mass offset: ( -6 , 32 , -14 ) pixels
 Gradient: Phase_ramp_z, Phase_ramp_y, Phase_ramp_x: ( -0.016 0.030 0.002 ) rad
 
 Aligning Q along  y : [0 1 0]
@@ -373,8 +373,10 @@ Voxel size:  5.00 nm
 Final data shape: 200 200 200
 /mntdirect/_data_id01_inhouse/richard/bcdiDevel.debian9/lib/python3.5/site-packages/vtk/util/numpy_support.py:137: FutureWarning: Conversion of the second argument of issubdtype from `complex` to `np.complexfloating` is deprecated. In future, it will be treated as `np.complex128 == np.dtype(complex).type`.
   assert not numpy.issubdtype(z.dtype, complex), \
-Phase extent before and after thresholding: 13.222435415222712 3.7654175076326446
-phase.max() =  1.6250838106795826 , at coordinates  157 136 177
+Phase extent before and after thresholding: 13.443683074633997 3.759186417951449
+phase.max() =  2.143981531420642 , at coordinates  191 63 67
+/mntdirect/_data_id01_inhouse/richard/bcdiDevel.debian9/lib/python3.5/site-packages/matplotlib/pyplot.py:514: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`).
+  max_open_warning, RuntimeWarning)
 End of script
 ````
 
