@@ -10,6 +10,8 @@ import ipywidgets as widgets
 from ipywidgets import interact, Button, Layout, interactive, fixed
 from IPython.display import display, Markdown, Latex, clear_output
 
+import glob
+
 p = input("Path to file from current folder: ")
 
 try:

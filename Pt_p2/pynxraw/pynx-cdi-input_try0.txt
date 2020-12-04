@@ -1,13 +1,13 @@
 # parameters
 data = "S1398_pynx_norm_128_300_294_1_1_1.npz"
-mask = "S1398_maskpynx_norm_128_300_294_1_1_1.npz" #
+mask = "S1398_maskpynx_norm_128_300_294_1_1_1.npz"
 data2cxi = True
 #object = "pynx-cdi-input-S61-2018-06-07T11-33-51_LLK000.488.npz"
 auto_center_resize = False #
-#support='sm97_sup0.1.npz'
+support= "Mask_10_100_0_1.npz"
 #support_type = 'square' # (will be a sphere or cube in 3d)
 #support_size = 20, 10, 20  # half-size of the initial support (radius for a sphere)
-support_threshold = 0.1,0.2 # pick a random number between these two numbers
+support_threshold = 0.2, 0.3 # pick a random number between these two numbers
 support_only_shrink = False
 support_update_period = 20
 support_smooth_width_begin = 2

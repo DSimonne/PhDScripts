@@ -196,8 +196,126 @@ Not so good
 
 ## Then I try to create a new support by using an average of the support determined by the program from the last run.
 
+It worked, it is the file Mask_10_100_0_1.npz, looks a bit rough on the edges though.
 
-### Silx view sort of works on id01, but better on my laptop (rnice ?)
+````bash
+(devel.debian9) simonne@lid01gpu1:/data/id01/inhouse/david/Pt_p2/pynxraw$ python pynx-id01cdi.py pynx-cdi-input_try0.txt
+Using parameters file:  pynx-cdi-input_try0.txt
+data S1398_pynx_norm_128_300_294_1_1_1.npz
+mask S1398_maskpynx_norm_128_300_294_1_1_1.npz
+data2cxi True
+auto_center_resize False
+support Mask_10_100_0_1.npz
+support_threshold 0.2, 0.3
+support_only_shrink False
+support_update_period 20
+support_smooth_width_begin 2
+support_smooth_width_end 1
+support_post_expand 1,-2,1
+mask_interp 8,2
+confidence_interval_factor_mask 0.5,1.2
+psf True
+nb_raar 1000
+nb_hio 400
+nb_er 300
+nb_ml 0
+nb_run 100
+nb_run_keep 10
+zero_mask False
+crop_output 0
+positivity False
+beta 0.9
+detwin False
+rebin 1,1,1
+detector_distance 0.84
+pixel_size_detector 55e-6
+wavelength 1.2423e-10
+verbose 100
+output_format cxi
+live_plot False
+
+Loading data:  S1398_pynx_norm_128_300_294_1_1_1.npz
+Finished loading iobs data, with size: 11289600
+Data CXI file already exists, not overwriting:  S1398_pynx_norm_128_300_294_1_1_1.cxi
+CDI runner: preparing processing unit
+Computing FFT speed for available CUDA GPU[ranking by fft, fft_shape=(16, 400, 400)]:
+                                         GeForce GTX TITAN X: 12212Mb , 453.16 Gflop/s
+Searching available OpenCL GPU[ranking by fft, fft_shape=(16, 400, 400)]:
+                           GeForce GTX TITAN X [NVIDIA CUDA]: 12212Mb [max alloc.: 3053Mb], 247.08 Gflop/s
+Ignoring Portable Computing Language (POCL) platform by default
+Using CUDA GPU: GeForce GTX TITAN X
+Loading mask from:  S1398_maskpynx_norm_128_300_294_1_1_1.npz
+Initialized mask, with 927808 pixels masked ( 8.218%)
+Rebinning Iobs with rebin=(1,1,1)
+Ignoring rebin=1
+Loading support from:  Mask_10_100_0_1.npz
+Initialized support  (128, 300, 294) , with 84988 pixels ( 0.753%)
+Centering & reshaping data: (128, 300, 294) -> (128, 300, 294)
+ #################################################################################################### 
+# 
+#  CDI Run: 100/100
+#
+ ####################################################################################################
+Finished initializing object 
+Set free mask with 546968 pixels ( 4.845%)
+Interpolating masked pixels with InterpIobsMask(8, 2)
+No algorithm chain supplied. Proceeding with the following parameters:
+                         nb_hio =  400
+                        nb_raar =  1000
+                          nb_er =  300
+                          nb_ml =  0
+                     positivity =  False
+            support_only_shrink =  False
+                           beta =  0.9
+                         detwin =  False
+                      live_plot =  0
+          support_update_period =  20
+     support_smooth_width_begin =  2.0
+       support_smooth_width_end =  1.0
+              support_threshold =  0.254352891562228
+       support_threshold_method =  rms
+            support_post_expand =  (1, -2, 1)
+ confidence_interval_factor_mask_min =  0.5
+ confidence_interval_factor_mask_max =  1.2
+                      zero_mask =  False
+                        verbose =  100
+Algorithm chain:  (Sup*ER**20)**2 * Sup*ER**10 * PSF**100*ER**10 * (Sup*ER**20)**2 * PSF**100*Sup*ER**20 * Sup*ER**20 * Sup*ER**10 * PSF**100*ER**10 * (Sup*ER**20)**2 * PSF**100*Sup*ER**20 * Sup*ER**20 * Sup*ER**10 * PSF**100*ER**10 * (Sup*ER**20)**2 * PSF**100*Sup*RAAR**20 * Sup*RAAR**20 * Sup*RAAR**10 * PSF**100*RAAR**10 * (Sup*RAAR**20)**2 * PSF**100*Sup*RAAR**20 * Sup*RAAR**20 * Sup*RAAR**10 * PSF**100*RAAR**10 * (Sup*RAAR**20)**2 * PSF**100*Sup*RAAR**20 * Sup*RAAR**20 * Sup*RAAR**10 * PSF**100*RAAR**10 * (Sup*RAAR**20)**2 * PSF**100*Sup*RAAR**20 * Sup*RAAR**20 * Sup*RAAR**10 * PSF**100*RAAR**10 * (Sup*RAAR**20)**32 * (Sup*HIO**20)**20
+````
+
+## Create modes.h5 again
+
+````bash
+(devel.debian9) simonne@lid01gpu1:/data/id01/inhouse/david/Pt_p2/pynxraw$ python pynx-cdi-analysis.py S1398_pynx_norm_128_300_294_1_1_1-* modes=1
+Importing data files
+Loading: S1398_pynx_norm_128_300_294_1_1_1-2020-12-04T19-25-40_Run0008_LLKf000.1159_LLK000.1328_SupportThreshold0.29541.cxi
+Loading: S1398_pynx_norm_128_300_294_1_1_1-2020-12-04T19-26-53_Run0010_LLKf000.1158_LLK000.1330_SupportThreshold0.29706.cxi
+Loading: S1398_pynx_norm_128_300_294_1_1_1-2020-12-04T19-37-13_Run0027_LLKf000.1157_LLK000.1329_SupportThreshold0.29221.cxi
+Loading: S1398_pynx_norm_128_300_294_1_1_1-2020-12-04T19-39-39_Run0031_LLKf000.1158_LLK000.1330_SupportThreshold0.28916.cxi
+Loading: S1398_pynx_norm_128_300_294_1_1_1-2020-12-04T19-41-28_Run0034_LLKf000.1158_LLK000.1332_SupportThreshold0.28754.cxi
+Loading: S1398_pynx_norm_128_300_294_1_1_1-2020-12-04T19-44-30_Run0039_LLKf000.1158_LLK000.1330_SupportThreshold0.29166.cxi
+Loading: S1398_pynx_norm_128_300_294_1_1_1-2020-12-04T19-47-34_Run0044_LLKf000.1158_LLK000.1329_SupportThreshold0.29538.cxi
+Loading: S1398_pynx_norm_128_300_294_1_1_1-2020-12-04T19-59-06_Run0063_LLKf000.1155_LLK000.1329_SupportThreshold0.29807.cxi
+Loading: S1398_pynx_norm_128_300_294_1_1_1-2020-12-04T20-14-50_Run0089_LLKf000.1156_LLK000.1331_SupportThreshold0.29090.cxi
+Loading: S1398_pynx_norm_128_300_294_1_1_1-2020-12-04T20-18-28_Run0095_LLKf000.1159_LLK000.1332_SupportThreshold0.28434.cxi
+Calculating modes from the imported objects
+Matching arrays against the first one [S1398_pynx_norm_128_300_294_1_1_1-2020-12-04T19-59-06_Run0063_LLKf000.1155_LLK000.1329_SupportThreshold0.29807.cxi] - this may take a while
+R_match(0, 1) = 30.332% [8 arrays remaining]
+R_match(0, 2) = 28.736% [7 arrays remaining]
+R_match(0, 3) = 33.285% [6 arrays remaining]
+R_match(0, 4) = 37.631% [5 arrays remaining]
+R_match(0, 5) = 28.119% [4 arrays remaining]
+R_match(0, 6) = 37.937% [3 arrays remaining]
+R_match(0, 7) = 29.123% [2 arrays remaining]
+R_match(0, 8) = 28.070% [1 arrays remaining]
+R_match(0, 9) = 30.672% [0 arrays remaining]
+Elapsed time:  108.2s
+Analysing modes
+First mode represents 94.530%
+Saving modes analysis to: modes.h5
+````
+Better I guess ?
+
+### Silx works on rnice, better on laptop
 
 ````bash
 (bcdiDevel.debian9) simonne@lid01gpu1:/data/id01/inhouse/david/Pt_p2/pynxraw$ silx view modes.h5
@@ -211,18 +329,56 @@ strain flip = False
 
 ````bash
 simonne@lid01gpu1:/data/id01/inhouse/david/Pt_p2/pynxraw$ source /data/id01/inhouse/richard/bcdiDevel.debian9/bin/activate
-(bcdiDevel.debian9) simonne@lid01gpu1:/data/id01/inhouse/david/Pt_p2/pynxraw$ python strain.py 
-````
-````python
-Traceback (most recent call last):
-  File "strain.py", line 201, in <module>
-    root = tk.Tk()
-  File "/usr/lib/python3.5/tkinter/__init__.py", line 1880, in __init__
-    self.tk = _tkinter.create(screenName, baseName, className, interactive, wantobjects, useTk, sync, use)
-_tkinter.TclError: no display name and no $DISPLAY environment variable
-````
-**Almost works on laptop environment. Just one error :**
+(bcdiDevel.debian9) simonne@lid01gpu1:/data/id01/inhouse/david/Pt_p2/pynxraw$ python strain.py
+Initial data size: ( 128 , 300 , 294 )
+FFT size before accounting for binning (128, 300, 294)
+Binning used during phasing: (1, 1, 1)
+Padding back to original FFT size (128, 300, 294)
+Data shape used for orthogonalization and plotting: ( 190 , 198 , 194 )
 
+Averaging using 1 candidate reconstructions
+
+Opening  /mntdirect/_data_id01_inhouse/david/Pt_p2/pynxraw/modes.h5
+This reconstruction will serve as reference object.
+
+Average performed over  1 reconstructions
+
+Extent of the phase over an extended support (ceil(phase range))~  65 (rad)
+Gradient: Phase_ramp_z, Phase_ramp_y, Phase_ramp_x: ( 0.001 0.492 -0.312 ) rad
+Max FFT= 2305565.585629071
+Apodization using a 3d Blackman window
+Max apodized FFT after normalization = 2305565.5856290716
+
+Shape before orthogonalization (190, 198, 194)
+Direct space voxel sizes (z, y, x) based on initial FFT shape: ( 9.25 nm, 11.24 nm, 12.39 nm )
+Tilt, pixel_y, pixel_x based on cropped array shape: ( 0.0074 deg, 83.33 um, 83.35 um)
+Sanity check, recalculated direct space voxel sizes: ( 9.25  nm, 11.24 nm, 12.39 nm )
+using SIXS geometry
+rocking angle is mu, with beta non zero
+VTK spacing : 5.00 nm
+Angle between q and y = 71.79132269042893 deg
+Angle with y in zy plane -45.36658787319518 deg
+Angle with y in xy plane -70.76682162800394 deg
+Angle with z in xz plane 109.46236623829827 deg
+Normalized wavevector transfer [z, y, x]: [-0.31650317  0.31247879  0.89564655]
+Wavevector transfer: (angstroms) 2.6627
+Atomic plane distance: (angstroms) 2.3597 angstroms
+center of mass at (z, y, x): ( 88.46 , 130.85 , 82.49 )
+center of mass offset: ( 7 , -32 , 15 ) pixels
+Gradient: Phase_ramp_z, Phase_ramp_y, Phase_ramp_x: ( -0.016 0.030 0.002 ) rad
+
+Aligning Q along  y : [0 1 0]
+Rotating back the crystal in laboratory frame
+Voxel size:  5.00 nm
+Final data shape: 200 200 200
+/mntdirect/_data_id01_inhouse/richard/bcdiDevel.debian9/lib/python3.5/site-packages/vtk/util/numpy_support.py:137: FutureWarning: Conversion of the second argument of issubdtype from `complex` to `np.complexfloating` is deprecated. In future, it will be treated as `np.complex128 == np.dtype(complex).type`.
+  assert not numpy.issubdtype(z.dtype, complex), \
+Phase extent before and after thresholding: 13.222435415222712 3.7654175076326446
+phase.max() =  1.6250838106795826 , at coordinates  157 136 177
+End of script
+````
+
+**Almost works on laptop environment. Just one error :**
 Directory: D:\Documents\PythonScripts\PhDLocalScripts\Pt_p2\pynxraw
 
 ````bash
@@ -269,65 +425,3 @@ AttributeError: module 'bcdi.postprocessing.postprocessing_utils' has no attribu
 ````
 
 L'erreur pop après que les 3 premières fenêtres se soient ouvertes, surement un pb de versions ?
-
-**Nouvel essai sur lid01**
-
-* Sur lid01, il n'arrive pas à trouver le fichier, bizarre car il se lance alors que c'est exactement les mêmes commandes que hier
-* (EDIT) Ensuite il trouve le fichier, c'est de la magie, je crois qu'il faut avoir executé strain et analysis dans la meme session.
-
-**Question :** Les fichiers blackman tout ça sont ils les mêmes pour chaque scan (surement car juste filtre) ? D'où viennent-ils ?
-
-Seems to work now (no idea why) but voxel size becomes zero ? What are all these figures ?
-(erreur humaine a l'origine ><)
-
-````bash
-(bcdiDevel.debian9) simonne@lid01gpu1:/data/id01/inhouse/david/Pt_p2/pynxraw$ python strain.py 
-Initial data size: ( 128 , 300 , 294 )
-FFT size before accounting for binning (128, 300, 294)
-Binning used during phasing: (1, 1, 1)
-Padding back to original FFT size (128, 300, 294)
-Data shape used for orthogonalization and plotting: ( 194 , 178 , 196 )
-
-Averaging using 1 candidate reconstructions
-
-Opening  /mntdirect/_data_id01_inhouse/david/Pt_p2/pynxraw/modes.h5
-This reconstruction will serve as reference object.
-
-Average performed over  1 reconstructions
-
-Extent of the phase over an extended support (ceil(phase range))~  47 (rad)
-Gradient: Phase_ramp_z, Phase_ramp_y, Phase_ramp_x: ( 0.014 0.577 -0.346 ) rad
-Max FFT= 1446641.0422051493
-Apodization using a 3d Blackman window
-Max apodized FFT after normalization = 1446641.0422051493
-
-Shape before orthogonalization (194, 178, 196)
-Direct space voxel sizes (z, y, x) based on initial FFT shape: ( 9.03 nm, 10.97 nm, 12.10 nm )
-Tilt, pixel_y, pixel_x based on cropped array shape: ( 0.0073 deg, 92.70 um, 82.50 um)
-Sanity check, recalculated direct space voxel sizes: ( 9.03  nm, 10.97 nm, 12.10 nm )
-using SIXS geometry
-rocking angle is mu, with beta non zero
-VTK spacing : 5.00 nm
-Angle between q and y = 71.79132269042893 deg
-Angle with y in zy plane -45.36658787319517 deg
-Angle with y in xy plane -70.76682162800394 deg
-Angle with z in xz plane 109.46236623829827 deg
-Normalized wavevector transfer [z, y, x]: [-0.31650317  0.31247879  0.89564655]
-Wavevector transfer: (angstroms) 2.7268
-Atomic plane distance: (angstroms) 2.3042 angstroms
-center of mass at (z, y, x): ( 94.72 , 92.12 , 104.71 )
-center of mass offset: ( 2 , -3 , -7 ) pixels
-Gradient: Phase_ramp_z, Phase_ramp_y, Phase_ramp_x: ( 0.002 -0.005 -0.001 ) rad
-
-Aligning Q along  y : [0 1 0]
-Rotating back the crystal in laboratory frame
-Voxel size:  5.00 nm
-Final data shape: 200 200 200
-/mntdirect/_data_id01_inhouse/richard/bcdiDevel.debian9/lib/python3.5/site-packages/vtk/util/numpy_support.py:137: FutureWarning: Conversion of the second argument of issubdtype from `complex` to `np.complexfloating` is deprecated. In future, it will be treated as `np.complex128 == np.dtype(complex).type`.
-  assert not numpy.issubdtype(z.dtype, complex), \
-Phase extent before and after thresholding: 7.587438232427344 2.2128061129682015
-phase.max() =  1.1387100144463769 , at coordinates  127 81 17
-/mntdirect/_data_id01_inhouse/richard/bcdiDevel.debian9/lib/python3.5/site-packages/matplotlib/pyplot.py:514: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`).
-  max_open_warning, RuntimeWarning)
-End of script
-````

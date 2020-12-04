@@ -10,54 +10,83 @@ import ipywidgets as widgets
 from ipywidgets import interact, Button, Layout, interactive, fixed
 from IPython.display import display, Markdown, Latex, clear_output
 
+import glob
+import cmath
+
 # Annoying warnings bc of .cxi files
 import warnings
 warnings.filterwarnings("ignore")
 
+# Edit overall plot parameters
+# Font parameters
+mpl.rcParams['font.family'] = 'Verdana'
+mpl.rcParams['font.size'] = 18
+
+# Edit axes parameters
+mpl.rcParams['axes.linewidth'] = 2
+
+# Tick properties
+mpl.rcParams['xtick.major.size'] = 10
+mpl.rcParams['xtick.major.width'] = 2
+mpl.rcParams['xtick.direction'] = 'out'
+mpl.rcParams['ytick.major.size'] = 10
+mpl.rcParams['ytick.major.width'] = 2
+mpl.rcParams['ytick.direction'] = 'out'
 
 # Path of file to be imported, prints architectture of .cxi file
 try:
 	p = input("Path to file from current folder: ")
 
 	with tb.open_file(p, "r") as f:
-		print("\n")
+		print("Data file architecture :\n")
 		print(f)
 
 except Exception as E:
 	raise NameError("Wrong path")
 
 
-def Plotting(axplot, datapath):
+def Plotting(axplot, datapath, ComplexNumber):
 	"""Interactive function to plot the cxi files, only open in read mode"""
 
+	# Open the file
 	try:
 		with tb.open_file(datapath, "r") as f:
-
 			# Since .cxi files follow a specific architectture, we know where our data is.
-			data = f.root.entry_1.instrument_1.detector_1.data[:]
+			data = f.root.entry_1.data_1.data[:]
 
 	except Exception as E:
 		raise NameError("Wrong path")
 
-	# Take the shape of that array along 2 axis
+
+	# Decide what we want to plot
+	if ComplexNumber == "Real":
+		PlottedArrayType = np.real(data)
+	elif ComplexNumber == "Imaginary":
+		PlottedArrayType = np.imag(data)
+	elif ComplexNumber == "Module":
+		PlottedArrayType = np.abs(data)
+	else:
+		PlottedArrayType = np.angle(data)
+
+
+	# Print the shape of that array along 2 axis, use the last dimension for plotting and Project along two axes
 	if axplot == "xy":
-	    print(f"The shape of this projection is {np.shape(data[:, :, 0])}")
+		print(f"The shape of this projection is {np.shape(data[:, :, 0])}")
 
-	    r = np.shape(data[0, 0, :])
-	    print(f"The range in the last axis is {r[0]}")
-
+		r = np.shape(data[0, 0, :])
+		print(f"Length of last axis: {r[0]}")
 
 	elif axplot == "yz":
-	    print(f"The shape of this projection is {np.shape(data[0, :, :])}")
+		print(f"The shape of this projection is {np.shape(data[0, :, :])}")
 
-	    r = np.shape(data[:, 0, 0])
-	    print(f"The range in the last axis is {r[0]}")
+		r = np.shape(data[:, 0, 0])
+		print(f"Length of last axis: {r[0]}")
 
-	elif axplot == "xz":
-	    print(f"The shape of this projection is {np.shape(data[:, 0, :])}")
+	else:
+		print(f"The shape of this projection is {np.shape(data[:, 0, :])}")
 
-	    r = np.shape(data[0, :, 0])
-	    print(f"The range in the last axis is {r[0]}")
+		r = np.shape(data[0, :, 0])
+		print(f"Length of last axis: {r[0]}")
 
 
 	@interact(
@@ -82,36 +111,25 @@ def Plotting(axplot, datapath):
 		    #icon='check'
 		    ))
 	def PickLastAxis(i, PlottingOptions):
-		if axplot == "xy":
-		    dt = data[:, :, i]
-		elif axplot == "yz":
-		    dt = data[i, :, :]
-		elif axplot == "xz":
-		    dt = data[:, i, :]
-		    
-		else:
-		    raise TypeError("Choose xy, yz or xz as axplot.")
+		# Create a new figure
+		plt.close()
 
-		dmax = dt.max()
-		dmin = dt.min()
+		# Print the shape of that array along 2 axis, use the last dimension for plotting and Project along two axes
+		if axplot == "xy":
+			TwoDPlottedArray = PlottedArrayType[:, :, i]
+
+		elif axplot == "yz":
+			TwoDPlottedArray = PlottedArrayType[i, :, :]
+
+		else:
+			TwoDPlottedArray = PlottedArrayType[:, i, :]
+
+		# Find max and min
+		dmax = TwoDPlottedArray.max()
+		dmin = TwoDPlottedArray.min()
 
 		# print(f"Current index: {i}")
-		# print(np.mean(dt))
-
-		# Edit overall plot parameters# Font parameters
-		mpl.rcParams['font.family'] = 'Verdana'
-		mpl.rcParams['font.size'] = 18
-
-		# Edit axes parameters
-		mpl.rcParams['axes.linewidth'] = 2
-
-		# Tick properties
-		mpl.rcParams['xtick.major.size'] = 10
-		mpl.rcParams['xtick.major.width'] = 2
-		mpl.rcParams['xtick.direction'] = 'out'
-		mpl.rcParams['ytick.major.size'] = 10
-		mpl.rcParams['ytick.major.width'] = 2
-		mpl.rcParams['ytick.direction'] = 'out'
+		# print(np.mean(TwoDPlottedArray))
 
 		# Create figure and add axis
 		fig = plt.figure(figsize=(20,10))
@@ -128,7 +146,7 @@ def Plotting(axplot, datapath):
 		if PlottingOptions == "2D":
 			plt.close()
 			fig, ax = plt.subplots(figsize = (15,15))
-			img = ax.imshow(dt,
+			img = ax.imshow(TwoDPlottedArray,
 						origin='lower',
 						cmap='YlGnBu_r',
 						#extent=(0, 2, 0, 2),
@@ -160,7 +178,7 @@ def Plotting(axplot, datapath):
 				fig, ax = plt.subplots(figsize = (15,15))
 				ticks = [dmin + n * (dmax-dmin)/5 for n in range(0, 6)]
 
-				img = ax.contour(dt,
+				img = ax.contour(TwoDPlottedArray,
 								ticks,
 							#extent=(0, 2, 0, 2),
 							cmap='YlGnBu_r',
@@ -192,21 +210,21 @@ def Plotting(axplot, datapath):
 			ax = plt.subplot(111, projection='3d')
 
 			# Create meshgrid
-			print(dt.shape)
-			print(type(dt))
+			# print(TwoDPlottedArray.shape)
+			# print(type(TwoDPlottedArray))
 			# CAREFUL ALL SHAPE MUST BE THE SAME
-			X, Y = np.meshgrid(np.arange(0, dt.shape[1], 1), np.arange(0, dt.shape[0], 1))
-			print(X.shape)
-			print(type(X))
-			print(Y.shape)
-			print(type(Y))
+			X, Y = np.meshgrid(np.arange(0, TwoDPlottedArray.shape[1], 1), np.arange(0, TwoDPlottedArray.shape[0], 1))
+			# print(X.shape)
+			# print(type(X))
+			# print(Y.shape)
+			# print(type(Y))
 
 
-			plot = ax.plot_surface(X=X, Y=Y, Z=dt, cmap='YlGnBu_r', vmin=dmin, vmax=dmax)
+			plot = ax.plot_surface(X=X, Y=Y, Z=TwoDPlottedArray, cmap='YlGnBu_r', vmin=dmin, vmax=dmax)
 
 			# Adjust plot view
 			ax.view_init(elev=50, azim=225)
-			ax.dist = 11
+			ax.dist = 7
 
 			# Add colorbar
 			cbar = fig.colorbar(plot, ax=ax, shrink=0.6)
@@ -235,10 +253,17 @@ def Plotting(axplot, datapath):
 WidgetPlotting = interactive(Plotting,
 					axplot = widgets.Dropdown(
 					    options = ["xy", "yz", "xz"],
-					    value = "xy",
+					    value = "yz",
 					    description = 'First 2 axes:',
 					    disabled=False,
 					    style = {'description_width': 'initial'}),
+					ComplexNumber = widgets.ToggleButtons(
+						options = ["Real", "Imaginary", "Module", "Phase"],
+					    value = "Module",
+					    description='Plotting options',
+					    disabled=False,
+					    button_style='', # 'success', 'info', 'warning', 'danger' or ''
+					    tooltip=['Plot only contour or not', "", ""]),
 					datapath =fixed(p))
 
 display(WidgetPlotting)
