@@ -427,3 +427,37 @@ AttributeError: module 'bcdi.postprocessing.postprocessing_utils' has no attribu
 ````
 
 L'erreur pop après que les 3 premières fenêtres se soient ouvertes, surement un pb de versions ?
+
+
+
+
+
+QUESTIONS
+* Select GPU on laptop
+* What are the modes corresponding to ?
+* Operator on jupyter notebook would be dope, why is the result != pass input keywords in cdi fct freely ?
+* What percentage of total run should we keep ? In the paper using 4 best instead of 10 yields a better result (out of 50), so \approx 10 % ?
+* eigenvectors = eigne solutions ? weight
+
+
+
+apt-get update
+DEBIAN_FRONTEND=noninteractive apt install -y wget git cmake vim fftw3 fftw3-dev aptitude g++ screen openmpi-bin libopenmpi-dev python3.8 python3.8-dev python3.8-venv python3.8-distutils python3-pip python3-virtualenv virtualenv ocl-icd-opencl-dev nvidia-opencl-dev 
+
+update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 10
+
+ln -sf /usr/local/cuda-11.1/targets/x86_64-linux/include/CL /usr/include/CL
+
+Installation (PyNX)
+cd
+mkdir dev
+cd dev
+rm -Rf pynx-env
+wget http://ftp.esrf.fr/pub/scisoft/PyNX/pynx-devel-nightly.tar.bz2
+tar -xjf pynx-devel-nightly.tar.bz2
+
+pynx/install-scripts/install-pynx-venv.sh pynx-env python3.8
+
+source /root/dev/pynx-env/bin/activate
+cd pynx
+python setup.py install
