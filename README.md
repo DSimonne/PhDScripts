@@ -30,9 +30,10 @@ NoMachine:
 ## rnice9
 `ssh -X simonne@rnice9`
 
- BCDI | PyNX
+ BCDI | Paraview
 ------------ | -------------
-`source /data/id01/inhouse/richard/bcdiDevel.debian9/bin/activate` | 
+`source /data/id01/inhouse/richard/bcdiDevel.debian9/bin/activate` | `source /sware/exp/paraview/envar.sh`
+ | `rnice8-1902:david/Pt_p2/pynxraw % paraview S1398_amp-disp-strain_gap_iso0.2_mode_avg3_apodize_blackman_lab-frame.vti`
 
 
 ## slurm
