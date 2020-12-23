@@ -176,7 +176,7 @@ def Plotting(axplot, datapath, ComplexNumber):
 			# Show contour plot instead
 			try:
 				fig, ax = plt.subplots(figsize = (15,15))
-				ticks = [dmin + n * (dmax-dmin)/5 for n in range(0, 6)]
+				ticks = [dmin + n * (dmax-dmin)/10 for n in range(0, 11)]
 
 				img = ax.contour(TwoDPlottedArray,
 								ticks,

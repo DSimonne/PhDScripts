@@ -67,7 +67,8 @@ def Plotting(file, axplot, datapath):
 		    continuous_update=False,
 		    readout=True,
 		    readout_format='d',
-		    style = {'description_width': 'initial'}),
+		    # style = {'description_width': 'initial'}
+            ),
 		PlottingOptions = widgets.ToggleButtons(
 			options = [("2D plot", "2D"), ("2D contour plot", "2DC"),("3D surface plot", "3D")],
 		    value = "2D",
@@ -202,7 +203,7 @@ def Plotting(file, axplot, datapath):
 			cbar = fig.colorbar(plot, ax=ax, shrink=0.6)
 
 			# Edit colorbar ticks and labels
-			ticks = [dmin + n * (dmax-dmin)/5 for n in range(0, 6)]
+			ticks = [dmin + n * (dmax-dmin)/10 for n in range(0, 11)]
 			tickslabel = [f"{t}" for t in ticks]
 
 			cbar.set_ticks(ticks)

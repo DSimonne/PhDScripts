@@ -34,15 +34,15 @@ def CreateSupport(Path, Threshold):
 
         return result
 
-print("Example of used files : Pt_p2\\pynxraw\\S1398_pynx_norm_128_300_294_1_1_1-2020*cxi")
+print("Example of used files : Pt_p2/pynxraw/S1398_pynx_norm_128_300_294_1_1_1-2020*cxi")
 
-print("Example of folder : Pt_p2\\pynxraw")
+print("Example of folder : Pt_p2/pynxraw")
 print("Example of file name : S1398_pynx_norm_128_300_294_1_1_1-2020")
 
 folder = input("\nPlease write your folder like in the example: ")
 filename = input("Please write your file name like in the example: ")
 
-files = sorted(glob.glob(f"{folder}\\{filename}*.cxi"))
+files = sorted(glob.glob(f"{folder}/{filename}*.cxi"))
 
 print(f"\nUsed files: {files}")
 
@@ -63,8 +63,8 @@ for S in Supports[1:]:
 mask = np.where(FirstSupport >= NS, 1, 0)
 
 print("\n\n")
-np.savez(f"{folder}\\Mask_Threshold_{t}.npz", mask = mask)
-print(f"Mask saved in {folder} as Mask_Threshold_{t}.npz")
+np.savez(f"{folder}/mask_{t}.npz", mask = mask)
+print(f"Mask saved in {folder} as mask_{t}.npz")
 
 rocc = np.where(mask == 1)
 rnocc = np.where(mask == 0)
