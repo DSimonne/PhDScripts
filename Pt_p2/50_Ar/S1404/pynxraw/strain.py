@@ -43,9 +43,9 @@ Therefore the data structure is data[qx, qz, qy] for reciprocal space,
 or data[z, y, x] for real space
 """
 
-scan = 1398  # spec scan number
+scan = 1404  # spec scan number
 
-datadir = "/data/id01/inhouse/david/analysis/RESULTS/Pt_p2/pynxraw"
+datadir = "/home/esrf/simonne/Documents/id01_david/Pt_p2/50_Ar/S1404/pynxraw/"
 
 sort_method = 'variance/mean'  # 'mean_amplitude' or 'variance' or 'variance/mean' or 'volume', metric for averaging
 correlation_threshold = 0.90
