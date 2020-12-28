@@ -5,7 +5,7 @@ did mask
 applied filter
 
 running 50 keep 5
-
+```
 (devel.p9) p9-07:50_Ar/S1404/pynxraw % python pynx-cdi-analysis.py S1404_pynx_norm_128_300_294_1_1_1-* modes = 1
 ****************************************************************************
 * hwloc 2.1.0 received invalid information from the operating system.
@@ -46,9 +46,11 @@ Elapsed time:   36.1s
 Analysing modes
 First mode represents 77.865%
 Saving modes analysis to: modes.h5
+```
 
-do it again with better mask
+### Do it again with better mask
 
+```
 (pynx-gap.p9) p9-07:50_Ar/S1404/pynxraw % python pynx-id01cdi.py pynx-cdi-input_50.txt
 /data/id01/inhouse/richard/pynx-gap.p9/lib/python3.8/site-packages/skcuda/cublas.py:284: UserWarning: creating CUBLAS context to get version number
   warnings.warn('creating CUBLAS context to get version number')
@@ -101,9 +103,9 @@ Ignoring rebin=1
 Loading support from:  filter_sig5_t20_mask_0.2.npz
 Initialized support  (128, 300, 294) , with 91966 pixels ( 0.815%)
 Centering & reshaping data: (128, 300, 294) -> (128, 300, 294)
+```
 
-
-
+```
 (devel.p9) p9-07:50_Ar/S1404/pynxraw % python pynx-cdi-analysis.py S1404_pynx_norm_128_300_294_1_1_1-* modes=1
 ****************************************************************************
 * hwloc 2.1.0 received invalid information from the operating system.
@@ -144,3 +146,158 @@ Elapsed time:   58.1s
 Analysing modes
 First mode represents 82.327%
 Saving modes analysis to: modes.h5
+```
+
+```
+(linux.bcdi) david@ord00003:~/Documents/PhD/PhDScripts/Pt_p2/50_Ar/S1404/pynxraw$ python strain_old.py 
+/home/david/Documents/PhD/PhDScripts/Pt_p2/50_Ar/S1404/pynxraw/modes.h5
+Initial data size: ( 128 , 300 , 294 )
+FFT size before accounting for binning (128, 300, 294)
+Binning used during phasing: (1, 1, 1)
+Padding back to original FFT size (128, 300, 294)
+Data shape used for orthogonalization and plotting: ( 182 , 188 , 192 )
+
+Averaging using 1 candidate reconstructions
+
+Opening  /home/david/Documents/PhD/PhDScripts/Pt_p2/50_Ar/S1404/pynxraw/modes.h5
+This reconstruction will serve as reference object.
+
+Average performed over  1 reconstructions
+
+Extent of the phase over an extended support (ceil(phase range))~  58 (rad)
+Gradient: Phase_ramp_z, Phase_ramp_y, Phase_ramp_x: ( -0.016 0.586 -0.361 ) rad
+Max FFT= 1542504.6122274657
+Apodization using a 3d Blackman window
+Max apodized FFT after normalization = 1542504.6122274657
+
+Shape before orthogonalization (182, 188, 192)
+Direct space voxel sizes (z, y, x) based on initial FFT shape: ( 9.25 nm, 11.24 nm, 12.39 nm )
+Tilt, pixel_y, pixel_x based on cropped array shape: ( 0.0077 deg, 87.77 um, 84.22 um)
+Sanity check, recalculated direct space voxel sizes: ( 9.25  nm, 11.24 nm, 12.39 nm )
+using SIXS geometry
+rocking angle is mu, with beta non zero
+VTK spacing : 5.00 nm
+Angle between q and y = 71.79132269042893 deg
+Angle with y in zy plane -45.36658787319518 deg
+Angle with y in xy plane -70.76682162800394 deg
+Angle with z in xz plane 109.46236623829827 deg
+Normalized wavevector transfer [z, y, x]: [-0.31650317  0.31247879  0.89564655]
+Wavevector transfer: (angstroms) 2.6627
+Atomic plane distance: (angstroms) 2.3597 angstroms
+center of mass at (z, y, x): ( 87.22 , 94.53 , 96.42 )
+center of mass offset: ( 4 , -1 , 0 ) pixels
+Gradient: Phase_ramp_z, Phase_ramp_y, Phase_ramp_x: ( 0.001 -0.005 -0.001 ) rad
+
+Aligning Q along  y : [0 1 0]
+Rotating back the crystal in laboratory frame
+Voxel size:  5.00 nm
+Final data shape: 200 200 200
+Phase extent before and after thresholding: 10.680021563201016 3.06318850840551
+phase.max() =  1.5176890162824492 , at coordinates  96 29 138
+Traceback (most recent call last):
+  File "/home/david/anaconda3/envs/linux.bcdi/lib/python3.6/site-packages/bcdi-0.0.9-py3.6.egg/bcdi/graph/graph_utils.py", line 208, in combined_plots
+TypeError: object of type 'NoneType' has no len()
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "strain_old.py", line 706, in <module>
+    tuple_scale='linear', cmap=my_cmap, is_orthogonal=True, reciprocal_space=False)
+  File "/home/david/anaconda3/envs/linux.bcdi/lib/python3.6/site-packages/bcdi-0.0.9-py3.6.egg/bcdi/graph/graph_utils.py", line 210, in combined_plots
+ValueError: "position" should be a tuple of subplot positions
+(linux.bcdi) david@ord00003:~/Documents/PhD/PhDScripts/Pt_p2/50_Ar/S1404/pynxraw$ 
+```
+
+# OK POUR STRAIN . py
+
+Il fallait copier du github dans '/home/david/.local/lib/python3.9/site-packages/bcdi/__init__.py'
+POurquoi pas dans conda / envs ?
+
+```bash
+python strain_old.py 
+/home/david/.local/lib/python3.9/site-packages/bcdi/postprocessing/postprocessing_utils.py:50: SyntaxWarning: "is" with a literal. Did you mean "=="?
+  if method is 'modulus':
+/home/david/.local/lib/python3.9/site-packages/bcdi/postprocessing/postprocessing_utils.py:52: SyntaxWarning: "is" with a literal. Did you mean "=="?
+  elif method is 'support':
+/home/david/.local/lib/python3.9/site-packages/bcdi/postprocessing/postprocessing_utils.py:229: SyntaxWarning: "is" with a literal. Did you mean "=="?
+  if aligning_option is 'com':
+/home/david/.local/lib/python3.9/site-packages/bcdi/postprocessing/postprocessing_utils.py:1734: SyntaxWarning: "is" with a literal. Did you mean "=="?
+  if sort_method is 'mean_amplitude':    # sort by quality_array[:, 0] first
+/home/david/.local/lib/python3.9/site-packages/bcdi/postprocessing/postprocessing_utils.py:1737: SyntaxWarning: "is" with a literal. Did you mean "=="?
+  elif sort_method is 'variance':        # sort by quality_array[:, 1] first
+/home/david/.local/lib/python3.9/site-packages/bcdi/postprocessing/postprocessing_utils.py:1740: SyntaxWarning: "is" with a literal. Did you mean "=="?
+  elif sort_method is 'variance/mean':   # sort by quality_array[:, 2] first
+/home/david/.local/lib/python3.9/site-packages/bcdi/postprocessing/postprocessing_utils.py:1743: SyntaxWarning: "is" with a literal. Did you mean "=="?
+  elif sort_method is 'volume':          # sort by quality_array[:, 3] first
+/home/david/Documents/PhD/PhDScripts/Pt_p2/50_Ar/S1404/pynxraw/modes.h5
+Initial data size: ( 128 , 300 , 294 )
+FFT size before accounting for binning (128, 300, 294)
+Binning used during phasing: (1, 1, 1)
+Padding back to original FFT size (128, 300, 294)
+Data shape used for orthogonalization and plotting: ( 182 , 188 , 192 )
+
+Averaging using 1 candidate reconstructions
+
+Opening  /home/david/Documents/PhD/PhDScripts/Pt_p2/50_Ar/S1404/pynxraw/modes.h5
+This reconstruction will serve as reference object.
+
+Average performed over  1 reconstructions
+
+Extent of the phase over an extended support (ceil(phase range))~  58 (rad)
+Gradient: Phase_ramp_z, Phase_ramp_y, Phase_ramp_x: ( -0.016 0.586 -0.361 ) rad
+Max FFT= 1542504.6122274657
+Apodization using a 3d Blackman window
+Max apodized FFT after normalization = 1542504.6122274657
+
+Shape before orthogonalization (182, 188, 192)
+Real space pixel size (z, y, x) based on initial FFT shape: ( 6.08 nm, 10.95 nm, 11.18 nm )
+Tilt, pixel_y, pixel_x based on actual array shape: ( 0.0077 deg, 87.77 um, 84.22 um)
+New real space pixel size (z, y, x) based on actual array shape: ( 6.08  nm, 10.95 nm, 11.18 nm )
+using SIXS geometry
+rocking angle is mu, with beta non zero
+VTK spacing : 5.00 nm
+Angle between q and y = 71.79132269042893 deg
+Angle with y in zy plane -45.36658787319518 deg
+Angle with y in xy plane -70.76682162800394 deg
+Angle with z in xz plane 109.46236623829827 deg
+Normalized wavevector transfer [z, y, x]: [-0.31650317  0.31247879  0.89564655]
+Wavevector transfer: (angstroms) 2.6627
+Atomic plane distance: (angstroms) 2.3597 angstroms
+center of mass at (z, y, x): ( 87.22 , 94.53 , 96.42 )
+center of mass offset: ( 4 , -1 , 0 ) pixels
+Gradient: Phase_ramp_z, Phase_ramp_y, Phase_ramp_x: ( 0.001 -0.005 -0.001 ) rad
+
+Aligning Q along  y : [0 1 0]
+Rotating back the crystal in laboratory frame
+Voxel size:  5.00 nm
+Final data shape: 200 200 200
+Phase extent before and after thresholding: 10.680021563201015 3.0631885084055095
+phase.max() =  1.517689016282449 , at coordinates  96 29 138
+End of script
+(linux.BCDI_MI) david@ord00003:~/Documents/PhD/PhDScripts/Pt_p2/50_Ar/S1404/pynxraw$ ls
+DataAnalysis.ipynb
+filter_sig5_t20_mask_0.2.npz
+finalmask_S1404_norm_128_300_294_1_1_1.png
+finalsum_S1404_norm_128_300_294_1_1_1.png
+MakeMask.ipynb
+mask_0.2.npz
+modes.h5
+pynx-cdi-analysis.py
+pynx-cdi-input_100.txt
+pynx-cdi-input_50.txt
+pynx-id01cdi.py
+README.md
+S1404_ampdispstrain_gap_iso0.2_mode_avg3_apodize_blackman_lab-frame.npz
+S1404_amp-disp-strain_gap_iso0.2_mode_avg3_apodize_blackman_lab-frame.vti
+S1404_amp_gap_iso0.2_mode_avg3_apodize_blackman_lab-frame.png
+S1404_avg_obj_prtf_gap_iso0.2_mode_avg3_apodize_blackman.npz
+S1404_bulk_gap_iso0.2_mode_avg3_apodize_blackman_lab-frame.png
+S1404_displacement_gap_iso0.2_mode_avg3_apodize_blackman_lab-frame.png
+S1404_histo_amp_gap_iso0.2_mode_avg3_apodize_blackman_lab-frame.png
+S1404_maskpynx_norm_128_300_294_1_1_1.npz
+S1404_pynx_norm_128_300_294_1_1_1.npz
+S1404_strain_gap_iso0.2_mode_avg3_apodize_blackman_lab-frame.png
+spec-file.txt
+strain_old.py
+strain.py
+```

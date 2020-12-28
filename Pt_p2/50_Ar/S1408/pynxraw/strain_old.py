@@ -43,10 +43,10 @@ Therefore the data structure is data[qx, qz, qy] for reciprocal space,
 or data[z, y, x] for real space
 """
 
-scan = 1398  # spec scan number
+scan = 1408  # spec scan number
 
 datadir = "./"
-# datadir = "D:/Documents/PythonScripts/PhDScripts/Pt_p2/"
+# datadir = "D:/Documents/PythonScripts/PhDScripts/Pt_p2/S1404/pynxraw/"
 
 sort_method = 'variance/mean'  # 'mean_amplitude' or 'variance' or 'variance/mean' or 'volume', metric for averaging
 correlation_threshold = 0.90
@@ -205,9 +205,12 @@ file_path = filedialog.askopenfilenames(initialdir=datadir,
                                         filetypes=[("NPZ", "*.npz"),
                                                    ("NPY", "*.npy"), ("CXI", "*.cxi"), ("HDF5", "*.h5")])
 nbfiles = len(file_path)
+print(file_path[0])
 plt.ion()
 
-obj, extension = util.load_file(file_path[0])
+# obj, extension = util.load_file(file_path[0])
+obj, extension = util.load_file("modes.h5")
+
 # obj[0:40,:,:] = 0
 # obj[65:,:,:] = 0
 if extension == '.h5':
