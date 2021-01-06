@@ -144,7 +144,7 @@ def Plotting(file, axplot, datapath):
 			cbar = fig.colorbar(mappable=img, cax=cbar_ax)
 
 			# Edit colorbar ticks and labels
-			ticks = [dmin + n * (dmax-dmin)/5 for n in range(0, 6)]
+			ticks = [dmin + n * (dmax-dmin)/10 for n in range(0, 11)]
 			tickslabel = [f"{t}" for t in ticks]
 
 			cbar.set_ticks(ticks)
@@ -156,7 +156,7 @@ def Plotting(file, axplot, datapath):
 			# Show contour plot instead
 			try:
 				fig, ax = plt.subplots(figsize = (15,15))
-				ticks = [dmin + n * (dmax-dmin)/5 for n in range(0, 6)]
+				ticks = [dmin + n * (dmax-dmin)/10 for n in range(0, 11)]
 
 				img = ax.contour(dt,
 								ticks,
