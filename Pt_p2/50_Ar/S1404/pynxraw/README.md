@@ -104,9 +104,9 @@ Ignoring rebin=1
 Loading support from:  filter_sig5_t20_mask_0.2.npz
 Initialized support  (128, 300, 294) , with 91966 pixels ( 0.815%)
 Centering & reshaping data: (128, 300, 294) -> (128, 300, 294)
-```
+````
 
-```
+````bash
 (devel.p9) p9-07:50_Ar/S1404/pynxraw % python pynx-cdi-analysis.py S1404_pynx_norm_128_300_294_1_1_1-* modes=1
 ****************************************************************************
 * hwloc 2.1.0 received invalid information from the operating system.
