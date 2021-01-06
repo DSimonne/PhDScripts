@@ -1,3 +1,5 @@
+# Output of `preprocess_bcdi.py`
+
 ```bash
 (BCDI) david@ord00003:~/Documents/PhD/PhDScripts/Pt_p2/50_Ar/S1406$ python preprocess_bcdi.py 
 File has time stamps issues
