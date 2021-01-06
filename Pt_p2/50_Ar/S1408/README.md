@@ -1,3 +1,4 @@
+````bash
 (BCDI) david@ord00003:~/Documents/PhD/PhDScripts/Pt_p2/50_Ar/S1408$ python preprocess_bcdi.py 
 File has time stamps issues
 File has time stamps issues
@@ -46,3 +47,4 @@ Data size after binning the stacking dimension: (128, 300, 294)
 Saving directory: /home/david/Documents/PhD/PhDScripts/Pt_p2/50_Ar/S1408/pynxraw/
 
 End of script
+````

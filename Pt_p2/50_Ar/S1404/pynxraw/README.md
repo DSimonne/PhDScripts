@@ -5,7 +5,8 @@ did mask
 applied filter
 
 running 50 keep 5
-```
+
+````bash
 (devel.p9) p9-07:50_Ar/S1404/pynxraw % python pynx-cdi-analysis.py S1404_pynx_norm_128_300_294_1_1_1-* modes = 1
 ****************************************************************************
 * hwloc 2.1.0 received invalid information from the operating system.
@@ -46,11 +47,11 @@ Elapsed time:   36.1s
 Analysing modes
 First mode represents 77.865%
 Saving modes analysis to: modes.h5
-```
+````
 
 ### Do it again with better mask
 
-```
+````bash
 (pynx-gap.p9) p9-07:50_Ar/S1404/pynxraw % python pynx-id01cdi.py pynx-cdi-input_50.txt
 /data/id01/inhouse/richard/pynx-gap.p9/lib/python3.8/site-packages/skcuda/cublas.py:284: UserWarning: creating CUBLAS context to get version number
   warnings.warn('creating CUBLAS context to get version number')
@@ -146,9 +147,11 @@ Elapsed time:   58.1s
 Analysing modes
 First mode represents 82.327%
 Saving modes analysis to: modes.h5
-```
+````
 
-```
+# On a une erreur
+
+````bash
 (linux.bcdi) david@ord00003:~/Documents/PhD/PhDScripts/Pt_p2/50_Ar/S1404/pynxraw$ python strain_old.py 
 /home/david/Documents/PhD/PhDScripts/Pt_p2/50_Ar/S1404/pynxraw/modes.h5
 Initial data size: ( 128 , 300 , 294 )
@@ -206,14 +209,14 @@ Traceback (most recent call last):
   File "/home/david/anaconda3/envs/linux.bcdi/lib/python3.6/site-packages/bcdi-0.0.9-py3.6.egg/bcdi/graph/graph_utils.py", line 210, in combined_plots
 ValueError: "position" should be a tuple of subplot positions
 (linux.bcdi) david@ord00003:~/Documents/PhD/PhDScripts/Pt_p2/50_Ar/S1404/pynxraw$ 
-```
+````
 
 # OK POUR STRAIN . py
 
 Il fallait copier du github dans '/home/david/.local/lib/python3.9/site-packages/bcdi/__init__.py'
 POurquoi pas dans conda / envs ?
 
-```bash
+````bash
 python strain_old.py 
 /home/david/.local/lib/python3.9/site-packages/bcdi/postprocessing/postprocessing_utils.py:50: SyntaxWarning: "is" with a literal. Did you mean "=="?
   if method is 'modulus':
@@ -300,4 +303,4 @@ S1404_strain_gap_iso0.2_mode_avg3_apodize_blackman_lab-frame.png
 spec-file.txt
 strain_old.py
 strain.py
-```
+````

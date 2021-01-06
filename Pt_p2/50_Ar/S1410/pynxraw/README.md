@@ -1,3 +1,6 @@
+# Run analysis on 100 runs without support 
+
+````bash
 (devel.p9) p9-07:50_Ar/S1410/pynxraw % python pynx-cdi-analysis.py S1410_pynx_norm_128_300_294_1_1_1-* modes = 1
 ****************************************************************************
 * hwloc 2.1.0 received invalid information from the operating system.
@@ -48,8 +51,10 @@ Elapsed time:   80.3s
 Analysing modes
 First mode represents 74.783%
 Saving modes analysis to: modes.h5
+````
 
-
+# New PyNX run with new support, 50 runs
+````bash
 (pynx-gap.p9) p9-07:50_Ar/S1410/pynxraw % pwd
 /home/esrf/simonne/Documents/Pt_p2/50_Ar/S1410/pynxraw
 (pynx-gap.p9) p9-07:50_Ar/S1410/pynxraw % deactivate 
@@ -108,10 +113,10 @@ Ignoring rebin=1
 Loading support from:  filter_sig5_t20_mask_0.2.npz
 Initialized support  (128, 300, 294) , with 87823 pixels ( 0.778%)
 Centering & reshaping data: (128, 300, 294) -> (128, 300, 294)
+````
 
-
-
-
+# New analysis on the 50 runs
+````bash
 (devel.p9) p9-07:50_Ar/S1410/pynxraw % python pynx-cdi-analysis.py S1410_pynx_norm_128_300_294_1_1_1-* modes = 1
 ****************************************************************************
 * hwloc 2.1.0 received invalid information from the operating system.
@@ -152,9 +157,11 @@ Elapsed time:   35.0s
 Analysing modes
 First mode represents 80.305%
 Saving modes analysis to: modes.h5
+````
+We gained a few percents
 
-
-```bash
+# Launch strain
+````bash
 (linux.BCDI_MI) david@ord00003:~/Documents/PhD/PhDScripts/Pt_p2/50_Ar/S1410/pynxraw$ python strain_old.py 
 /home/david/Documents/PhD/PhDScripts/Pt_p2/50_Ar/S1410/pynxraw/modes.h5
 Initial data size: ( 128 , 300 , 294 )
@@ -201,4 +208,4 @@ Final data shape: 200 200 200
 Phase extent before and after thresholding: 12.117263207098635 2.2645313195235692
 phase.max() =  1.0057132145704262 , at coordinates  42 46 85
 End of script
-```
+````

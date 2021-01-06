@@ -1,3 +1,6 @@
+# Run analysis on 100 runs with bad mask
+
+````bash
 (devel.p9) p9-07:50_Ar/S1406/pynxraw % python pynx-cdi-analysis.py S1406_pynx_norm_128_300_294_1_1_1-* modes = 1
 ****************************************************************************
 * hwloc 2.1.0 received invalid information from the operating system.
@@ -48,8 +51,11 @@ Elapsed time:   59.3s
 Analysing modes
 First mode represents 72.575%
 Saving modes analysis to: modes.h5
+````
 
+# 50 runs with a new support in entry
 
+````bash
 (pynx-gap.p9) p9-07:50_Ar/S1406/pynxraw % python pynx-id01cdi.py pynx-cdi-input_50.txt
 /data/id01/inhouse/richard/pynx-gap.p9/lib/python3.8/site-packages/skcuda/cublas.py:284: UserWarning: creating CUBLAS context to get version number
   warnings.warn('creating CUBLAS context to get version number')
@@ -102,9 +108,9 @@ Ignoring rebin=1
 Loading support from:  filter_sig5_t20_mask_0.2.npz
 Initialized support  (128, 300, 294) , with 64264 pixels ( 0.569%)
 Centering & reshaping data: (128, 300, 294) -> (128, 300, 294)
+````
 
-
-
+````bash
 devel.p9) p9-07:50_Ar/S1406/pynxraw % python pynx-cdi-analysis.py S1406_pynx_norm_128_300_294_1_1_1-* modes=1
 ****************************************************************************
 * hwloc 2.1.0 received invalid information from the operating system.
@@ -145,7 +151,11 @@ Elapsed time:   41.5s
 Analysing modes
 First mode represents 76.123%
 Saving modes analysis to: modes.h5
+````
 
+We only gained a few percents on the modes
+
+# Launch strain
 
 ````bash
 (linux.BCDI_MI) david@ord00003:~/Documents/PhD/PhDScripts/Pt_p2/50_Ar/S1406/pynxraw$ python strain_old.py 

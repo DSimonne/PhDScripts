@@ -1,3 +1,6 @@
+# Run analysis on 100 runs
+
+````bash
 (devel.p9) p9-07:50_Ar/S1408/pynxraw % python pynx-cdi-analysis.py S1408_pynx_norm_128_300_294_1_1_1-* modes = 1
 ****************************************************************************
 * hwloc 2.1.0 received invalid information from the operating system.
@@ -48,9 +51,10 @@ Elapsed time:   80.1s
 Analysing modes
 First mode represents 75.037%
 Saving modes analysis to: modes.h5
+````
 
-
-
+# Make 50 runs with new support 
+````bash
 p9-07:50_Ar/S1408/pynxraw % source /data/id01/inhouse/richard/pynx-gap.p9/bin/activate
 (pynx-gap.p9) p9-07:50_Ar/S1408/pynxraw % python pynx-id01cdi.py pynx-cdi-input_50.txt
 /data/id01/inhouse/richard/pynx-gap.p9/lib/python3.8/site-packages/skcuda/cublas.py:284: UserWarning: creating CUBLAS context to get version number
@@ -104,8 +108,11 @@ Ignoring rebin=1
 Loading support from:  filter_sig5_t20_mask_0.2.npz
 Initialized support  (128, 300, 294) , with 86891 pixels ( 0.770%)
 Centering & reshaping data: (128, 300, 294) -> (128, 300, 294)
+````
 
 
+# New analysis
+````bash
 (devel.p9) p9-07:50_Ar/S1408/pynxraw % python pynx-cdi-analysis.py S1408_pynx_norm_128_300_294_1_1_1-* modes = 1****************************************************************************
 * hwloc 2.1.0 received invalid information from the operating system.
 *
@@ -145,8 +152,11 @@ Elapsed time:   36.0s
 Analysing modes
 First mode represents 81.157%
 Saving modes analysis to: modes.h5
+````
+We gained a few percents
 
-```bash
+# Run strain
+````bash
 (linux.BCDI_MI) david@ord00003:~/Documents/PhD/PhDScripts/Pt_p2/50_Ar/S1408/pynxraw$ python strain_old.py 
 /home/david/Documents/PhD/PhDScripts/Pt_p2/50_Ar/S1408/pynxraw/modes.h5
 Initial data size: ( 128 , 300 , 294 )
@@ -193,4 +203,4 @@ Final data shape: 200 200 200
 Phase extent before and after thresholding: 7.81743928398477 2.0292845789869727
 phase.max() =  0.9382442984071363 , at coordinates  134 87 15
 End of script
-```
+````
