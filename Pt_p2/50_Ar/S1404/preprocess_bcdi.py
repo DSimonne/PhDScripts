@@ -6,7 +6,7 @@
 #       authors:
 #         Jerome Carnis, carnis_jerome@yahoo.fr
 
-# import hdf5plugin  # for P10, should be imported before h5py or PyTables
+import hdf5plugin  # for P10, should be imported before h5py or PyTables
 import xrayutilities as xu
 import numpy as np
 import matplotlib.pyplot as plt
@@ -46,7 +46,8 @@ scans = 1404  # np.arange(1401, 1419+1, 3)  # list or array of scan numbers
 # bad_indices = np.argwhere(scans == 738)
 # scans = np.delete(scans, bad_indices)
 
-root_folder = "/home/david/Documents/PhD/PhDScripts/Pt_p2/50_Ar/S1404/"
+root_folder = "/home/david/Documents/PhD_local/PhDScripts/Pt_p2/50_Ar/S1404/"
+# root_folder = "./"
 sample_name = [""]  # "SN"  # list of sample names (string in front of the scan number in the folder name).
 # If only one name is indicated, it will be repeated to match the number of scans.
 user_comment = ''  # string, should start with "_"
@@ -145,11 +146,10 @@ photon_filter = 'loading'  # 'loading' or 'postprocessing', when the photon thre
 background_file = ''  # root_folder + 'background.npz'  #
 hotpixels_file =  root_folder + 'analysis/mask1000dark.npz' # root_folder + 'hotpixels.npz'  #
 flatfield_file = ''  # root_folder + "flatfield_maxipix_8kev.npz"  #
-# template_imagefile = 'Pt_time_scan_%05d.nxs'
 template_imagefile = 'Pt_ascan_mu_%05d.nxs'
 # template for ID01: 'data_mpx4_%05d.edf.gz' or 'align_eiger2M_%05d.edf.gz'
 # template for SIXS_2018: 'align.spec_ascan_mu_%05d.nxs'
-# template for SIXS_2019: 'spare_ascan_mu_%05d.nxs', "Pt_ascan_mu_%05d.nxs", 'Pt_time_scan_%05d.nxs'
+# template for SIXS_2019: 'spare_ascan_mu_%05d.nxs'
 # template for Cristal: 'S%d.nxs'
 # template for P10: '_master.h5'
 # template for NANOMAX: '%06d.h5'
@@ -411,6 +411,8 @@ for scan_nb in range(len(scans)):
         detector.datadir = homedir # + "data/"
         specfile = specfile_name
 
+    print(f"homedir : {homedir}")
+    print(f"root_folder : {root_folder}")
 
     logfile = pru.create_logfile(setup=setup, detector=detector, scan_number=scans[scan_nb],
                                  root_folder=root_folder, filename=specfile)

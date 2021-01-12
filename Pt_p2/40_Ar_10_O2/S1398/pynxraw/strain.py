@@ -45,7 +45,7 @@ or data[z, y, x] for real space
 
 scan = 1398  # spec scan number
 
-datadir = "./"
+datadir = "before_mask/"
 # datadir = "D:/Documents/PythonScripts/PhDScripts/Pt_p2/"
 
 sort_method = 'variance/mean'  # 'mean_amplitude' or 'variance' or 'variance/mean' or 'volume', metric for averaging
@@ -109,7 +109,7 @@ threshold_unwrap_refraction = 0.05  # threshold used to calculate the optical pa
 ###########
 simu_flag = False  # set to True if it is simulation, the parameter invert_phase will be set to 0
 invert_phase = True  # True for the displacement to have the right sign (FFT convention), False only for simulations
-flip_reconstruction = False  # True if you want to get the conjugate object
+flip_reconstruction = True  # True if you want to get the conjugate object
 phase_ramp_removal = 'gradient'  # 'gradient'  # 'gradient' or 'upsampling', 'gradient' is much faster
 threshold_gradient = 20  # upper threshold of the gradient of the phase, use for ramp removal
 xrayutils_ortho = False  # True if the data is already orthogonalized

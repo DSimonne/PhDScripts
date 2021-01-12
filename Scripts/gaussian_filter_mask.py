@@ -15,6 +15,6 @@ def gaussian_convolution(filename, sigma, threshold):
     
     np.savez(f"filter_sig{sigma}_t{threshold}_{filename}", oldmask = old_mask, mask = conv_mask)
     
-    print(f"New mask saved as filter_sig{sigma}_t{threshold}_{filename}")
+    print(f"New mask saved as \nfilter_sig{sigma}_t{threshold}_{filename}")
 
 gaussian_convolution(filename, sigma, threshold)

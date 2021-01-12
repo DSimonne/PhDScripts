@@ -19,7 +19,7 @@ def CreateSupport(Path, Threshold):
         ED = f.root.entry_1.data_1.data[:]
         print(f"Shape of real space complex electronic density array {np.shape(ED)}")
 
-        # Find max value of real space image, we work with the amplitude
+        # Find max value of real space image, we work with the module
         Amp = np.abs(ED)
         MaxRS = Amp.max()
         print(f"Maximum value in amplitude array: {MaxRS}")
@@ -52,7 +52,7 @@ t = int(T) /100
 NS = int(input("\nAmount of .cxi files,  between the N files that were kept, for which the threshold must be respected: "))
 
 # Take supports from cxi data
-Supports = [CreateSupport(p,t) for p in files]
+Supports = [CreateSupport(p, t) for p in files]
 
 
 FirstSupport = Supports[0]
@@ -64,10 +64,10 @@ mask = np.where(FirstSupport >= NS, 1, 0)
 
 print("\n\n")
 np.savez(f"{folder}/mask_{t}.npz", mask = mask)
-print(f"Mask saved in {folder} as mask_{t}.npz")
+print(f"Mask saved in {folder} as mask_T{t}_N{NS}.npz")
 
 rocc = np.where(mask == 1)
 rnocc = np.where(mask == 0)
 
-print("Indices where result == 1:\n",rocc)
+print("Indices where result == 1:\n", rocc)
 print(f"Percentage of 3D array occupied by support:\n{np.shape(rocc)[1] / np.shape(rnocc)[1]}")
