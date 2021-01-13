@@ -43,7 +43,7 @@ Therefore the data structure is data[qx, qz, qy] for reciprocal space,
 or data[z, y, x] for real space
 """
 
-scan = 1399  # spec scan number
+scan = 1398  # spec scan number
 
 datadir = "./"
 # datadir = "D:/Documents/PythonScripts/PhDScripts/Pt_p2/S1404/pynxraw/"
