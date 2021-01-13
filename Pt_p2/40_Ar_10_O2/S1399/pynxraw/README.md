@@ -103,7 +103,7 @@ First mode represents 95.077%
 Saving modes analysis to: modes.h5
 ````
 
-# Modes before mask, check for flipped ones
+# Modes on good
 
 ````bash
 (devel.p9) p9-02:40_Ar_10_O2/S1399/pynxraw % python pynx-cdi-analysis.py before_mask/S1399_pynx_norm_128_300_294_1_1_1-2021-01-12T1* modes=1                                                      --------------------------------------------------------------------------
@@ -135,6 +135,34 @@ R_match(0, 6) = 22.738% [0 arrays remaining]
 Elapsed time:   53.1s
 Analysing modes
 First mode represents 96.566%
+Saving modes analysis to: modes.h5
+````
+
+# modes on flipped
+
+````bash
+(devel.p9) p9-07:40_Ar_10_O2/S1399/pynxraw % python pynx-cdi-analysis.py flipped/S1399_pynx_norm_128_300_294_1_1_1-2021-01-12T1* modes=1
+--------------------------------------------------------------------------
+No OpenFabrics connection schemes reported that they were able to be
+used on a specific port.  As such, the openib BTL (OpenFabrics
+support) will be disabled for this port.
+
+  Local host:           p9-07
+  Local device:         mlx5_0
+  Local port:           1
+  CPCs attempted:       udcm
+--------------------------------------------------------------------------
+Importing data files
+Loading: flipped/S1399_pynx_norm_128_300_294_1_1_1-2021-01-12T13-22-26_Run0013_LLKf000.1627_LLK000.1736_SupportThreshold0.28355.cxi
+Loading: flipped/S1399_pynx_norm_128_300_294_1_1_1-2021-01-12T13-42-58_Run0036_LLKf000.1637_LLK000.1683_SupportThreshold0.24114.cxi
+Loading: flipped/S1399_pynx_norm_128_300_294_1_1_1-2021-01-12T14-26-05_Run0085_LLKf000.1629_LLK000.1677_SupportThreshold0.26013.cxi
+Calculating modes from the imported objects
+Matching arrays against the first one [flipped/S1399_pynx_norm_128_300_294_1_1_1-2021-01-12T13-22-26_Run0013_LLKf000.1627_LLK000.1736_SupportThreshold0.28355.cxi] - this may take a while
+R_match(0, 1) = 46.770% [1 arrays remaining]
+R_match(0, 2) = 46.942% [0 arrays remaining]
+Elapsed time:   18.7s
+Analysing modes
+First mode represents 93.988%
 Saving modes analysis to: modes.h5
 ````
 

@@ -34,6 +34,8 @@ Les fichiers nexus sont dans :
 
 use `source /sware/exp/pynx/devel.p9/bin/activate` for pynx-cdi-analysis.py
 
+The output of pynx without an input support are conjugate objects of each others, meaning that 50% of results are flipped compared to the others
+
 # Kernels on slurm
 * p9.widgets : optimisé pour utiliser les widgets et thorondor
 * p9.bcdi : pour les scrips sur le terminal avec bcdi, comme strain.py  : `source /home/esrf/simonne/Documents/Environments/p9.bcdi/bin/activate`, inutile pour l'instant
