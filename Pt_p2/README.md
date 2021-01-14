@@ -20,6 +20,14 @@ Les fichiers nexus sont dans :
 
 * run once, check that the peak is well centered, if not run again after changing roi in file
 
+Install BCDI inside the conda encironment and not in .local
+* Go to the location of the virtual environment (for me: /users/mrichard/anaconda3/envs/bcdiDevel.conda/ )
+* mkdir dev
+* cd dev
+* `git clone https://github.com/carnij/bcdi.git`
+* cd bcdi
+* conda activate my_env
+* python3 setup.py install
 
 # PyNX 
 
