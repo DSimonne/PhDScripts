@@ -1,0 +1,50 @@
+2021-01-20 11:19:32,846  --> /nfs/ruche-sixs/sixs-soleil/com-sixs/2021/Shutdown0/test/MacroCOStochio_Kflow2.txt --- 
+2021-01-20 11:19:32,849  -->   1 --- import GasTool as gt --- fileName Index : #  33
+2021-01-20 11:19:32,858  -->   2 --- import time --- fileName Index : #  33
+2021-01-20 11:19:32,860  -->   3 --- gt.stflow() --- fileName Index : #  33
+2021-01-20 11:19:34,793  -->   4 ---  --- fileName Index : #  33
+2021-01-20 11:19:34,796  -->   5 --- mv(heater3, 1.2) --- fileName Index : #  33
+2021-01-20 11:19:35,201  -->   6 --- time.sleep(60) --- fileName Index : #  33
+2021-01-20 11:20:35,263  -->   7 ---  --- fileName Index : #  33
+2021-01-20 11:20:35,266  -->   8 --- #flow = 14ml/min --- fileName Index : #  33
+2021-01-20 11:20:35,268  -->   9 --- gt.condstochio4B() --- fileName Index : #  33
+2021-01-20 11:20:36,418  -->  10 --- time.sleep(600) --- fileName Index : #  33
+2021-01-20 11:30:36,522  -->  11 --- gt.batch() --- fileName Index : #  33
+2021-01-20 11:30:37,052  -->  12 --- time.sleep(300) --- fileName Index : #  33
+2021-01-20 11:35:37,155  -->  13 --- gt.batchstop(mixg=12) --- fileName Index : #  33
+2021-01-20 11:35:37,684  -->  14 --- time.sleep(60) --- fileName Index : #  33
+2021-01-20 11:36:37,746  -->  15 --- gt.stflow() --- fileName Index : #  33
+2021-01-20 11:36:39,671  -->  16 --- time.sleep(120) --- fileName Index : #  33
+2021-01-20 11:38:39,778  -->  17 ---  --- fileName Index : #  33
+2021-01-20 11:38:39,781  -->  18 --- #flow = 28ml/min --- fileName Index : #  33
+2021-01-20 11:38:39,783  -->  19 --- gt.condstochio3B() --- fileName Index : #  33
+2021-01-20 11:38:40,947  -->  20 --- time.sleep(600) --- fileName Index : #  33
+2021-01-20 11:48:41,049  -->  21 --- gt.batch() --- fileName Index : #  33
+2021-01-20 11:48:41,579  -->  22 --- time.sleep(300) --- fileName Index : #  33
+2021-01-20 11:53:41,682  -->  23 --- gt.batchstop(mixg=12) --- fileName Index : #  33
+2021-01-20 11:53:42,214  -->  24 --- time.sleep(60) --- fileName Index : #  33
+2021-01-20 11:54:42,278  -->  25 --- gt.stflow() --- fileName Index : #  33
+2021-01-20 11:54:44,200  -->  26 --- time.sleep(120) --- fileName Index : #  33
+2021-01-20 11:56:44,299  -->  27 ---  --- fileName Index : #  33
+2021-01-20 11:56:44,302  -->  28 --- #flow =56ml/min --- fileName Index : #  33
+2021-01-20 11:56:44,303  -->  29 --- gt.condstochio2B() --- fileName Index : #  33
+2021-01-20 11:56:45,450  -->  30 --- time.sleep(300) --- fileName Index : #  33
+2021-01-20 12:01:45,557  -->  31 --- gt.batch() --- fileName Index : #  33
+2021-01-20 12:01:46,084  -->  32 --- time.sleep(300) --- fileName Index : #  33
+2021-01-20 12:06:46,189  -->  33 --- gt.batchstop(mixg=12) --- fileName Index : #  33
+2021-01-20 12:06:46,719  -->  34 --- time.sleep(60) --- fileName Index : #  33
+2021-01-20 12:07:46,782  -->  35 --- gt.stflow() --- fileName Index : #  33
+2021-01-20 12:07:48,708  -->  36 --- time.sleep(120) --- fileName Index : #  33
+2021-01-20 12:09:48,811  -->  37 ---  --- fileName Index : #  33
+2021-01-20 12:09:48,814  -->  38 --- #flow = 112ml/min --- fileName Index : #  33
+2021-01-20 12:09:48,816  -->  39 --- gt.condstochio1B() --- fileName Index : #  33
+2021-01-20 12:09:49,968  -->  40 --- time.sleep(300) --- fileName Index : #  33
+2021-01-20 12:14:50,070  -->  41 --- gt.batch() --- fileName Index : #  33
+2021-01-20 12:14:50,600  -->  42 --- time.sleep(300) --- fileName Index : #  33
+2021-01-20 12:19:50,703  -->  43 --- gt.batchstop(mixg=12) --- fileName Index : #  33
+2021-01-20 12:19:51,232  -->  44 --- time.sleep(60) --- fileName Index : #  33
+2021-01-20 12:20:51,296  -->  45 --- gt.stflow() --- fileName Index : #  33
+2021-01-20 12:20:53,220  -->  46 --- time.sleep(120 --- fileName Index : #  33
+2021-01-20 12:22:53,323  --> Number of ERROR : 0
+2021-01-20 12:22:53,324  --> END (MacroCOStochio_Kflow2.txt)
+2021-01-20 12:22:53,324 ******************************************
