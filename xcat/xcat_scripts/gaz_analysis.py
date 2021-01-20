@@ -70,16 +70,19 @@ class XCAT():
 
 		display(self.df.tail())
 
+		# define heater parameters
+		self.heater_ramp = pd.DataFrame({
+								    "Current" : [0.3 , 0.4 , 0.5 , 0.6 , 0.7 , 0.8 , 0.9 , 1.1 , 1.3 , 1.5 , 1.7],
+								    "Temperature" : [T + 25 for T in [72 , 96 , 134 , 170 , 217 , 245 , 300, 355 ,433, 500, 571]]
+								})
+		
+		self.heater_poly_fit_coef = np.polyfit(self.heater_ramp["Current"], self.heater_ramp["Temperature"], 1)
+		self.heater_poly_fit = np.poly1d(self.heater_poly_fit_coef)
+
 
 	# load and interpolate rga data
-	def load_rga(self, rga_file, rename_columns = False):
+	def load_rga(self, rga_file, skiprows = 28, names = ["Time(s)", "CO", "O2", "Ar", "CO2", "C", "H2"]):
 		"""Find timestamp of rga file and loads it as a DataFrame"""
-
-		if rename_columns:
-			names = ["Time(s)", "CO", "O2", "Ar", "CO2", "C", "H2"]
-
-		else:
-			names = ["Time(s)", "Channel#1", "Channel#2", "Channel#3", "Channel#4", "Channel#5", "Channel#6"]
 
 		# Find timestamp
 		with open(rga_file) as f:
@@ -96,7 +99,7 @@ class XCAT():
 			    delimiter = ',',
 			    index_col = False,
 			    names = names,
-			    skiprows = 28)
+			    skiprows = skiprows)
 
 		except OSError:
 			raise OSError
@@ -107,7 +110,7 @@ class XCAT():
 			x = self.rga_data["Time(s)"]
 
 			# get duration in seconds of the experiment linked to that dataset
-			self.duration = int(x.values[-1])
+			self.duration = int(float(x.values[-1]))
 
 			print(f"Experiment duration: {self.duration} seconds.")
 
@@ -142,6 +145,7 @@ class XCAT():
 			print("To interpolate also thr rga data, you need to run Valves.load_rga() first")
 
 		except Exception as e:
+			print("Play with the amount of columns names and the amount of rows skipped.")
 			raise e
 
 
@@ -284,7 +288,7 @@ class XCAT():
 		except Exception as e:
 			raise e
 
-	#### plotting functions ###
+	#### plotting functions for xcat data ###
 
 	def plot_xcat_entry(self, plot_entry_list, df = "interpolated", zoom1 = [None, None, None, None], zoom2 = [None, None, None, None], cursor_positions = [None]):
 		try:
@@ -382,16 +386,24 @@ class XCAT():
 		except KeyError as e:
 			raise KeyError("Are you sure you are trying to plot a gaz?")
 
+	#### plotting functions for rga data ###
 
-	def plot_rga(self, plotted_columns = ["CO", "O2", "Ar", "CO2", "C", "H2"], zoom = [None, None, None, None], cursor_positions = [None]):
+	def plot_rga(self, plotted_columns = None, zoom = [None, None, None, None], cursor_positions = [None]):
 		"""Plot rga data
 		if plotted_columns = None, it plots all the columns
 		"""
 
 		plt.figure(figsize=(18, 13), dpi=80, facecolor='w', edgecolor='k')
-		for element in plotted_columns:
-			plt.plot(self.rga_df_interpolated.time.values, self.rga_df_interpolated[element].values, linewidth = 2, label = f"Mass {element}")
-			
+
+		try:
+			for element in plotted_columns:
+				plt.plot(self.rga_df_interpolated.time.values, self.rga_df_interpolated[element].values, linewidth = 2, label = f"Mass {element}")
+		
+		# if plotted_columns is None		
+		except:
+			for element in self.rga_df_interpolated.columns[1:]:
+				plt.plot(self.rga_df_interpolated.time.values, self.rga_df_interpolated[element].values, linewidth = 2, label = f"Mass {element}")
+
 		plt.semilogy()
 
 		# cursor
@@ -405,19 +417,26 @@ class XCAT():
 		finally:
 			plt.xlim(zoom[0], zoom[1])
 			plt.ylim(zoom[2], zoom[3])
+			
+			plt.title(f"Pressure for each element", fontsize=16)
 
 			plt.xlabel('Time (s)',fontsize=16)
 			plt.ylabel('Pressure (mBar)',fontsize=16)
-			plt.legend(bbox_to_anchor=(0., 1.02, 1., .102), loc=3,
+			plt.legend(bbox_to_anchor=(0., -0.1, 1., .102), loc=3,
 			       ncol=5, mode="expand", borderaxespad=0.)
 			plt.grid(b=True, which='major', color='b', linestyle='-')
-			plt.grid(b=True, which='minor', color='r', linestyle='--')
+			plt.grid(b=True, which='minor', color=mcolors.CSS4_COLORS["teal"], linestyle='--')
 			plt.show()
 
 
-	def plot_rga_norm_leak(self, leak_values = [1], leak_positions = [None, None], plotted_columns = ["CO", "O2", "Ar", "CO2", "C", "H2"], zoom = [None, None, None, None], cursor_positions = [None]):
-		"""Plot rga data
+	def plot_rga_norm_leak(self, leak_values = [1], leak_positions = [None, None], plotted_columns = None, zoom = [None, None, None, None], cursor_positions = [None]):
+		"""
+		Plot rga data normalized by the values given in leak_values on the intervals given by leak_positions
+		e.g. leak_values = [1.3, 2] and leak_positions = [100, 200, 500] will result in a division by 1.3 between indices 100 and 200
+		and by a division by 2 between indices 200 and 500.
+		works on rga_df_interpolated
 		if plotted_columns = None, it plots all the columns
+		possible to use a zoom and vertical cursors (one or multiple) 
 		"""
 
 		if len(leak_values) + 1 == len(leak_positions):
@@ -425,18 +444,33 @@ class XCAT():
 			plt.figure(figsize = (18, 13), dpi = 80, facecolor = 'w', edgecolor = 'k')
 
 			# for each column
-			for element in plotted_columns:
-				normalized_values = self.rga_df_interpolated[element].values.copy()
+			try:
+				for element in plotted_columns:
+					normalized_values = self.rga_df_interpolated[element].values.copy()
 
-				# normalize between the leak positions
-				for j, value in enumerate(leak_values):
+					# normalize between the leak positions
+					for j, value in enumerate(leak_values):
 
-					# print(f"We normalize between {leak_positions[j]} s and {leak_positions[j+1]} s by {value}")
+						# print(f"We normalize between {leak_positions[j]} s and {leak_positions[j+1]} s by {value}")
 
-					normalized_values[leak_positions[j]:leak_positions[j+1]] = (normalized_values[leak_positions[j]:leak_positions[j+1]] / value)
+						normalized_values[leak_positions[j]:leak_positions[j+1]] = (normalized_values[leak_positions[j]:leak_positions[j+1]] / value)
 
-				plt.plot(self.rga_df_interpolated.time.values, normalized_values, linewidth = 2, label = f"Mass {element}")
-				
+					plt.plot(self.rga_df_interpolated.time.values, normalized_values, linewidth = 2, label = f"Mass {element}")
+			
+			# if plotted_columns is None
+			except:
+				for element in self.rga_df_interpolated.columns[1:]:
+					normalized_values = self.rga_df_interpolated[element].values.copy()
+
+					# normalize between the leak positions
+					for j, value in enumerate(leak_values):
+
+						# print(f"We normalize between {leak_positions[j]} s and {leak_positions[j+1]} s by {value}")
+
+						normalized_values[leak_positions[j]:leak_positions[j+1]] = (normalized_values[leak_positions[j]:leak_positions[j+1]] / value)
+
+					plt.plot(self.rga_df_interpolated.time.values, normalized_values, linewidth = 2, label = f"Mass {element}")
+			
 			plt.semilogy()
 
 			# cursor
@@ -451,32 +485,43 @@ class XCAT():
 				plt.xlim(zoom[0], zoom[1])
 				plt.ylim(zoom[2], zoom[3])
 
+				plt.title(f"Normalized by pressure in rga (leak valve)", fontsize=16)
+
 				plt.xlabel('Time (s)',fontsize=16)
-				plt.ylabel('Normalized Pressure (mBar)',fontsize=16)
-				plt.legend(bbox_to_anchor=(0., 1.02, 1., .102), loc=3,
+				plt.ylabel('Pressure (mBar)',fontsize=16)
+				plt.legend(bbox_to_anchor=(0., -0.1, 1., .102), loc=3,
 				       ncol=5, mode="expand", borderaxespad=0.)
 				plt.grid(b=True, which='major', color='b', linestyle='-')
-				plt.grid(b=True, which='minor', color='r', linestyle='--')
+				plt.grid(b=True, which='minor', color=mcolors.CSS4_COLORS["teal"], linestyle='--')
 				plt.show()
 
 		else:
 			print("Length of leak_positions should be one more than leak_values.")
 
 
-	def plot_rga_norm_ptot(self, plotted_columns = ["CO", "O2", "Ar", "CO2", "C", "H2"], ref_column = "CO", zoom = [None, None, None, None], cursor_positions = [None]):
-		"""Plot rga data
+	def plot_rga_norm_carrier(self, carrier_gaz = "Ar", plotted_columns = None, zoom = [None, None, None, None], cursor_positions = [None]):
+		"""
+		Plot rga data normalized by one column (carrier_gaz)
+		works on rga_df_interpolated
 		if plotted_columns = None, it plots all the columns
+		possible to use a zoom and vertical cursors (one or multiple) 
 		"""
 
 		norm_df = self.rga_df_interpolated.copy()
 
 		plt.figure(figsize=(18, 13), dpi=80, facecolor='w', edgecolor='k')
+		
+		try:
+			plotted_columns.remove(carrier_gaz)
+
+		except:
+			plotted_columns = list(self.rga_df_interpolated.columns).remove(carrier_gaz)
+
 		for element in plotted_columns:
-			if element != ref_column:
-				norm_df[element] = norm_df[element] / norm_df[ref_column]
+			norm_df[element] = norm_df[element] / norm_df[carrier_gaz]
 
 			plt.plot(norm_df.time.values, norm_df[element].values, linewidth = 2, label = f"Mass {element}")
-			
+				
 		plt.semilogy()
 
 		# cursor
@@ -491,50 +536,141 @@ class XCAT():
 			plt.xlim(zoom[0], zoom[1])
 			plt.ylim(zoom[2], zoom[3])
 
+			plt.title(f"Normalized by carrier gaz ({carrier_gaz}) pressure", fontsize=16)
+
 			plt.xlabel('Time (s)',fontsize=16)
-			plt.ylabel('Partial Pressure (mBar)',fontsize=16)
-			plt.legend(bbox_to_anchor=(0., 1.02, 1., .102), loc=3,
+			plt.ylabel('Pressure (mBar)',fontsize=16)
+			plt.legend(bbox_to_anchor=(0., -0.1, 1., .102), loc=3,
 			       ncol=5, mode="expand", borderaxespad=0.)
 			plt.grid(b=True, which='major', color='b', linestyle='-')
-			plt.grid(b=True, which='minor', color='r', linestyle='--')
+			plt.grid(b=True, which='minor', color=mcolors.CSS4_COLORS["teal"], linestyle='-')
 			plt.show()
 
 
-	# def plot_decimal(self, entry):
-	# 	try:
+	def plot_rga_norm_ptot(self, plotted_columns = None, ptot = None, zoom = [None, None, None, None], cursor_positions = [None]):
+		"""
+		Plot rga data normalized by the total pressure in the cell
+		works on rga_df_interpolated
+		if plotted_columns = None, it plots all the columns
+		possible to use a zoom and vertical cursors (one or multiple) 
+		"""
 
-	# 		plt.close()
-	# 		fig, ax = plt.subplots(3, 1, figsize = (16, 9))
+		used_arr = self.rga_df_interpolated.values
+		
+		ptot_row = used_arr[:,1:].sum(axis = 1) / ptot
 
-	# 		# Normal scale
+		val = np.ones(used_arr.shape)
+		val[:,1:] = (val[:,1:].T * ptot_row).T
 
-	# 		ax[0].plot(plot_df[f"time_{entry}"], plot_df[f"flow_{entry}"], label = "flow_{entry}")
-	# 		ax[1].plot(plot_df[f"time_{entry}"], plot_df[f"setpoint_{entry}"], label = "setpoint_{entry}")
-	# 		ax[2].plot(plot_df[f"time_{entry}"], plot_df[f"valve_{entry}"], label = "valve_{entry}")
+		norm_df = pd.DataFrame(used_arr / val, columns = self.rga_df_interpolated.columns)
+		display(norm_df.head())
 
-	# 		ax[0].legend()
-	# 		ax[1].legend()
-	# 		ax[2].legend();
+		plt.figure(figsize=(18, 13), dpi=80, facecolor='w', edgecolor='k')
 
-	# 	except KeyError:
-	# 		raise KeyError("Wrong entry name")
+		try:
+			for element in plotted_columns:
+				plt.plot(norm_df.time.values, norm_df[element].values, linewidth = 2, label = f"Mass {element}")
+
+		# if plotted_columns is None
+		except:
+			for element in self.rga_df_interpolated.columns[1:]:	
+				plt.plot(norm_df.time.values, norm_df[element].values, linewidth = 2, label = f"Mass {element}")
+
+		plt.semilogy()
+
+		# cursor
+		try:
+			for cursor_pos in cursor_positions:
+				plt.axvline(x = cursor_pos, linestyle = "--", color = "#bb1e10")
+
+		except TypeError:
+			print("No cursor")
+
+		finally:
+			plt.xlim(zoom[0], zoom[1])
+			plt.ylim(zoom[2], zoom[3])
+
+			plt.title(f"Normalized by total pressure ({ptot} bar)",fontsize=16)
+
+			plt.xlabel('Time (s)',fontsize=16)
+			plt.ylabel('Pressure (mBar)',fontsize=16)
+			plt.legend(bbox_to_anchor=(0., -0.1, 1., .102), loc=3,
+			       ncol=5, mode="expand", borderaxespad=0.)
+			plt.grid(b=True, which='major', color='b', linestyle='-')
+			plt.grid(b=True, which='minor', color=mcolors.CSS4_COLORS["teal"], linestyle='--')
+			plt.show()
 
 
-	# def plot_log(self, entry):
-	# 	try:
+	def plot_rga_norm_temp(self, start_heating, end_heating, nb_points, amp_final, delta_time = 10, plotted_columns = None, zoom = [None, None, None, None], cursor_positions = [None]):
+		"""
+		Plot rga data normalized by the values given in intensity_values on the intervals given by leak_positions
+		e.g. intensity_values = [1.3, 2] and leak_positions = [100, 200, 500] will result in a division by 1.3 between indices 100 and 200
+		and by a division by 2 between indices 200 and 500.
+		works on rga_df_interpolated
+		if plotted_columns = None, it plots all the columns
+		possible to use a zoom and vertical cursors (one or multiple) 
+		"""
 
-	# 		plt.close()
-	# 		fig, ax = plt.subplots(3, 1, figsize = (16, 9))
+		# recreate points that were used during data acquisition
+		amperage = np.concatenate((np.linspace(0, amp_final, nb_points, endpoint=False), np.linspace(amp_final, 0, nb_points + 1)))
 
-	# 		# logscale
+		# recreate temperature from heater benchmarks
+		temperature = self.heater_poly_fit(amperage)
+		temperature = np.array([t if t >25 else 25 for t in temperature])
 
-	# 		ax[0].plot(np.log(plot_df[f"time_{entry}"]), np.log(plot_df[f"flow_{entry}"]), label = "flow_{entry}")
-	# 		ax[1].plot(np.log(plot_df[f"time_{entry}"]), np.log(plot_df[f"setpoint_{entry}"]), label = "setpoint_{entry}")
-	# 		ax[2].plot(np.log(plot_df[f"time_{entry}"]), np.log(plot_df[f"valve_{entry}"]), label = "valve_{entry}")
+		temperature_variations = pd.DataFrame({
+			"amperage" : amperage,
+			"temperature" : temperature
+			})
 
-	# 		ax[0].legend()
-	# 		ax[1].legend()
-	# 		ax[2].legend();
+		display(temperature_variations.head())
 
-	# 	except KeyError:
-	# 		raise KeyError("Wrong entry name")
+		# multiply by delta time
+		periods = delta_time * np.arange(0, (2 * nb_points)+1)
+
+		time_column = self.rga_df_interpolated["time"].values[start_heating:end_heating]
+
+		plt.figure(figsize = (18, 13), dpi = 80, facecolor = 'w', edgecolor = 'k')
+
+		# for each column
+		try:
+			for element in plotted_columns:
+				data_column = self.rga_df_interpolated[element].values[start_heating:end_heating]
+				
+				temp_norm_data = [d/temperature[(t-start_heating)//delta_t] for t, d in zip(time_column, data_column)]
+
+				plt.plot(time_column, temp_norm_data, linewidth = 2, label = f"Mass {element}")
+		
+		# if plotted_columns is None
+		except:
+			for element in self.rga_df_interpolated.columns[1:]:
+				data_column = self.rga_df_interpolated[element].values[start_heating:end_heating]
+				
+				temp_norm_data = [d/temperature[(t-start_heating)//delta_t] for t, d in zip(time_column, data_column)]
+
+				plt.plot(time_column, temp_norm_data, linewidth = 2, label = f"Mass {element}")
+		
+		plt.semilogy()
+
+		# cursor
+		try:
+			#mcolors.CSS4_COLORS["teal"]
+			for cursor_pos in cursor_positions:
+				plt.axvline(x = cursor_pos, linestyle = "--", color = "#bb1e10")
+		except TypeError:
+			print("No cursor")
+
+		finally:
+			plt.xlim(zoom[0], zoom[1])
+			plt.ylim(zoom[2], zoom[3])
+
+			plt.title(f"Normalized by temperature values linked to input current", fontsize=16)
+
+			plt.xlabel('Time (s)',fontsize=16)
+			plt.ylabel('Pressure (mBar)',fontsize=16)
+			plt.legend(bbox_to_anchor=(0., -0.1, 1., .102), loc=3,
+			       ncol=5, mode="expand", borderaxespad=0.)
+			plt.grid(b=True, which='major', color='b', linestyle='-')
+			plt.grid(b=True, which='minor', color=mcolors.CSS4_COLORS["teal"], linestyle='--')
+			plt.show()
+

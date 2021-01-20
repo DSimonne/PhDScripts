@@ -72,6 +72,7 @@ def RgaLoad(filename):
     #data=pd.read_csv(filename,delimiter=',',skiprows=hend)
     data=np.genfromtxt(filename,dtype= 'float', comments='#', delimiter=',', skip_header=hend+1)
     return data, starttime, dictionary 
+   
     
 def RgaPlot(filename, masses, TimeRange=None, style='none'):
     '''it plots the raw data as function of the time in seconds since the start of the experiment
@@ -144,7 +145,8 @@ def RgaPlot(filename, masses, TimeRange=None, style='none'):
     plt.grid(b=True, which='major', color='b', linestyle='-')
     plt.grid(b=True, which='minor', color='r', linestyle='--')
     plt.show()
-    
+  
+
 def RgaSelect(filename, masses,TimeRange=None):
     '''it returns the raw data as function of the time in seconds since the start of the experiment
     using the option time=[start, deltaTime]. It permits to select only the data within that range
@@ -180,15 +182,16 @@ def RgaSelect(filename, masses,TimeRange=None):
         vectAll=np.c_[vectAll,vect]
 
     return vectAll[Dstart:Dend,:]
-    
+  
+
 def RgaNormPlot(filename, masses, TimeRange = None, plot = None):
     '''It plots the RGA signals normalised to the first mass of the list, often the carrier Ar. '''
     
     vectAll = RgaSelect(filename, masses,TimeRange=TimeRange)
     vectAllnorm = vectAll[:,0]
-#    print type(vectAllnorm)
+    #    print type(vectAllnorm)
     for index, el in enumerate(masses[1:],start = 2): 
-### start = 2 because on the batches matrix the column 0 is the time col 1 is the carrier gas
+    ### start = 2 because on the batches matrix the column 0 is the time col 1 is the carrier gas
         y = vectAll[:,index]/vectAll[:,1]
         vectAllnorm = np.c_[vectAllnorm, y]
         #print np.shape(y)
@@ -208,8 +211,7 @@ def RgaNormPlot(filename, masses, TimeRange = None, plot = None):
     
     return vectAllnorm
 
-
-        
+      
 def RgaNormPtotPlot(filename, masses, Pres ,TimeRange = None, plot = None):
     '''It plots the RGA signals normalised to the sum of the masses list. 
     and rescaled to the total imposed pressure of the masses sum
