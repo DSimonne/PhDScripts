@@ -1,0 +1,28 @@
+2021-01-14 15:12:56,232  --> /nfs/ruche-sixs/sixs-soleil/com-sixs/2021/Shutdown0/test/Macro_LowCO.txt --- 
+2021-01-14 15:12:56,237  -->   1 --- """ --- fileName Index : #  20
+2021-01-14 15:12:56,249  -->   1 ---                                                          """ --- ERROR
+2021-01-14 15:12:56,253  -->   2 --- Routine for constant partial pressure, constant ratio between CO and O2, --- fileName Index : #  20
+2021-01-14 15:12:56,256  -->   2 --- Routine for constant partial pressure, constant ratio between CO and O2, --- ERROR
+2021-01-14 15:12:56,257  -->   3 --- but different total flow. --- fileName Index : #  20
+2021-01-14 15:12:56,260  -->   3 ---                                    but different total flow. --- ERROR
+2021-01-14 15:12:56,261  -->   4 --- """ --- fileName Index : #  20
+2021-01-14 15:12:56,264  -->   4 ---                                                          """ --- ERROR
+2021-01-14 15:12:56,265  -->   5 --- import GasTool as gt --- fileName Index : #  20
+2021-01-14 15:12:56,274  -->   6 --- import time --- fileName Index : #  20
+2021-01-14 15:12:56,276  -->   7 --- gt.stflow() --- fileName Index : #  20
+2021-01-14 15:12:58,211  -->   8 ---  --- fileName Index : #  20
+2021-01-14 15:12:58,213  -->   9 --- mv(heater3, 1) --- fileName Index : #  20
+2021-01-14 15:12:59,493  -->  10 --- time.sleep(60) --- fileName Index : #  20
+2021-01-14 15:13:59,556  -->  11 ---  --- fileName Index : #  20
+2021-01-14 15:13:59,558  -->  12 --- gt.cond15() --- fileName Index : #  20
+2021-01-14 15:14:00,699  -->  13 --- time.sleep(180) --- fileName Index : #  20
+2021-01-14 15:17:00,804  -->  14 --- gt.stflow() --- fileName Index : #  20
+2021-01-14 15:17:02,723  -->  15 --- time.sleep(120) --- fileName Index : #  20
+2021-01-14 15:19:02,826  -->  16 ---  --- fileName Index : #  20
+2021-01-14 15:19:02,829  -->  17 --- gt.cond22p5() --- fileName Index : #  20
+2021-01-14 15:19:03,973  -->  18 --- time.sleep(180) --- fileName Index : #  20
+2021-01-14 15:19:23,276 ----- KeyboardInterrupt -----
+2021-01-14 15:19:23,277 ----- KeyboardInterrupt -----
+2021-01-14 15:19:23,277  --> Number of ERROR : 4
+2021-01-14 15:19:23,277  --> END (Macro_LowCO.txt)
+2021-01-14 15:19:23,277 ******************************************
