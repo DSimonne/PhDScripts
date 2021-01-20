@@ -1,0 +1,15 @@
+2021-01-15 13:41:17,967  --> /nfs/ruche-sixs/sixs-soleil/com-sixs/2021/Shutdown0/test/MacroCOStochio.txt --- 
+2021-01-15 13:41:17,969  -->   1 --- import GasTool as gt --- fileName Index : #  28
+2021-01-15 13:41:17,971  -->   2 --- import time --- fileName Index : #  28
+2021-01-15 13:41:17,974  -->   3 --- gt.stflow() --- fileName Index : #  28
+2021-01-15 13:41:19,900  -->   4 ---  --- fileName Index : #  28
+2021-01-15 13:41:19,902  -->   5 --- mv(heater3, 1.2) --- fileName Index : #  28
+2021-01-15 13:41:20,307  -->   6 --- time.sleep(60) --- fileName Index : #  28
+2021-01-15 13:42:20,370  -->   7 ---  --- fileName Index : #  28
+2021-01-15 13:42:20,373  -->   8 --- gt.condstochio1() --- fileName Index : #  28
+2021-01-15 13:42:21,529  -->   9 --- time.sleep(300) --- fileName Index : #  28
+2021-01-15 13:44:40,299 ----- KeyboardInterrupt -----
+2021-01-15 13:44:40,300 ----- KeyboardInterrupt -----
+2021-01-15 13:44:40,301  --> Number of ERROR : 0
+2021-01-15 13:44:40,301  --> END (MacroCOStochio.txt)
+2021-01-15 13:44:40,302 ******************************************

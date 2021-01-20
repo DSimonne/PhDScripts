@@ -1,0 +1,42 @@
+import GasTool as gt
+import time
+gt.stflow()
+
+mv(heater3, 1.2)
+time.sleep(60)
+
+gt.condstochio1()
+time.sleep(300)
+gt.batch()
+time.sleep(60)
+gt.batchstop(mixg=12)
+time.sleep(60)
+gt.stflow()
+time.sleep(120)
+
+gt.condstochio2()
+time.sleep(300)
+gt.batch()
+time.sleep(60)
+gt.batchstop(mixg=12)
+time.sleep(60)
+gt.stflow()
+time.sleep(120)
+
+gt.condstochio3()
+time.sleep(600)
+gt.batch()
+time.sleep(60)
+gt.batchstop(mixg=12)
+time.sleep(60)
+gt.stflow()
+time.sleep(120)
+
+gt.condstochio4()
+time.sleep(600)
+gt.batch()
+time.sleep(60)
+gt.batchstop(mixg=12)
+time.sleep(60)
+gt.stflow()
+time.sleep(120)

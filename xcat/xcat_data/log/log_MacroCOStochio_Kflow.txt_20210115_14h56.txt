@@ -1,0 +1,16 @@
+2021-01-15 14:56:12,393  --> /nfs/ruche-sixs/sixs-soleil/com-sixs/2021/Shutdown0/test/MacroCOStochio_Kflow.txt --- 
+2021-01-15 14:56:12,396  -->   1 --- import GasTool as gt --- fileName Index : #  28
+2021-01-15 14:56:12,398  -->   2 --- import time --- fileName Index : #  28
+2021-01-15 14:56:12,400  -->   3 --- gt.stflow() --- fileName Index : #  28
+2021-01-15 14:56:14,320  -->   4 ---  --- fileName Index : #  28
+2021-01-15 14:56:14,322  -->   5 --- mv(heater3, 1.2) --- fileName Index : #  28
+2021-01-15 14:56:14,731  -->   6 --- time.sleep(60) --- fileName Index : #  28
+2021-01-15 14:57:14,793  -->   7 ---  --- fileName Index : #  28
+2021-01-15 14:57:14,796  -->   8 --- gt.condstochio1B() --- fileName Index : #  28
+2021-01-15 14:57:14,799  -->   8 ---                                           gt.condstochio1B() --- ERROR
+2021-01-15 14:57:14,800  -->   9 --- time.sleep(300) --- fileName Index : #  28
+2021-01-15 14:59:15,093 ----- KeyboardInterrupt -----
+2021-01-15 14:59:15,094 ----- KeyboardInterrupt -----
+2021-01-15 14:59:15,095  --> Number of ERROR : 1
+2021-01-15 14:59:15,095  --> END (MacroCOStochio_Kflow.txt)
+2021-01-15 14:59:15,095 ******************************************

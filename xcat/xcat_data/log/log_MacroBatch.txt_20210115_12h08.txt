@@ -1,0 +1,85 @@
+2021-01-15 12:08:17,836  --> /nfs/ruche-sixs/sixs-soleil/com-sixs/2021/Shutdown0/test/MacroBatch.txt --- 
+2021-01-15 12:08:17,839  -->   1 --- import GasTool as gt --- fileName Index : #  28
+2021-01-15 12:08:17,841  -->   2 --- import time --- fileName Index : #  28
+2021-01-15 12:08:17,843  -->   3 --- gt.stflow() --- fileName Index : #  28
+2021-01-15 12:08:19,764  -->   4 ---  --- fileName Index : #  28
+2021-01-15 12:08:19,767  -->   5 --- mv(heater3, 1) --- fileName Index : #  28
+2021-01-15 12:08:20,170  -->   6 --- time.sleep(60) --- fileName Index : #  28
+2021-01-15 12:09:20,233  -->   7 ---  --- fileName Index : #  28
+2021-01-15 12:09:20,236  -->   8 --- gt.cond15() --- fileName Index : #  28
+2021-01-15 12:09:21,385  -->   9 --- time.sleep(300) --- fileName Index : #  28
+2021-01-15 12:14:21,488  -->  10 --- gt.batch() --- fileName Index : #  28
+2021-01-15 12:14:22,019  -->  11 --- time.sleep(60) --- fileName Index : #  28
+2021-01-15 12:15:22,080  -->  12 --- gt.batchstop(mixg=12) --- fileName Index : #  28
+2021-01-15 12:15:22,609  -->  13 --- time.sleep(60) --- fileName Index : #  28
+2021-01-15 12:16:22,671  -->  14 --- gt.stflow() --- fileName Index : #  28
+2021-01-15 12:16:24,591  -->  15 --- time.sleep(120) --- fileName Index : #  28
+2021-01-15 12:18:24,698  -->  16 ---  --- fileName Index : #  28
+2021-01-15 12:18:24,701  -->  17 --- gt.cond22p5() --- fileName Index : #  28
+2021-01-15 12:18:25,850  -->  18 --- time.sleep(300) --- fileName Index : #  28
+2021-01-15 12:23:25,952  -->  19 --- gt.batch() --- fileName Index : #  28
+2021-01-15 12:23:26,483  -->  20 --- time.sleep(60) --- fileName Index : #  28
+2021-01-15 12:24:26,548  -->  21 --- gt.batchstop(mixg=12) --- fileName Index : #  28
+2021-01-15 12:24:27,073  -->  22 --- time.sleep(60) --- fileName Index : #  28
+2021-01-15 12:25:27,136  -->  23 --- gt.stflow() --- fileName Index : #  28
+2021-01-15 12:25:29,055  -->  24 --- time.sleep(120) --- fileName Index : #  28
+2021-01-15 12:27:29,160  -->  25 ---  --- fileName Index : #  28
+2021-01-15 12:27:29,163  -->  26 --- gt.cond30() --- fileName Index : #  28
+2021-01-15 12:27:30,314  -->  27 --- time.sleep(300) --- fileName Index : #  28
+2021-01-15 12:32:30,418  -->  28 --- gt.batch() --- fileName Index : #  28
+2021-01-15 12:32:30,947  -->  29 --- time.sleep(60) --- fileName Index : #  28
+2021-01-15 12:33:31,011  -->  30 --- gt.batchstop(mixg=12) --- fileName Index : #  28
+2021-01-15 12:33:31,536  -->  31 --- time.sleep(60) --- fileName Index : #  28
+2021-01-15 12:34:31,598  -->  32 --- gt.stflow() --- fileName Index : #  28
+2021-01-15 12:34:33,516  -->  33 --- time.sleep(120) --- fileName Index : #  28
+2021-01-15 12:36:33,621  -->  34 ---  --- fileName Index : #  28
+2021-01-15 12:36:33,624  -->  35 --- gt.cond37p5() --- fileName Index : #  28
+2021-01-15 12:36:34,774  -->  36 --- time.sleep(300) --- fileName Index : #  28
+2021-01-15 12:41:34,878  -->  37 --- gt.batch() --- fileName Index : #  28
+2021-01-15 12:41:35,411  -->  38 --- time.sleep(60) --- fileName Index : #  28
+2021-01-15 12:42:35,471  -->  39 --- gt.batchstop(mixg=12) --- fileName Index : #  28
+2021-01-15 12:42:35,997  -->  40 --- time.sleep(60) --- fileName Index : #  28
+2021-01-15 12:43:36,055  -->  41 --- gt.stflow() --- fileName Index : #  28
+2021-01-15 12:43:37,974  -->  42 --- time.sleep(120) --- fileName Index : #  28
+2021-01-15 12:45:38,081  -->  43 ---  --- fileName Index : #  28
+2021-01-15 12:45:38,084  -->  44 --- gt.cond45() --- fileName Index : #  28
+2021-01-15 12:45:39,230  -->  45 --- time.sleep(300) --- fileName Index : #  28
+2021-01-15 12:50:39,333  -->  46 --- gt.batch() --- fileName Index : #  28
+2021-01-15 12:50:39,862  -->  47 --- time.sleep(60) --- fileName Index : #  28
+2021-01-15 12:51:39,926  -->  48 --- gt.batchstop(mixg=12) --- fileName Index : #  28
+2021-01-15 12:51:40,451  -->  49 --- time.sleep(60) --- fileName Index : #  28
+2021-01-15 12:52:40,516  -->  50 --- gt.stflow() --- fileName Index : #  28
+2021-01-15 12:52:42,451  -->  51 --- time.sleep(120) --- fileName Index : #  28
+2021-01-15 12:54:42,557  -->  52 ---  --- fileName Index : #  28
+2021-01-15 12:54:42,560  -->  53 --- gt.cond60() --- fileName Index : #  28
+2021-01-15 12:54:43,710  -->  54 --- time.sleep(300) --- fileName Index : #  28
+2021-01-15 12:59:43,812  -->  55 --- gt.batch() --- fileName Index : #  28
+2021-01-15 12:59:44,339  -->  56 --- time.sleep(60) --- fileName Index : #  28
+2021-01-15 13:00:44,401  -->  57 --- gt.batchstop(mixg=12) --- fileName Index : #  28
+2021-01-15 13:00:44,932  -->  58 --- time.sleep(60) --- fileName Index : #  28
+2021-01-15 13:01:44,996  -->  59 --- gt.stflow() --- fileName Index : #  28
+2021-01-15 13:01:46,913  -->  60 --- time.sleep(120) --- fileName Index : #  28
+2021-01-15 13:03:47,017  -->  61 ---  --- fileName Index : #  28
+2021-01-15 13:03:47,020  -->  62 --- gt.cond75() --- fileName Index : #  28
+2021-01-15 13:03:48,169  -->  63 --- time.sleep(300) --- fileName Index : #  28
+2021-01-15 13:08:48,273  -->  64 --- gt.batch() --- fileName Index : #  28
+2021-01-15 13:08:48,798  -->  65 --- time.sleep(60) --- fileName Index : #  28
+2021-01-15 13:09:48,862  -->  66 --- gt.batchstop(mixg=12) --- fileName Index : #  28
+2021-01-15 13:09:49,387  -->  67 --- time.sleep(60) --- fileName Index : #  28
+2021-01-15 13:10:49,448  -->  68 --- gt.stflow() --- fileName Index : #  28
+2021-01-15 13:10:51,369  -->  69 --- time.sleep(120) --- fileName Index : #  28
+2021-01-15 13:12:51,472  -->  70 ---  --- fileName Index : #  28
+2021-01-15 13:12:51,475  -->  71 --- gt.cond90() --- fileName Index : #  28
+2021-01-15 13:12:52,629  -->  72 --- time.sleep(300) --- fileName Index : #  28
+2021-01-15 13:17:52,723  -->  73 --- gt.batch() --- fileName Index : #  28
+2021-01-15 13:17:53,249  -->  74 --- time.sleep(60) --- fileName Index : #  28
+2021-01-15 13:18:53,312  -->  75 --- gt.batchstop(mixg=12) --- fileName Index : #  28
+2021-01-15 13:18:53,843  -->  76 --- time.sleep(60) --- fileName Index : #  28
+2021-01-15 13:19:53,906  -->  77 --- gt.stflow() --- fileName Index : #  28
+2021-01-15 13:19:55,838  -->  78 --- time.sleep(120 --- fileName Index : #  28
+2021-01-15 13:21:55,942  --> Number of ERROR : 0
+2021-01-15 13:21:55,942  --> END (MacroBatch.txt)
+2021-01-15 13:21:55,942 ******************************************
+2021-01-15 13:29:44,810  --> Number of ERROR : 0
+2021-01-15 13:29:44,811  --> END (MacroCOStochio.txt)
+2021-01-15 13:29:44,811 ******************************************
