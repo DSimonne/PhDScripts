@@ -1,0 +1,16 @@
+2021-01-20 16:03:59,253  --> /nfs/ruche-sixs/sixs-soleil/com-sixs/2021/Shutdown0/test/TempRamp2.mac --- 
+2021-01-20 16:03:59,256  -->   1 --- import GasTool as gt --- fileName Index : #  38
+2021-01-20 16:03:59,257  -->   2 --- import time --- fileName Index : #  38
+2021-01-20 16:03:59,260  -->   3 --- mv(heater3, 0) --- fileName Index : #  38
+2021-01-20 16:03:59,654  -->   4 --- gt.condE() --- fileName Index : #  38
+2021-01-20 16:04:00,805  -->   5 --- # 50ml/min 0.3Bar --- fileName Index : #  38
+2021-01-20 16:04:00,808  -->   6 --- # flow(Arg=32, COg=0, O2g=8,NOg=0, H2g=7.81, mixg=6, press=0.3 ) --- fileName Index : #  38
+2021-01-20 16:04:00,810  -->   7 --- time.sleep(300) --- fileName Index : #  38
+2021-01-20 16:09:00,906  -->   8 ---  --- fileName Index : #  38
+2021-01-20 16:09:00,909  -->   9 --- gt.tloopFastOff(0,1.8,100) --- fileName Index : #  38
+2021-01-20 16:44:17,623  -->  10 ---  --- fileName Index : #  38
+2021-01-20 16:44:17,626  -->  11 --- time.sleep(180) --- fileName Index : #  38
+2021-01-20 16:47:17,729  -->  12 --- gt.stflow( --- fileName Index : #  38
+2021-01-20 16:47:19,652  --> Number of ERROR : 0
+2021-01-20 16:47:19,652  --> END (TempRamp2.mac)
+2021-01-20 16:47:19,653 ******************************************
