@@ -5,6 +5,9 @@ import matplotlib.pyplot as plt
 from IPython.display import display
 import datetime
 from scipy import interpolate
+from scipy import special
+from scipy.optimize import curve_fit
+
 import matplotlib.colors as mcolors
 
 """
@@ -38,6 +41,8 @@ class XCAT():
 						"Closed", "NO+O2", "NO+H2+O2", "NO+H2"
 						]
 
+		self.gaz_travel_time = 12 #time for the gaz to travel from cell to detector
+		self.time_shift = 128
 		# Create dataframe
 		try:
 			self.df = pd.read_csv(
@@ -601,7 +606,7 @@ class XCAT():
 			plt.show()
 
 
-	def plot_rga_norm_temp(self, start_heating, end_heating, nb_points, amp_final, delta_time = 10, plotted_columns = None, zoom = [None, None, None, None], cursor_positions = [None]):
+	def plot_rga_norm_temp(self, start_heating, nb_points, amp_final, delta_time = 10, bins_nb = 1000, binning = False, plotted_columns = None, zoom = [None, None, None, None], cursor_positions = [None]):
 		"""
 		Plot rga data normalized by the values given in intensity_values on the intervals given by leak_positions
 		e.g. intensity_values = [1.3, 2] and leak_positions = [100, 200, 500] will result in a division by 1.3 between indices 100 and 200
@@ -612,23 +617,27 @@ class XCAT():
 		"""
 
 		# recreate points that were used during data acquisition
-		amperage = np.concatenate((np.linspace(0, amp_final, nb_points, endpoint=False), np.linspace(amp_final, 0, nb_points + 1)))
+		# amperage = np.round(np.concatenate((np.linspace(0, amp_final, nb_points*delta_time, endpoint=False), np.linspace(amp_final, 0, nb_points*delta_time))), 2)
+		amperage = np.concatenate((np.linspace(0, amp_final, nb_points*delta_time, endpoint=False), np.linspace(amp_final, 0, nb_points*delta_time)))
 
 		# recreate temperature from heater benchmarks
 		temperature = self.heater_poly_fit(amperage)
-		temperature = np.array([t if t >25 else 25 for t in temperature])
+		temperature_real = np.array([t if t >25 else 25 for t in temperature])
 
-		temperature_variations = pd.DataFrame({
+		# find end time
+		end_heating = start_heating + (2 * nb_points) * delta_time
+
+		# timerange of heating
+		time_column = self.rga_df_interpolated["time"].values[start_heating:end_heating]
+
+		# save in df
+		self.rga_during_heating = pd.DataFrame({
+			"time" : time_column,
 			"amperage" : amperage,
-			"temperature" : temperature
+			"temperature" : temperature_real,
 			})
 
-		display(temperature_variations.head())
-
-		# multiply by delta time
-		periods = delta_time * np.arange(0, (2 * nb_points)+1)
-
-		time_column = self.rga_df_interpolated["time"].values[start_heating:end_heating]
+		print("Results saved in self.rga_during_heating DataFrame")
 
 		plt.figure(figsize = (18, 13), dpi = 80, facecolor = 'w', edgecolor = 'k')
 
@@ -636,20 +645,31 @@ class XCAT():
 		try:
 			for element in plotted_columns:
 				data_column = self.rga_df_interpolated[element].values[start_heating:end_heating]
-				
-				temp_norm_data = [d/temperature[(t-start_heating)//delta_t] for t, d in zip(time_column, data_column)]
+				self.rga_during_heating[element] = data_column
 
-				plt.plot(time_column, temp_norm_data, linewidth = 2, label = f"Mass {element}")
+				if not binning:
+					plt.plot(temperature_real, data_column, linewidth = 2, linestyle = "dashdot", label = f"Mass {element}")
 		
 		# if plotted_columns is None
 		except:
 			for element in self.rga_df_interpolated.columns[1:]:
 				data_column = self.rga_df_interpolated[element].values[start_heating:end_heating]
-				
-				temp_norm_data = [d/temperature[(t-start_heating)//delta_t] for t, d in zip(time_column, data_column)]
+				self.rga_during_heating[element] = data_column
+				if not binning:
+					plt.plot(self.rga_during_heating.temperature, self.rga_during_heating[element], linewidth = 2, linestyle = "dashdot", label = f"Mass {element}")
+					# plt.plot(temperature_real, data_column, linewidth = 2, label = f"Mass {element}")
 
-				plt.plot(time_column, temp_norm_data, linewidth = 2, label = f"Mass {element}")
-		
+		# do binning after so that the dataframe on heating timerange already exists
+		if binning:
+			# Bin the data frame by "time" with bins_nb bins...
+			bins = np.linspace(self.rga_during_heating.time.min(), self.rga_during_heating.time.max(), bins_nb)
+			groups = self.rga_during_heating.groupby(np.digitize(self.rga_during_heating.time, bins))
+
+			# Get the mean of each bin:
+			self.binned_data = groups.mean()
+			for element in plotted_columns:
+				plt.plot(self.binned_data.temperature, self.binned_data[element], linewidth = 2, linestyle = "dashdot", label = f"Mass {element}")
+
 		plt.semilogy()
 
 		# cursor
@@ -663,10 +683,12 @@ class XCAT():
 		finally:
 			plt.xlim(zoom[0], zoom[1])
 			plt.ylim(zoom[2], zoom[3])
+			if not binning:
+				plt.title(f"Pressure as a function of the temperature (from input current)", fontsize=16)
+			else:
+				plt.title(f"Pressure as a function of the temperature (from input current), with {bins_nb} bins.", fontsize=16)
 
-			plt.title(f"Normalized by temperature values linked to input current", fontsize=16)
-
-			plt.xlabel('Time (s)',fontsize=16)
+			plt.xlabel('Temperature (°C)',fontsize=16)
 			plt.ylabel('Pressure (mBar)',fontsize=16)
 			plt.legend(bbox_to_anchor=(0., -0.1, 1., .102), loc=3,
 			       ncol=5, mode="expand", borderaxespad=0.)
@@ -674,3 +696,60 @@ class XCAT():
 			plt.grid(b=True, which='minor', color=mcolors.CSS4_COLORS["teal"], linestyle='--')
 			plt.show()
 
+
+	def fit_error_function(self, initial_guess, new_amper_vect, fitted_columns = None, binning = False, zoom = [None, None, None, None], cursor_positions = [None]):
+		"""fit pressure vs temperature dta with error function"""
+
+		def error_function(z, a, b, c, d):
+		    return a * (1 + special.erf((z - b) / c) ) + d
+
+		longer_temp_vect = self.heater_poly_fit(new_amper_vect)
+
+		if not binning:
+			used_df = self.rga_during_heating.copy()
+			xdata = used_df.temperature
+		else:
+			used_df = self.binned_data.copy()
+			xdata = used_df.temperature
+
+		fig, ax = plt.subplots(1, 1, figsize = (18, 13), dpi = 80, facecolor = 'w', edgecolor = 'k')
+
+		try:
+			for element in fitted_columns:
+				ydata = used_df[element]
+				popt, pcov = curve_fit(error_function, xdata, ydata, p0 = initial_guess)
+				# ax.plot(xdata, func(xdata, *guessErf))
+				ax.plot(xdata, ydata, linewidth = 2, linestyle = "dashdot", label = f"Mass {element}")
+				#ax.plot(xdata, func(xdata, *popt))
+				ax.plot(longer_temp_vect, error_function(longer_temp_vect, *popt), linewidth = 2, linestyle = "dashdot", label = f"Mass {element}")
+
+		except:
+			for element in used_df.columns[1:]:
+				ydata = used_df[element]
+				popt, pcov = curve_fit(error_function, xdata, ydata, p0 = initial_guess)
+				# ax.plot(xdata, func(xdata, *guessErf))
+				ax.plot(xdata, ydata, linewidth = 2, linestyle = "dashdot", label = f"Mass {element}")
+				#ax.plot(xdata, func(xdata, *popt))
+				ax.plot(longer_temp_vect, error_function(longer_temp_vect, *popt), linewidth = 2, linestyle = "dashdot", label = f"Mass {element}")
+
+		# cursor
+		try:
+			#mcolors.CSS4_COLORS["teal"]
+			for cursor_pos in cursor_positions:
+				ax.axvline(x = cursor_pos, linestyle = "--", color = "#bb1e10")
+		except TypeError:
+			print("No cursor")
+
+		finally:
+			ax.set_xlim(zoom[0], zoom[1])
+			ax.set_ylim(zoom[2], zoom[3])
+
+			ax.set_xlabel('Temperature (°C)',fontsize=16)
+			ax.set_ylabel('Pressure (mBar)',fontsize=16)
+			ax.legend(bbox_to_anchor=(0., -0.1, 1., .102), loc=3,
+			       ncol=5, mode="expand", borderaxespad=0.)
+			ax.grid(b=True, which='major', color='b', linestyle='-')
+			ax.grid(b=True, which='minor', color=mcolors.CSS4_COLORS["teal"], linestyle='--')
+
+			plt.title("Temperature vs pressure graphs fitted with error functions")
+			plt.show()
