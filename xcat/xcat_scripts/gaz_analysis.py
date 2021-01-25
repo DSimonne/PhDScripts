@@ -84,76 +84,7 @@ class XCAT():
 		self.heater_poly_fit_coef = np.polyfit(self.heater_ramp["Current"], self.heater_ramp["Temperature"], 1)
 		self.heater_poly_fit = np.poly1d(self.heater_poly_fit_coef)
 
-
-	# load and interpolate rga data
-	def load_rga(self, rga_file, skiprows = 28, names = ["Time(s)", "CO", "O2", "Ar", "CO2", "C", "H2"]):
-		"""Find timestamp of rga file and loads it as a DataFrame"""
-
-		# Find timestamp
-		with open(rga_file) as f:
-			for line in f:
-				if "Start time, " in line:
-					timeline = line.rstrip() #rstrip remove the spaces at the end of the line
-					self.time_stamp = time.mktime(datetime.datetime.strptime(timeline[12:], "%b %d, %Y  %I:%M:%S  %p").timetuple())
-					print(f"Timestamp: {self.time_stamp} (unix epoch).")
-
-		# Create dataframe
-		try:
-			self.rga_data = pd.read_csv(
-			    rga_file,
-			    delimiter = ',',
-			    index_col = False,
-			    names = names,
-			    skiprows = skiprows)
-
-		except OSError:
-			raise OSError
-
-		# Interpolate the valves data
-		try:
-			# get bad time axis 
-			x = self.rga_data["Time(s)"]
-
-			# get duration in seconds of the experiment linked to that dataset
-			self.duration = int(float(x.values[-1]))
-
-			print(f"Experiment duration: {self.duration} seconds.")
-
-			# create new time column in integer seconds
-			new_time_column = np.round(np.linspace(0, self.duration, self.duration + 1), 0)
-
-			# proceed to interpolation over the new time axis
-			interpolated_df = pd.DataFrame({
-			    f"time" : new_time_column
-			    })
-
-			# Iterate over all the columns
-			for col in self.rga_data.columns[self.rga_data.columns != "Time(s)"]:
-
-			    y = self.rga_data[col].values
-
-			    tck = interpolate.splrep(x, y, s = 0)
-			    y_new = interpolate.splev(new_time_column, tck)
-			    interpolated_df[col] = y_new
-
-			# make sure that the time is integer
-			interpolated_df["time"] = interpolated_df["time"].astype(int)
-
-			# save
-			setattr(self, "rga_df_interpolated", interpolated_df)
-			print(f"New interpolated dataframe created for rga.")
-
-			display(self.rga_df_interpolated.head())
-			display(self.rga_df_interpolated.tail())
-
-		except NameError:
-			print("To interpolate also thr rga data, you need to run Valves.load_rga() first")
-
-		except Exception as e:
-			print("Play with the amount of columns names and the amount of rows skipped.")
-			raise e
-
-
+	
 	# separate XCAT data
 	def separate_xcat_dataframes(self, entry_list):
 		"""Create new dataframes based on the gases that were analyzed"""
@@ -198,6 +129,78 @@ class XCAT():
 					print(f"New dataframe created starting for valve.")
 
 		except Exception as e:
+			raise e
+
+
+	# load and interpolate rga data
+	def load_rga(self, rga_file, skiprows = 28, names = ["time", "CO", "O2", "Ar", "CO2", "C", "H2"]):
+		"""Find timestamp of rga file and loads it as a DataFrame"""
+
+		# Find timestamp
+		with open(rga_file) as f:
+			for line in f:
+				if "Start time, " in line:
+					timeline = line.rstrip() #rstrip remove the spaces at the end of the line
+					self.time_stamp = time.mktime(datetime.datetime.strptime(timeline[12:], "%b %d, %Y  %I:%M:%S  %p").timetuple())
+					print(f"Timestamp: {self.time_stamp} (unix epoch).")
+
+		# Create dataframe
+		try:
+			self.rga_data = pd.read_csv(
+			    rga_file,
+			    delimiter = ',',
+			    index_col = False,
+			    names = names,
+			    skiprows = skiprows)
+
+		except OSError:
+			raise OSError
+
+		# Interpolate the valves data
+		try:
+			# get bad time axis 
+			x = self.rga_data["time"]
+
+			# get duration in seconds of the experiment linked to that dataset
+			self.duration = int(float(x.values[-1]))
+
+			print(f"Experiment duration: {self.duration} seconds.")
+
+			# create new time column in integer seconds
+			new_time_column = np.round(np.linspace(0, self.duration, self.duration + 1), 0)
+
+			# proceed to interpolation over the new time axis
+			interpolated_df = pd.DataFrame({
+			    f"time" : new_time_column
+			    })
+
+			# Iterate over all the columns
+			for col in self.rga_data.columns[self.rga_data.columns != "time"]:
+
+			    y = self.rga_data[col].values
+
+			    # tck = interpolate.splrep(x, y, s = 0)
+			    # y_new = interpolate.splev(new_time_column, tck)
+
+			    # this way is better
+			    f = interpolate.interp1d(x, y)
+			    interpolated_df[col] = f(new_time_column)
+
+			# make sure that the time is integer
+			interpolated_df["time"] = interpolated_df["time"].astype(int)
+
+			# save
+			setattr(self, "rga_df_interpolated", interpolated_df)
+			print(f"New interpolated dataframe created for rga.")
+
+			display(self.rga_df_interpolated.head())
+			display(self.rga_df_interpolated.tail())
+
+		except NameError:
+			print("To interpolate also thr rga data, you need to run Valves.load_rga() first")
+
+		except Exception as e:
+			print("Play with the amount of columns names and the amount of rows skipped.")
 			raise e
 
 
@@ -393,21 +396,26 @@ class XCAT():
 
 	#### plotting functions for rga data ###
 
-	def plot_rga(self, plotted_columns = None, zoom = [None, None, None, None], cursor_positions = [None]):
+	def plot_rga(self, interpolated_data = True, plotted_columns = None, zoom = [None, None, None, None], cursor_positions = [None]):
 		"""Plot rga data
 		if plotted_columns = None, it plots all the columns
 		"""
+
+		if interpolated_data==True:
+			norm_df = self.rga_df_interpolated.copy()
+		else:
+			norm_df = self.rga_data.copy()
 
 		plt.figure(figsize=(18, 13), dpi=80, facecolor='w', edgecolor='k')
 
 		try:
 			for element in plotted_columns:
-				plt.plot(self.rga_df_interpolated.time.values, self.rga_df_interpolated[element].values, linewidth = 2, label = f"Mass {element}")
+				plt.plot(norm_df.time.values, norm_df[element].values, linewidth = 2, label = f"Mass {element}")
 		
 		# if plotted_columns is None		
 		except:
-			for element in self.rga_df_interpolated.columns[1:]:
-				plt.plot(self.rga_df_interpolated.time.values, self.rga_df_interpolated[element].values, linewidth = 2, label = f"Mass {element}")
+			for element in norm_df.columns[1:]:
+				plt.plot(norm_df.time.values, norm_df[element].values, linewidth = 2, label = f"Mass {element}")
 
 		plt.semilogy()
 
@@ -434,7 +442,7 @@ class XCAT():
 			plt.show()
 
 
-	def plot_rga_norm_leak(self, leak_values = [1], leak_positions = [None, None], plotted_columns = None, zoom = [None, None, None, None], cursor_positions = [None]):
+	def plot_rga_norm_leak(self, interpolated_data = True, leak_values = [1], leak_positions = [None, None], plotted_columns = None, zoom = [None, None, None, None], cursor_positions = [None]):
 		"""
 		Plot rga data normalized by the values given in leak_values on the intervals given by leak_positions
 		e.g. leak_values = [1.3, 2] and leak_positions = [100, 200, 500] will result in a division by 1.3 between indices 100 and 200
@@ -443,6 +451,10 @@ class XCAT():
 		if plotted_columns = None, it plots all the columns
 		possible to use a zoom and vertical cursors (one or multiple) 
 		"""
+		if interpolated_data==True:
+			norm_df = self.rga_df_interpolated.copy()
+		else:
+			norm_df = self.rga_data.copy()
 
 		if len(leak_values) + 1 == len(leak_positions):
 
@@ -451,7 +463,7 @@ class XCAT():
 			# for each column
 			try:
 				for element in plotted_columns:
-					normalized_values = self.rga_df_interpolated[element].values.copy()
+					normalized_values = norm_df[element].values.copy()
 
 					# normalize between the leak positions
 					for j, value in enumerate(leak_values):
@@ -460,12 +472,12 @@ class XCAT():
 
 						normalized_values[leak_positions[j]:leak_positions[j+1]] = (normalized_values[leak_positions[j]:leak_positions[j+1]] / value)
 
-					plt.plot(self.rga_df_interpolated.time.values, normalized_values, linewidth = 2, label = f"Mass {element}")
+					plt.plot(norm_df.time.values, normalized_values, linewidth = 2, label = f"Mass {element}")
 			
 			# if plotted_columns is None
 			except:
-				for element in self.rga_df_interpolated.columns[1:]:
-					normalized_values = self.rga_df_interpolated[element].values.copy()
+				for element in norm_df.columns[1:]:
+					normalized_values = norm_df[element].values.copy()
 
 					# normalize between the leak positions
 					for j, value in enumerate(leak_values):
@@ -474,7 +486,7 @@ class XCAT():
 
 						normalized_values[leak_positions[j]:leak_positions[j+1]] = (normalized_values[leak_positions[j]:leak_positions[j+1]] / value)
 
-					plt.plot(self.rga_df_interpolated.time.values, normalized_values, linewidth = 2, label = f"Mass {element}")
+					plt.plot(norm_df.time.values, normalized_values, linewidth = 2, label = f"Mass {element}")
 			
 			plt.semilogy()
 
@@ -504,15 +516,17 @@ class XCAT():
 			print("Length of leak_positions should be one more than leak_values.")
 
 
-	def plot_rga_norm_carrier(self, carrier_gaz = "Ar", plotted_columns = None, zoom = [None, None, None, None], cursor_positions = [None]):
+	def plot_rga_norm_carrier(self, interpolated_data = True, carrier_gaz = "Ar", plotted_columns = None, zoom = [None, None, None, None], cursor_positions = [None]):
 		"""
 		Plot rga data normalized by one column (carrier_gaz)
 		works on rga_df_interpolated
 		if plotted_columns = None, it plots all the columns
 		possible to use a zoom and vertical cursors (one or multiple) 
 		"""
-
-		norm_df = self.rga_df_interpolated.copy()
+		if interpolated_data==True:
+			norm_df = self.rga_df_interpolated.copy()
+		else:
+			norm_df = self.rga_data.copy()
 
 		plt.figure(figsize=(18, 13), dpi=80, facecolor='w', edgecolor='k')
 		
@@ -520,7 +534,7 @@ class XCAT():
 			plotted_columns.remove(carrier_gaz)
 
 		except:
-			plotted_columns = list(self.rga_df_interpolated.columns).remove(carrier_gaz)
+			plotted_columns = list(norm_df.columns).remove(carrier_gaz)
 
 		for element in plotted_columns:
 			norm_df[element] = norm_df[element] / norm_df[carrier_gaz]
@@ -552,7 +566,7 @@ class XCAT():
 			plt.show()
 
 
-	def plot_rga_norm_ptot(self, plotted_columns = None, ptot = None, zoom = [None, None, None, None], cursor_positions = [None]):
+	def plot_rga_norm_ptot(self, interpolated_data = True, plotted_columns = None, ptot = None, zoom = [None, None, None, None], cursor_positions = [None]):
 		"""
 		Plot rga data normalized by the total pressure in the cell
 		works on rga_df_interpolated
@@ -560,14 +574,19 @@ class XCAT():
 		possible to use a zoom and vertical cursors (one or multiple) 
 		"""
 
-		used_arr = self.rga_df_interpolated.values
-		
+		if interpolated_data==True:
+			norm_df = self.rga_df_interpolated.copy()
+
+		else:
+			norm_df = self.rga_data.copy()
+
+		used_arr = norm_df.values
 		ptot_row = used_arr[:,1:].sum(axis = 1) / ptot
 
 		val = np.ones(used_arr.shape)
 		val[:,1:] = (val[:,1:].T * ptot_row).T
 
-		norm_df = pd.DataFrame(used_arr / val, columns = self.rga_df_interpolated.columns)
+		norm_df = pd.DataFrame(used_arr / val, columns = norm_df.columns)
 		display(norm_df.head())
 
 		plt.figure(figsize=(18, 13), dpi=80, facecolor='w', edgecolor='k')
@@ -578,7 +597,7 @@ class XCAT():
 
 		# if plotted_columns is None
 		except:
-			for element in self.rga_df_interpolated.columns[1:]:	
+			for element in norm_df.columns[1:]:	
 				plt.plot(norm_df.time.values, norm_df[element].values, linewidth = 2, label = f"Mass {element}")
 
 		plt.semilogy()
@@ -606,7 +625,10 @@ class XCAT():
 			plt.show()
 
 
-	def plot_rga_norm_temp(self, start_heating, nb_points, amp_final, delta_time = 10, bins_nb = 1000, binning = False, plotted_columns = None, zoom = [None, None, None, None], cursor_positions = [None]):
+		return norm_df, ptot
+
+
+	def plot_rga_norm_temp(self, start_heating, nb_points, amp_final, interpolated_data = True, delta_time = 10, bins_nb = 1000, binning = False, plotted_columns = None, zoom = [None, None, None, None], cursor_positions = [None]):
 		"""
 		Plot rga data normalized by the values given in intensity_values on the intervals given by leak_positions
 		e.g. intensity_values = [1.3, 2] and leak_positions = [100, 200, 500] will result in a division by 1.3 between indices 100 and 200
@@ -615,6 +637,10 @@ class XCAT():
 		if plotted_columns = None, it plots all the columns
 		possible to use a zoom and vertical cursors (one or multiple) 
 		"""
+		if interpolated_data==True:
+			norm_df = self.rga_df_interpolated.copy()
+		else:
+			norm_df = self.rga_data.copy()
 
 		# recreate points that were used during data acquisition
 		# amperage = np.round(np.concatenate((np.linspace(0, amp_final, nb_points*delta_time, endpoint=False), np.linspace(amp_final, 0, nb_points*delta_time))), 2)
@@ -628,7 +654,7 @@ class XCAT():
 		end_heating = start_heating + (2 * nb_points) * delta_time
 
 		# timerange of heating
-		time_column = self.rga_df_interpolated["time"].values[start_heating:end_heating]
+		time_column = norm_df["time"].values[start_heating:end_heating]
 
 		# save in df
 		self.rga_during_heating = pd.DataFrame({
@@ -644,7 +670,7 @@ class XCAT():
 		# for each column
 		try:
 			for element in plotted_columns:
-				data_column = self.rga_df_interpolated[element].values[start_heating:end_heating]
+				data_column = norm_df[element].values[start_heating:end_heating]
 				self.rga_during_heating[element] = data_column
 
 				if not binning:
@@ -652,8 +678,8 @@ class XCAT():
 		
 		# if plotted_columns is None
 		except:
-			for element in self.rga_df_interpolated.columns[1:]:
-				data_column = self.rga_df_interpolated[element].values[start_heating:end_heating]
+			for element in norm_df.columns[1:]:
+				data_column = norm_df[element].values[start_heating:end_heating]
 				self.rga_during_heating[element] = data_column
 				if not binning:
 					plt.plot(self.rga_during_heating.temperature, self.rga_during_heating[element], linewidth = 2, linestyle = "dashdot", label = f"Mass {element}")
@@ -697,7 +723,7 @@ class XCAT():
 			plt.show()
 
 
-	def fit_error_function(self, initial_guess, new_amper_vect, fitted_columns = None, binning = False, zoom = [None, None, None, None], cursor_positions = [None]):
+	def fit_error_function(self, initial_guess, new_amper_vect, interpolated_data = True, fitted_columns = None, binning = False, zoom = [None, None, None, None], cursor_positions = [None]):
 		"""fit pressure vs temperature dta with error function"""
 
 		def error_function(z, a, b, c, d):
