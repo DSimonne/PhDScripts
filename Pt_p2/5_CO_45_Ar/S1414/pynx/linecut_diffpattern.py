@@ -17,6 +17,7 @@ sys.path.append('D:/myscripts/bcdi/')
 sys.path.append('C:/Users/Jerome/Documents/myscripts/bcdi/')
 import bcdi.graph.graph_utils as gu
 import bcdi.utils.utilities as util
+import bcdi.utils.validation as valid
 
 helptext = """
 Graphical user interface for plotting linecuts along particular direction of a 3D array.
@@ -25,14 +26,18 @@ For the laboratory frame, the CXI convention is used: z downstream, y vertical, 
 For q, the usual convention is used: qx downstream, qz vertical, qy outboard
 """
 
+scan = "S1414"
+sample_name = 'Pt'
 datadir = '/home/david/Documents/PhD_local/PhDScripts/Pt_p2/5_CO_45_Ar/S1414/pynx/'  # data directory
 savedir = datadir + "linecut_data/"  # if None, it will default to the data directory
 load_qvalues = True  # True to load the q values (a NPZ file with the fields 'qx', 'qy', 'qz', each one containing
 # a 1D or 3D array)
-load_mask = True  # True to load a mask (same shape than the diffraction pattern)
+load_mask = False  # True to load a mask (same shape than the diffraction pattern)
 #######################################
 # parameters related to visualization #
 #######################################
+starting_point = [171, 44, 79]  # list of three indices (integers) for the starting point of the linecut. Leave None for default
+endpoint = [193, 117, 223]  # list of three indices (integers) for the endpoint point of the linecut. Leave None for default
 threshold = 0  # every voxel <= threshold will be set to 0
 vmin = 0  # vmin for the plots, None for default
 vmax = 5  # vmax for the plots, should be larger than vmin, None for default
@@ -98,16 +103,17 @@ def on_click(event):
         cut = gu.linecut(diff_pattern, start_indices=starting_point, stop_indices=endpoint, interp_order=1,
                          debugging=False)
         if qx.ndim == 1:
-            distance = np.sqrt((qx[endpoint[0]] - qx[starting_point[0]]) ** 2 +
-                               (qz[endpoint[1]] - qz[starting_point[1]]) ** 2 +
-                               (qy[endpoint[2]] - qy[starting_point[2]]) ** 2)
+            d_q = np.sqrt((qx[endpoint[0]] - qx[starting_point[0]]) ** 2 +
+                          (qz[endpoint[1]] - qz[starting_point[1]]) ** 2 +
+                          (qy[endpoint[2]] - qy[starting_point[2]]) ** 2)
         else:
-            distance = np.sqrt((qx[endpoint[0], endpoint[1], endpoint[2]]
-                                - qx[starting_point[0], starting_point[1], starting_point[2]]) ** 2 +
-                               (qz[endpoint[0], endpoint[1], endpoint[2]]
-                                - qz[starting_point[0], starting_point[1], starting_point[2]]) ** 2 +
-                               (qy[endpoint[0], endpoint[1], endpoint[2]]
-                                - qy[starting_point[0], starting_point[1], starting_point[2]]) ** 2)
+            d_q = np.sqrt((qx[endpoint[0], endpoint[1], endpoint[2]]
+                           - qx[starting_point[0], starting_point[1], starting_point[2]]) ** 2 +
+                          (qz[endpoint[0], endpoint[1], endpoint[2]]
+                           - qz[starting_point[0], starting_point[1], starting_point[2]]) ** 2 +
+                          (qy[endpoint[0], endpoint[1], endpoint[2]]
+                           - qy[starting_point[0], starting_point[1], starting_point[2]]) ** 2)
+        distance = np.linspace(0, d_q, num=len(cut))
         plt0.remove()
         plt1.remove()
         plt2.remove()
@@ -129,7 +135,7 @@ def on_click(event):
         plt2_stop, = ax2.plot([endpoint[1]], [endpoint[0]], 'ro')  # sum axis 2
 
         ax3.cla()
-        ax3.plot(np.linspace(0, distance, num=len(cut)), np.log10(cut), '-or', markersize=3)
+        ax3.plot(distance, np.log10(cut), '-or', markersize=3)
         if load_qvalues:
             ax3.set_xlabel('distance along the linecut (1/A)')
         else:
@@ -147,12 +153,14 @@ def press_key(event):
 
     :param event: button press event
     """
-    global savedir, starting_point, endpoint, fig_diff
+    global savedir, starting_point, endpoint, fig_diff, cut, distance, sample_name, scan
     try:
         close_fig = False
         if event.inaxes:
             if event.key == 's':
-                fig_diff.savefig(savedir+f'linecut_start={starting_point}_endpoint={endpoint}.png')
+                template = savedir + f'{sample_name}_{scan}_linecut_start={starting_point}_stop={endpoint}'
+                fig_diff.savefig(template + '.png')
+                np.savez_compressed(template + '.npz', linecut=cut, distance=distance)
             elif event.key == 'q':
                 close_fig = True
         if close_fig:
@@ -168,6 +176,11 @@ if vmin and vmax:
     assert vmax > vmin, 'vmax should be larger than vmin'
 
 savedir = savedir or datadir
+
+valid.valid_container(obj=starting_point, container_types=list, allow_none=True, item_types=int,
+                      name='linecut_diffpattern.py')
+valid.valid_container(obj=endpoint, container_types=list, allow_none=True, item_types=int,
+                      name='linecut_diffpattern.py')
 
 ###################
 # define colormap #
@@ -256,27 +269,28 @@ else:
 # interactive plot #
 ####################
 plt.ioff()
-starting_point = [nz//2, 0, nx//2]
-endpoint = [nz//2, ny-1, nx//2]
+starting_point = starting_point or [nz//2, 0, nx//2]
+endpoint = endpoint or [nz//2, ny-1, nx//2]
 cut = gu.linecut(diff_pattern, start_indices=starting_point, stop_indices=endpoint, interp_order=1, debugging=False)
 if qx.ndim == 1:
-    distance = np.sqrt((qx[endpoint[0]]-qx[starting_point[0]])**2 +
-                       (qz[endpoint[1]]-qz[starting_point[1]])**2 +
-                       (qy[endpoint[2]]-qy[starting_point[2]])**2)
+    dq = np.sqrt((qx[endpoint[0]]-qx[starting_point[0]])**2 +
+                 (qz[endpoint[1]]-qz[starting_point[1]])**2 +
+                 (qy[endpoint[2]]-qy[starting_point[2]])**2)
 else:
-    distance = np.sqrt((qx[endpoint[0], endpoint[1], endpoint[2]]
-                        - qx[starting_point[0], starting_point[1], starting_point[2]])**2 +
-                       (qz[endpoint[0], endpoint[1], endpoint[2]]
-                        - qz[starting_point[0], starting_point[1], starting_point[2]])**2 +
-                       (qy[endpoint[0], endpoint[1], endpoint[2]]
-                        - qy[starting_point[0], starting_point[1], starting_point[2]])**2)
+    dq = np.sqrt((qx[endpoint[0], endpoint[1], endpoint[2]]
+                  - qx[starting_point[0], starting_point[1], starting_point[2]])**2 +
+                 (qz[endpoint[0], endpoint[1], endpoint[2]]
+                  - qz[starting_point[0], starting_point[1], starting_point[2]])**2 +
+                 (qy[endpoint[0], endpoint[1], endpoint[2]]
+                  - qy[starting_point[0], starting_point[1], starting_point[2]])**2)
+distance = np.linspace(0, dq, num=len(cut))
 
 fig_diff, ((ax0, ax1), (ax2, ax3)) = plt.subplots(nrows=2, ncols=2, figsize=(12, 6))
 fig_diff.canvas.mpl_disconnect(fig_diff.canvas.manager.key_press_handler_id)
 ax0.imshow(np.log10(diff_pattern.sum(axis=0)), vmin=vmin, vmax=vmax, cmap=my_cmap)
 ax1.imshow(np.log10(diff_pattern.sum(axis=1)), vmin=vmin, vmax=vmax, cmap=my_cmap)
 ax2.imshow(np.log10(diff_pattern.sum(axis=2)), vmin=vmin, vmax=vmax, cmap=my_cmap)
-ax3.plot(np.linspace(0, distance, num=len(cut)), np.log10(cut), '-or', markersize=3)
+ax3.plot(distance, np.log10(cut), '-or', markersize=3)
 plt0, = ax0.plot([starting_point[2], endpoint[2]], [starting_point[1], endpoint[1]], 'r-')  # sum axis 0
 plt1, = ax1.plot([starting_point[2], endpoint[2]], [starting_point[0], endpoint[0]], 'r-')  # sum axis 1
 plt2, = ax2.plot([starting_point[1], endpoint[1]], [starting_point[0], endpoint[0]], 'r-')  # sum axis 2
