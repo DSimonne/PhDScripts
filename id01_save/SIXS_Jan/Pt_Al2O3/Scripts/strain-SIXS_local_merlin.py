@@ -182,7 +182,7 @@ roll_modes = (0, 0, 0) #(0, -1, 0)   # axis=(0, 1, 2), correct a roll of few pix
 ############################################
 align_q = False  # if True rotates the crystal to align q it along one axis of the array
 ref_axis_q = "y"  # q will be aligned along that axis
-align_axis = True  # if True rotates the crystal to align axis_to_align along ref_axis
+align_axis = False  # if True rotates the crystal to align axis_to_align along ref_axis
 ref_axis = "y"  # will align axis_to_align to that axis
 axis_to_align = np.array([0, 1, 0])
 # axis_to_align = np.array([-0.011662456997498807, 0.957321364700986, -0.28879022106682123])
