@@ -302,9 +302,9 @@ class XCAT():
 		try:
 			plot_entry_list = [g.lower() for g in plot_entry_list]
 
+			fig, ax = plt.subplots(2, 1, figsize = (16, 9))
+
 			for entry in plot_entry_list:
-				plt.close()
-				fig, ax = plt.subplots(2, 1, figsize = (16, 9))
 
 				if df == "interpolated":
 					plot_df = getattr(self, f"{entry}_df_interpolated")
@@ -381,7 +381,7 @@ class XCAT():
 				ax[1].set_xlim([zoom2[0], zoom2[1]])
 				ax[1].set_ylim([zoom2[2], zoom2[3]])
 
-				ax[0].set_ylabel("Valve position",fontsize=16)
+				ax[0].set_ylabel("Flow",fontsize=16)
 				ax[0].set_xlabel("Time (s)",fontsize=16)
 				ax[1].set_ylabel("Valve position",fontsize=16)
 				ax[1].set_xlabel("Time (s)",fontsize=16)
@@ -393,10 +393,6 @@ class XCAT():
 
 		except KeyError as e:
 			raise KeyError("Are you sure you are trying to plot a gaz?")
-
-		except AttributeError as e:
-			raise e
-			print("Interpolate data first")
 
 	#### plotting functions for rga data ###
 
@@ -629,7 +625,7 @@ class XCAT():
 			plt.show()
 
 
-	def plot_rga_norm_temp(self, start_heating, nb_points, amp_final, save = False, interpolated_data = True, delta_time = 10, bins_nb = 1000, binning = False, plotted_columns = None, zoom = [None, None, None, None], cursor_positions = [None]):
+	def plot_rga_norm_temp(self, start_heating, nb_points, amp_final, interpolated_data = True, delta_time = 10, bins_nb = 1000, binning = False, plotted_columns = None, zoom = [None, None, None, None], cursor_positions = [None]):
 		"""
 		Plot rga data normalized by the values given in intensity_values on the intervals given by leak_positions
 		e.g. intensity_values = [1.3, 2] and leak_positions = [100, 200, 500] will result in a division by 1.3 between indices 100 and 200
@@ -721,10 +717,6 @@ class XCAT():
 			       ncol=5, mode="expand", borderaxespad=0.)
 			plt.grid(b=True, which='major', color='b', linestyle='-')
 			plt.grid(b=True, which='minor', color=mcolors.CSS4_COLORS["teal"], linestyle='--')
-			if save == True:
-				plt.tight_layout()
-				plt.savefig("plot_rga_norm_temp.png")
-				print("Saved as plot_rga_norm_temp.png")
 			plt.show()
 
 

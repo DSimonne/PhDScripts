@@ -40,3 +40,14 @@ The output of pynx without an input support are conjugate objects of each others
 
 # Data analysis
 Weird chunks of particle missing, do an analysis of the evolution as a function of gas flow
+
+
+strain: more noise, try to use apodization to smooth
+
+
+
+displacement : care about direction of vector q 
+
+offset taken from center of mass
+
+reconstruction have a constant offset
