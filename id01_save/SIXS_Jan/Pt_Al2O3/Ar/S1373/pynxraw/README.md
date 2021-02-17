@@ -308,6 +308,3 @@ phase.max() = 1.92 at voxel (98, 85, 120)
   fig, ((ax0, ax1), (ax2, ax3)) = plt.subplots(nrows=2, ncols=2, figsize=(12, 9))
 End of script
 ```
-
-Fixing the voxel size just ends up zooming or not
-Axis to align does not change anything
