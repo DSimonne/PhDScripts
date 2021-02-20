@@ -1,0 +1,1031 @@
+2021-02-17 13:35:41,260  ---> osax ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 13:35:41,263  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 13:36:07,382  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 13:36:07,382  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:03:04,945  ---> fzpy ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:03:04,953  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:03:06,565  ---> fzpz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:03:06,565  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:04:46,356  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:04:46,363  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:04:47,684  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:04:47,685  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:05:04,886  ---> fzpy ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:05:04,887  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:05:06,723  ---> fzpz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:05:06,723  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:05:08,850  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:05:08,851  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:05:10,480  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:05:10,481  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:07:05,442  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:07:05,444  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:07:27,159  ---> csz ***** ERROR of positionning !!! ****** ALARM
+2021-02-17 18:07:27,160  ---> axis positionning failed
+shared com. port status: connected
+2021-02-17 18:07:28,515  ---> csz ******************** MOTOR Device State is : ALARM ********************
+2021-02-17 18:07:28,611  ---> csz ******************** ABORT ********************
+2021-02-17 18:07:33,464  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:07:33,465  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:07:40,569  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:07:40,569  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:07:46,849  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:07:46,850  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:07:58,584  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:07:58,584  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:08:42,815  ---> csz ***** ERROR of positionning !!! ****** ALARM
+2021-02-17 18:08:42,816  ---> axis positionning failed
+shared com. port status: connected
+2021-02-17 18:08:54,847  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:08:54,849  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:08:58,220  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:08:58,221  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:09:08,273  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:09:08,274  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:09:14,036  ---> csz ******************** MOTOR Device State is : ALARM ********************
+2021-02-17 18:09:14,137  ---> csz ******************** ABORT ********************
+2021-02-17 18:09:16,296  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:09:16,297  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:09:22,839  ---> csz ******************** MOTOR Device State is : ALARM ********************
+2021-02-17 18:09:22,935  ---> csz ******************** ABORT ********************
+2021-02-17 18:09:30,109  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:09:30,110  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:09:36,381  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:09:36,381  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:14:00,387  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:14:00,388  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:14:36,014  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:14:36,015  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:14:39,918  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:14:39,919  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:15:17,002  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:15:17,003  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:15:48,809  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:15:48,809  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:25:10,198  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:25:10,205  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:25:25,534  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:25:25,535  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:26:26,862  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:26:26,863  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:39:21,010  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:39:21,017  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:39:28,285  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:39:28,286  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:39:33,241  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:39:33,247  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:39:51,904  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:39:51,904  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:40:11,730  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:40:11,731  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:40:16,963  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:40:16,964  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:43:42,619  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:43:42,624  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:45:29,887  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:45:29,888  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:45:37,231  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:45:37,232  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:45:50,826  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:45:50,827  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:46:55,564  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:46:55,565  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:47:10,361  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:47:10,362  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:47:22,837  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:47:22,838  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:47:44,595  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:47:44,596  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:48:25,751  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:48:25,751  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:49:06,838  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:49:06,845  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:49:18,519  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:49:18,520  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:50:15,278  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:50:15,279  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:50:46,624  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:50:46,625  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:51:33,804  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:51:33,805  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:51:55,294  ---> csz ***** ERROR of positionning !!! ****** ALARM
+2021-02-17 18:51:55,295  ---> axis positionning failed
+shared com. port status: connected
+2021-02-17 18:53:04,470  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:53:04,471  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:53:15,079  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:53:15,085  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:53:22,111  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:53:22,111  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:53:25,376  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:53:25,377  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:53:28,294  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:53:28,295  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:53:36,350  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:53:36,351  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:53:52,452  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:53:52,459  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:53:56,176  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:53:56,177  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:54:00,161  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:54:00,162  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:54:04,494  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:54:04,494  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:54:07,393  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:54:07,393  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:54:35,133  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:54:35,133  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:55:27,464  ---> csz ******************** MOTOR Device State is : ALARM ********************
+2021-02-17 18:55:27,586  ---> csz ******************** ABORT ********************
+2021-02-17 18:55:31,822  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:55:31,823  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:55:44,901  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:55:44,901  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:55:50,620  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:55:50,621  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:56:02,458  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:56:02,459  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:56:27,887  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:56:27,888  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:56:38,162  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:56:38,162  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:56:44,666  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:56:44,666  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:56:55,708  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:56:55,709  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:57:45,668  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:57:45,669  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:58:19,235  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:58:19,236  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:58:52,035  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:58:52,036  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:59:44,971  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:59:44,978  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:59:54,583  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:59:54,584  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 18:59:59,730  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 18:59:59,731  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:00:12,219  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:00:12,220  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:10:13,920  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:10:13,921  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:10:21,601  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:10:21,602  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:11:07,185  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:11:07,186  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:11:10,851  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:11:10,851  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:11:15,637  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:11:15,637  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:11:28,501  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:11:28,502  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:11:39,627  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:11:39,628  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:11:43,110  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:11:43,111  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:11:47,424  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:11:47,425  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:11:52,377  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:11:52,384  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:11:55,275  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:11:55,275  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:12:00,843  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:12:00,843  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:12:04,125  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:12:04,126  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:12:06,343  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:12:06,344  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:12:16,216  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:12:16,216  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:12:39,094  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:12:39,095  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:12:50,439  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:12:50,440  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:15:30,289  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:15:30,290  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:16:13,544  ---> fzpx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:16:13,545  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:16:34,793  ---> fzpz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:16:34,794  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:16:44,605  ---> fzpz ***** ERROR of positionning !!! ****** ALARM
+2021-02-17 19:16:44,606  ---> axis positionning failed
+shared com. port status: connected
+2021-02-17 19:16:50,364  ---> fzpz ******************** MOTOR Device State is : ALARM ********************
+2021-02-17 19:16:50,465  ---> fzpz ******************** ABORT ********************
+2021-02-17 19:16:53,749  ---> fzpz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:16:53,750  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:16:58,586  ---> fzpz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:16:58,587  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:17:02,855  ---> fzpz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:17:02,856  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:17:13,302  ---> fzpz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:17:13,303  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:17:19,146  ---> fzpz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:17:19,147  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:17:48,582  ---> fzpz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:17:48,583  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:17:56,830  ---> fzpz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:17:56,831  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:18:40,519  ---> fzpx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:18:40,526  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:18:44,417  ---> fzpx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:18:44,418  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:18:50,424  ---> fzpx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:18:50,425  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:19:23,409  ---> fzpx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:19:23,410  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:20:07,055  ---> fzpz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:20:07,061  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:21:16,807  ---> fzpz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:21:16,814  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:21:28,149  ---> fzpz ******************** MOTOR Device State is : ALARM ********************
+2021-02-17 19:21:28,249  ---> fzpz ******************** ABORT ********************
+2021-02-17 19:21:36,144  ---> fzpz ***** ERROR of positionning !!! ****** ALARM
+2021-02-17 19:21:36,145  ---> axis positionning failed
+shared com. port status: connected
+2021-02-17 19:21:38,308  ---> fzpz ******************** MOTOR Device State is : ALARM ********************
+2021-02-17 19:21:38,409  ---> fzpz ******************** ABORT ********************
+2021-02-17 19:21:40,073  ---> fzpz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:21:40,073  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:21:50,494  ---> fzpz ***** ERROR of positionning !!! ****** ALARM
+2021-02-17 19:21:50,494  ---> axis positionning failed
+shared com. port status: connected
+2021-02-17 19:22:07,005  ---> fzpz ******************** MOTOR Device State is : ALARM ********************
+2021-02-17 19:22:07,105  ---> fzpz ******************** ABORT ********************
+2021-02-17 19:22:28,705  ---> fzpz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:22:28,712  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:23:05,944  ---> osax ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:23:05,945  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:23:43,629  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:23:43,630  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:23:47,621  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:23:47,621  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:23:57,348  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:23:57,349  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:24:08,577  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:24:08,577  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:24:15,890  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:24:15,890  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:24:20,899  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:24:20,899  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:24:24,442  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:24:24,443  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:24:29,218  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:24:29,219  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:24:42,907  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:24:42,908  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:24:48,193  ---> osaz ***** ERROR of positionning !!! ****** ALARM
+2021-02-17 19:24:48,193  ---> axis positionning failed
+shared com. port status: connected
+2021-02-17 19:24:50,108  ---> osaz ******************** MOTOR Device State is : ALARM ********************
+2021-02-17 19:24:50,230  ---> osaz ******************** ABORT ********************
+2021-02-17 19:24:52,420  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:24:52,421  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:25:07,722  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:25:07,723  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:25:16,068  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:25:16,069  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:26:53,202  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:26:53,209  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:27:23,925  ---> csz ******************** MOTOR Device State is : ALARM ********************
+2021-02-17 19:27:24,027  ---> csz ******************** ABORT ********************
+2021-02-17 19:27:29,448  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:27:29,449  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:27:55,232  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:27:55,233  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:28:01,814  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:28:01,815  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:28:07,936  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:28:07,937  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:28:23,611  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:28:23,612  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-17 19:28:47,125  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-17 19:28:47,125  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 10:01:21,595  ---> osax ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 10:01:21,604  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:01:55,749  ---> osaz ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 11:01:55,846  ---> osaz ******************** ABORT ********************
+2021-02-18 11:02:05,658  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:02:05,660  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:02:16,392  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:02:16,400  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:02:23,551  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:02:23,558  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:02:42,593  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:02:42,594  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:02:49,662  ---> osaz ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 11:02:49,764  ---> osaz ******************** ABORT ********************
+2021-02-18 11:02:52,090  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:02:52,091  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:02:56,025  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:02:56,025  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:05:12,654  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:05:12,654  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:05:51,279  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:05:51,286  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:06:15,054  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:06:15,055  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:06:19,332  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:06:19,333  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:06:32,810  ---> osax ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:06:32,816  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:06:41,305  ---> osax ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:06:41,306  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:07:03,131  ---> osax ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:07:03,132  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:09:03,699  ---> osax ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:09:03,705  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:09:08,358  ---> osax ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:09:08,358  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:09:16,195  ---> osax ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:09:16,201  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:09:18,948  ---> osax ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:09:18,948  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:09:22,320  ---> osax ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:09:22,321  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:09:41,808  ---> osax ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:09:41,814  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:09:56,788  ---> osax ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:09:56,789  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:11:53,023  ---> osax ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:11:53,024  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:11:55,662  ---> osax ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:11:55,663  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:12:00,196  ---> osax ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:12:00,197  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:12:02,957  ---> osax ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:12:02,957  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:12:47,922  ---> osax ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:12:47,923  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:13:02,394  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:13:02,400  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:13:07,595  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:13:07,596  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:13:14,512  ---> osaz ***** ERROR of positionning !!! ****** ALARM
+2021-02-18 11:13:14,513  ---> axis positionning failed
+shared com. port status: connected
+2021-02-18 11:13:15,275  ---> osaz ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 11:13:15,398  ---> osaz ******************** ABORT ********************
+2021-02-18 11:13:17,598  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:13:17,598  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:13:21,483  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:13:21,484  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:13:27,089  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:13:27,090  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:13:30,989  ---> osaz ***** ERROR of positionning !!! ****** ALARM
+2021-02-18 11:13:30,990  ---> axis positionning failed
+shared com. port status: connected
+2021-02-18 11:13:32,236  ---> osaz ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 11:13:32,358  ---> osaz ******************** ABORT ********************
+2021-02-18 11:13:34,519  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:13:34,520  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:13:39,045  ---> osaz ***** ERROR of positionning !!! ****** ALARM
+2021-02-18 11:13:39,046  ---> axis positionning failed
+shared com. port status: connected
+2021-02-18 11:13:40,235  ---> osaz ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 11:13:40,330  ---> osaz ******************** ABORT ********************
+2021-02-18 11:13:46,894  ---> osaz ***** ERROR of positionning !!! ****** ALARM
+2021-02-18 11:13:46,895  ---> axis positionning failed
+shared com. port status: connected
+2021-02-18 11:13:51,309  ---> osaz ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 11:13:51,430  ---> osaz ******************** ABORT ********************
+2021-02-18 11:13:59,035  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:13:59,036  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:14:54,956  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:14:54,957  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:14:59,561  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:14:59,562  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:15:04,022  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:15:04,022  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:15:11,506  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:15:11,507  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:15:17,200  ---> osaz ***** ERROR of positionning !!! ****** ALARM
+2021-02-18 11:15:17,206  ---> axis positionning failed
+shared com. port status: connected
+2021-02-18 11:15:20,782  ---> osaz ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 11:15:20,908  ---> osaz ******************** ABORT ********************
+2021-02-18 11:15:23,068  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:15:23,069  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:15:29,431  ---> osaz ***** ERROR of positionning !!! ****** ALARM
+2021-02-18 11:15:29,432  ---> axis positionning failed
+shared com. port status: connected
+2021-02-18 11:15:30,735  ---> osaz ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 11:15:30,857  ---> osaz ******************** ABORT ********************
+2021-02-18 11:15:34,364  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:15:34,365  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:15:45,056  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:15:45,056  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:15:49,536  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:15:49,543  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:17:19,186  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:17:19,187  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:17:41,296  ---> osaz ***** ERROR of positionning !!! ****** ALARM
+2021-02-18 11:17:41,297  ---> axis positionning failed
+shared com. port status: connected
+2021-02-18 11:17:47,305  ---> osaz ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 11:17:47,426  ---> osaz ******************** ABORT ********************
+2021-02-18 11:17:49,635  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:17:49,635  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:17:54,545  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:17:54,546  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:18:19,618  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:18:19,619  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:18:33,623  ---> osaz ***** ERROR of positionning !!! ****** ALARM
+2021-02-18 11:18:33,630  ---> axis positionning failed
+shared com. port status: connected
+2021-02-18 11:18:36,509  ---> osaz ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 11:18:36,631  ---> osaz ******************** ABORT ********************
+2021-02-18 11:18:41,281  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:18:41,282  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:18:44,681  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:18:44,682  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:18:51,553  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:18:51,553  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:19:07,532  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:19:07,534  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:19:10,402  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:19:10,402  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:19:23,223  ---> osaz ***** ERROR of positionning !!! ****** ALARM
+2021-02-18 11:19:23,229  ---> axis positionning failed
+shared com. port status: connected
+2021-02-18 11:19:26,103  ---> osaz ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 11:19:26,224  ---> osaz ******************** ABORT ********************
+2021-02-18 11:19:29,575  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:19:29,576  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:19:37,015  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:19:37,015  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:19:46,760  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:19:46,761  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:19:50,310  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:19:50,310  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:19:56,550  ---> osaz ***** ERROR of positionning !!! ****** ALARM
+2021-02-18 11:19:56,551  ---> axis positionning failed
+shared com. port status: connected
+2021-02-18 11:20:02,107  ---> osaz ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 11:20:02,228  ---> osaz ******************** ABORT ********************
+2021-02-18 11:20:07,025  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:20:07,026  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:20:12,698  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:20:12,699  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:20:22,379  ---> osaz ***** ERROR of positionning !!! ****** ALARM
+2021-02-18 11:20:22,386  ---> axis positionning failed
+shared com. port status: connected
+2021-02-18 11:20:32,510  ---> osaz ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 11:20:32,611  ---> osaz ******************** ABORT ********************
+2021-02-18 11:20:34,939  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:20:34,940  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:20:57,459  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:20:57,459  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:22:25,774  ---> osax ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:22:25,775  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:23:13,957  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:23:13,958  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:24:39,115  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:24:39,116  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:40:57,126  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:40:57,127  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:50:45,552  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:50:45,559  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:52:52,862  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:52:52,863  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:53:22,926  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:53:22,927  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:53:28,363  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:53:28,363  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:55:24,502  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:55:24,503  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:56:05,977  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:56:05,978  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:56:09,208  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:56:09,208  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:56:11,825  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:56:11,825  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:56:25,448  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:56:25,449  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 11:59:21,833  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 11:59:21,834  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 12:00:32,180  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 12:00:32,181  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 12:00:39,006  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 12:00:39,007  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 12:00:47,317  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 12:00:47,318  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 12:01:17,341  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 12:01:17,343  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 12:01:26,497  ---> csz ***** ERROR of positionning !!! ****** ALARM
+2021-02-18 12:01:26,502  ---> axis positionning failed
+shared com. port status: connected
+2021-02-18 12:02:05,886  ---> fzpx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 12:02:05,886  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 12:02:23,298  ---> fzpx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 12:02:23,300  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 12:02:35,918  ---> fzpz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 12:02:35,919  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 12:04:32,570  ---> osax ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 12:04:32,571  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 12:04:50,398  ---> osaz ***** ERROR of positionning !!! ****** ALARM
+2021-02-18 12:04:50,398  ---> axis positionning failed
+shared com. port status: connected
+2021-02-18 12:04:52,999  ---> osaz ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 12:04:53,099  ---> osaz ******************** ABORT ********************
+2021-02-18 12:04:56,718  ---> osaz ***** ERROR of positionning !!! ****** ALARM
+2021-02-18 12:04:56,719  ---> axis positionning failed
+shared com. port status: connected
+2021-02-18 12:05:11,703  ---> osaz ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 12:05:11,824  ---> osaz ******************** ABORT ********************
+2021-02-18 12:05:15,580  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 12:05:15,580  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 12:05:17,290  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 12:05:17,291  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 12:06:08,514  ---> osaz ***** ERROR of positionning !!! ****** ALARM
+2021-02-18 12:06:08,521  ---> axis positionning failed
+shared com. port status: connected
+2021-02-18 12:06:13,493  ---> osaz ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 12:06:13,593  ---> osaz ******************** ABORT ********************
+2021-02-18 12:06:17,515  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 12:06:17,516  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 12:06:24,716  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 12:06:24,722  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 12:06:27,147  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 12:06:27,148  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 12:06:30,277  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 12:06:30,278  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 12:06:33,706  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 12:06:33,707  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 12:06:45,294  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 12:06:45,294  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 12:06:51,142  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 12:06:51,143  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 12:06:54,857  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 12:06:54,858  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 12:07:00,724  ---> osaz ***** ERROR of positionning !!! ****** ALARM
+2021-02-18 12:07:00,726  ---> axis positionning failed
+shared com. port status: connected
+2021-02-18 12:10:48,132  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 12:10:48,132  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 12:10:51,550  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 12:10:51,551  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 12:11:01,929  ---> csz ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 12:11:02,051  ---> csz ******************** ABORT ********************
+2021-02-18 12:11:03,582  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 12:11:03,583  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 12:11:09,076  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 12:11:09,083  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 12:13:31,147  ---> osax ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 12:13:31,148  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 12:13:46,355  ---> osax ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 12:13:46,356  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 12:13:52,952  ---> osax ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 12:13:52,954  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 16:55:54,435  ---> fzpx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 16:55:54,442  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:01:18,846  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:01:18,847  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:01:58,680  ---> osax ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:01:58,687  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:11:15,268  ---> fzpx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:11:15,273  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:11:25,314  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:11:25,315  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:11:29,449  ---> csz ***** ERROR of positionning !!! ****** ALARM
+2021-02-18 17:11:29,450  ---> axis positionning failed
+shared com. port status: connected
+2021-02-18 17:11:38,254  ---> csz ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 17:11:38,376  ---> csz ******************** ABORT ********************
+2021-02-18 17:11:42,166  ---> csz ***** ERROR of positionning !!! ****** ALARM
+2021-02-18 17:11:42,167  ---> axis positionning failed
+shared com. port status: connected
+2021-02-18 17:11:54,363  ---> csz ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 17:11:54,485  ---> csz ******************** ABORT ********************
+2021-02-18 17:11:56,374  ---> csz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:11:56,374  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:12:17,812  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:12:17,813  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:12:25,546  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:12:25,547  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:12:27,972  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:12:27,972  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:12:33,974  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:12:33,980  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:13:56,998  ---> fzpx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:13:56,999  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:14:22,390  ---> fzpx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:14:22,390  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:14:35,401  ---> fzpz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:14:35,402  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:14:53,847  ---> fzpx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:14:53,848  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:14:58,361  ---> fzpx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:14:58,362  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:15:02,937  ---> fzpx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:15:02,938  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:15:13,881  ---> fzpz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:15:13,881  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:15:20,340  ---> fzpz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:15:20,341  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:16:09,767  ---> osax ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:16:09,768  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:17:05,165  ---> osax ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:17:05,165  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:17:10,151  ---> osax ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:17:10,151  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:17:12,457  ---> osax ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:17:12,458  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:17:18,002  ---> osax ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:17:18,003  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:17:38,486  ---> osaz ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 17:17:38,586  ---> osaz ******************** ABORT ********************
+2021-02-18 17:17:47,797  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:17:47,803  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:18:14,536  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:18:14,537  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:18:18,017  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:18:18,023  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:18:20,918  ---> osaz ***** ERROR of positionning !!! ****** ALARM
+2021-02-18 17:18:20,919  ---> axis positionning failed
+shared com. port status: connected
+2021-02-18 17:18:21,736  ---> osaz ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 17:18:21,857  ---> osaz ******************** ABORT ********************
+2021-02-18 17:18:24,186  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:18:24,187  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:18:27,397  ---> osaz ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 17:18:27,494  ---> osaz ******************** ABORT ********************
+2021-02-18 17:18:29,663  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:18:29,664  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:18:32,984  ---> osaz ***** ERROR of positionning !!! ****** ALARM
+2021-02-18 17:18:32,985  ---> axis positionning failed
+shared com. port status: connected
+2021-02-18 17:18:35,529  ---> osaz ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 17:18:35,629  ---> osaz ******************** ABORT ********************
+2021-02-18 17:18:38,881  ---> osaz ***** ERROR of positionning !!! ****** ALARM
+2021-02-18 17:18:38,882  ---> axis positionning failed
+shared com. port status: connected
+2021-02-18 17:18:39,957  ---> osaz ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 17:18:40,053  ---> osaz ******************** ABORT ********************
+2021-02-18 17:18:42,776  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:18:42,782  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:19:53,414  ---> osax ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:19:53,415  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:19:57,040  ---> osax ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:19:57,040  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:20:09,691  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:20:09,692  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:20:12,406  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:20:12,407  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:20:21,367  ---> osaz ***** ERROR of positionning !!! ****** ALARM
+2021-02-18 17:20:21,368  ---> axis positionning failed
+shared com. port status: connected
+2021-02-18 17:20:29,240  ---> osaz ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 17:20:29,340  ---> osaz ******************** ABORT ********************
+2021-02-18 17:20:32,539  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:20:32,541  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:20:39,619  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:20:39,620  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:20:44,345  ---> osaz ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:20:44,345  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:22:54,542  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:22:54,544  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:22:58,523  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:22:58,524  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:24:19,820  ---> fzpx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:24:19,821  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:25:05,686  ---> osax ***** ERROR of positionning !!! ****** ALARM
+2021-02-18 17:25:05,693  ---> backward limit switch detected
+shared com. port status: connected
+2021-02-18 17:25:24,714  ---> osax ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 17:25:24,837  ---> osax ******************** ABORT ********************
+2021-02-18 17:25:24,838  ---> osax ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 17:25:24,933  ---> osax ******************** ABORT ********************
+2021-02-18 17:25:24,933  ---> osax ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 17:25:25,028  ---> osax ******************** ABORT ********************
+2021-02-18 17:25:25,028  ---> osax ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 17:25:25,122  ---> osax ******************** ABORT ********************
+2021-02-18 17:25:25,123  ---> osax ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 17:25:25,245  ---> osax ******************** ABORT ********************
+2021-02-18 17:25:25,245  ---> osax ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 17:25:25,366  ---> osax ******************** ABORT ********************
+2021-02-18 17:25:25,367  ---> osax ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 17:25:25,463  ---> osax ******************** ABORT ********************
+2021-02-18 17:25:25,463  ---> osax ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 17:25:25,559  ---> osax ******************** ABORT ********************
+2021-02-18 17:25:25,559  ---> osax ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 17:25:25,681  ---> osax ******************** ABORT ********************
+2021-02-18 17:25:25,681  ---> osax ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 17:25:25,805  ---> osax ******************** ABORT ********************
+2021-02-18 17:25:25,805  ---> osax ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 17:25:25,901  ---> osax ******************** ABORT ********************
+2021-02-18 17:25:25,901  ---> osax ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 17:25:25,996  ---> osax ******************** ABORT ********************
+2021-02-18 17:25:25,996  ---> osax ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 17:25:26,092  ---> osax ******************** ABORT ********************
+2021-02-18 17:25:26,092  ---> osax ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 17:25:26,187  ---> osax ******************** ABORT ********************
+2021-02-18 17:25:26,187  ---> osax ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 17:25:26,308  ---> osax ******************** ABORT ********************
+2021-02-18 17:25:26,308  ---> osax ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 17:25:26,430  ---> osax ******************** ABORT ********************
+2021-02-18 17:25:26,430  ---> osax ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 17:25:26,525  ---> osax ******************** ABORT ********************
+2021-02-18 17:25:26,525  ---> osax ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 17:25:26,648  ---> osax ******************** ABORT ********************
+2021-02-18 17:25:26,648  ---> osax ******************** MOTOR Device State is : ALARM ********************
+2021-02-18 17:26:42,816  ---> osax ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:26:42,823  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:26:49,350  ---> osax ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:26:49,350  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:31:01,723  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:31:01,724  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:31:21,918  ---> fzpx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:31:21,918  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:31:42,148  ---> osax ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:31:42,149  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:47:20,300  ---> csx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:47:20,302  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:48:15,613  ---> fzpx ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:48:15,614  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:48:52,858  ---> osax ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:48:52,859  ---> axis up and ready [standby]
+shared com. port status: connected
+2021-02-18 17:54:23,402  ---> x ***** ERROR of positionning !!! ****** STANDBY
+2021-02-18 17:54:23,403  ---> 
+0,Ready state from motion,EndOfAPI
+group state value = 12
+
+command [GroupMoveAbort(HEXAPOD)] refused with message [0,Error -22 : Not allowed action,EndOfAPI]
+
+
+Some Motor Positions are not initialized - rejecting the position command
