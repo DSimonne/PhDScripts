@@ -51,7 +51,7 @@ for scan in scans:
         pass
 
     try:
-        shutil.copy2("Scripts/pynx-run-no-support.txt", f"{folder}/S{scan}/pynxraw")
+        shutil.copy("Scripts/pynx-run-no-support.txt", f"{folder}/S{scan}/pynxraw")
         print(f"Copied Scripts/pynx-run-no-support.txt to {folder}/S{scan}/pynxraw")
     except FileExistsError:
         print(f"{folder}/S{scan}/pynxraw/pynx-run-no-support.txt exists")

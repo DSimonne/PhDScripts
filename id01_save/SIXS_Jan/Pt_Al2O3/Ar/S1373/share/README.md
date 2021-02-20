@@ -183,6 +183,7 @@ Estimated memory throughput of algorithms (not counting PSF update):
            ER** 99 [dt=  3.2s  <dt/cycle>=0.0325s]:   81.9 Gbytes/s
 Saving result to: S1373_pynx_norm_192_288_392_1_1_1-2021-02-17T15-46-21_Run0001_LLKf000.0782_LLK000.1113_SupportThreshold0.24708.cxi
 To view the result file (HDF5/CXI or npz), use: silx view S1373_pynx_norm_192_288_392_1_1_1-2021-02-17T15-46-21_Run0001_LLKf000.0782_LLK000.1113_SupportThreshold0.24708.cxi
+...
 ```
 
 # Modes analysis 

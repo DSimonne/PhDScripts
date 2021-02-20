@@ -19,7 +19,7 @@ warnings.filterwarnings("ignore")
 
 # Edit overall plot parameters
 # Font parameters
-mpl.rcParams['font.family'] = 'Verdana'
+# mpl.rcParams['font.family'] = 'Verdana'
 mpl.rcParams['font.size'] = 18
 
 # Edit axes parameters

@@ -76,24 +76,23 @@ sample_name = "S"  # str or list of str of sample names (string in front of the 
 # If only one name is indicated, it will be repeated to match the number of scans.
 user_comment = ''  # string, should start with "_"
 debug = False  # set to True to see plots
-binning = (4, 1, 1)  # binning to apply to the data
+binning = (1, 1, 1)  # binning to apply to the data
 # (stacking dimension, detector vertical axis, detector horizontal axis)
 ##############################
 # parameters used in masking #
 ##############################
-flag_interact = False  # True to interact with plots, False to close it automatically
+flag_interact = True  # True to interact with plots, False to close it automatically
 background_plot = '0.5'  # in level of grey in [0,1], 0 being dark. For visual comfort during masking
 #########################################################
 # parameters related to data cropping/padding/centering #
 #########################################################
 centering = 'max'  # Bragg peak determination: 'max' or 'com', 'max' is better usually.
 #  It will be overridden by 'fix_bragg' if not empty
-#fix_bragg = [196, 368, 500] # for fly scans
 fix_bragg = []  # fix the Bragg peak position [z_bragg, y_bragg, x_bragg] considering the full detector
 # It is useful if hotpixels or intense aliens. Leave it [] otherwise.
 fix_size = []  # crop the array to predefined size considering the full detector,
 # leave it to [] otherwise [zstart, zstop, ystart, ystop, xstart, xstop]. ROI will be defaulted to []
-center_fft = 'crop_sym_ZYX' # crop_sym_ZYX seems to be problematic for fly scans
+center_fft = 'crop_sym_ZYX'
 # 'crop_sym_ZYX','crop_asym_ZYX','pad_asym_Z_crop_sym_YX', 'pad_sym_Z_crop_asym_YX',
 # 'pad_sym_Z', 'pad_asym_Z', 'pad_sym_ZYX','pad_asym_ZYX' or 'skip'
 pad_size = []  # size after padding, e.g. [256, 512, 512]. Use this to pad the array.
@@ -149,11 +148,10 @@ specfile_name = None
 ###############################
 # detector related parameters #
 ###############################
-detector = "Merlin"    # "Eiger2M", "Maxipix", "Eiger4M", "Merlin" or "Timepix"
+detector = "Eiger2M"    # "Eiger2M", "Maxipix", "Eiger4M", "Merlin" or "Timepix"
 x_bragg = None  # horizontal pixel number of the Bragg peak, can be used for the definition of the ROI
 y_bragg = None  # vertical pixel number of the Bragg peak, can be used for the definition of the ROI
-# roi_detector = None
-roi_detector = [280, 470, 0, 375] # for fly scans
+roi_detector = None
 # roi_detector = [y_bragg - 200, y_bragg + 200, x_bragg - 150, x_bragg + 150]
 # roi_detector = [y_bragg - 168, y_bragg + 168, x_bragg - 140, x_bragg + 140]  # CH5309
 # roi_detector = [552, 1064, x_bragg - 240, x_bragg + 240]  # P10 2018
